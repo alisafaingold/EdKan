@@ -10,6 +10,7 @@ var request = new XMLHttpRequest()
 // Open a new connection, using the GET request on the URL endpoint
 request.open('GET', 'http://dummy.restapiexample.com/api/v1/employees', true)
 
+
 request.onload = function() {
     var data = JSON.parse(this.response);
     for (let i = 0; i < data.data.length; i++) {
