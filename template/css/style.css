@@ -21098,6 +21098,8 @@ dl li {
   display: flex;
   -webkit-flex-direction: column;
   flex-direction: column;
+  float:right;
+  direction: rtl;
 }
 
 @media (max-width: 991px) {
@@ -21904,6 +21906,12 @@ dl li {
 .rtl ul.chats::-webkit-scrollbar-thumb {
   background-color: darkgrey;
   outline: 1px solid slategrey;
+}
+
+.input-group-btn{
+  float: left;
+  direction: rtl;
+  align-self: last;
 }
 
 /*# sourceMappingURL=maps/style.css.map */
