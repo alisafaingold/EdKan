@@ -28,7 +28,7 @@ function loadCases() {
     var request = new XMLHttpRequest()
 
 // Open a new connection, using the GET request on the URL endpoint
-    request.open('GET', 'http://dummy.restapiexample.com/api/v1/employees', true);
+    request.open('GET', 'http://192.168.1.109:8500', true);
 
 
     request.onload = function() {
