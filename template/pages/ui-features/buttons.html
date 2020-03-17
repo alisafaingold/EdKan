@@ -221,8 +221,60 @@
                       <div class="template-demo" id="insertButtons">
                       </div>
                       <div class="template-demo" id="addButton">
-                        <button type="button" class="btn btn-primary btn-rounded btn-icon" onclick="location.href =
-                        '../../pages/ui-features/typography.html?lawyerID=321321';">+</button>
+                        <button type="button" id="addButton2" class="btn btn-primary btn-rounded btn-icon" onclick=showForm()>+</button>
+                        <div class="row" id="spaceBetween" style="padding-bottom: 10px"></div>
+                        <div class="col-12 grid-margin" id="addCaseForm" style="display: none; padding-top: 20px" align="right">
+                          <div class="card">
+                            <div class="card-body">
+                              <h4 class="card-title">הוספת תיק חדש</h4>
+                              <form class="form-sample">
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <div class="form-group row">
+                                      <div class="col-sm-9">
+                                        <input type="text" class="form-control" />
+                                      </div>
+                                      <label class="col-sm-3 col-form-label">מספר תיק</label>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="form-group row">
+                                      <div class="col-sm-9">
+                                        <input type="text" class="form-control" />
+                                      </div>
+                                      <label class="col-sm-3 col-form-label">תיאור</label>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <div class="form-group row">
+                                      <div class="col-sm-9">
+                                        <select class="form-control">
+                                          <option>Male</option>
+                                          <option>Female</option>
+                                        </select>
+                                      </div>
+                                      <label class="col-sm-3 col-form-label">פרליקט מטפל</label>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="form-group row">
+                                      <div class="col-sm-9">
+                                        <input class="form-control" placeholder="dd/mm/yyyy"/>
+                                      </div>
+                                      <label class="col-sm-3 col-form-label">תאריך פתיחה</label>
+                                    </div>
+                                  </div>
+                                </div>
+                              </form>
+                              <div  class="template-demo" style="float: left">
+                                  <button type="button" class="btn btn-outline-primary btn-fw" onclick="saveCase()">שמור</button>
+                                  <button type="button" class="btn btn-outline-primary btn-fw">הבא</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
