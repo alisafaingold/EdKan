@@ -9,6 +9,12 @@
   <!-- plugins:css -->
   <link rel="stylesheet" href="../../vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../../vendors/base/vendor.bundle.base.css">
+  <script type="text/javascript" src="/bower_components/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/bower_components/moment/min/moment.min.js"></script>
+  <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
   <!-- endinject -->
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
@@ -248,10 +254,12 @@
                     <div class="col-md-6">
                       <div class="form-group row">
                         <label class="col-sm-3 col-form-label" id="dateCase">תאריך פתיחה</label>
-                        <div class="input-group col-sm-9">
+                        <div class="input-group form-group col-sm-9">
                           <input type="text" class="form-control file-upload-info" placeholder="dd/mm/yyyy"/>
-                          <span class="input-group-append ">
-                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                          <span class="input-group-append">
+                          <button class="btn btn-primary" type="button" id="datetimepicker">
+                            <i class="mdi mdi-calendar"></i>
+                          </button>
                         </span>
                         </div>
                       </div>

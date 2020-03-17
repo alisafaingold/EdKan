@@ -2,20 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce420a82-4dc1-4da1-86e9-1fa25d18d818" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/template/js/witnesses-form1.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/js/witnesses-form3.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/js/buttons.js" beforeDir="false" afterPath="$PROJECT_DIR$/template/js/buttons.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/pages/charts/chartjs.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/pages/charts/chartjs.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/pages/forms/basic_elements.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/pages/forms/witnesses-form1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/pages/forms/basic_elements1.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/pages/forms/witnesses-form3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/pages/forms/basic_elements2.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/pages/forms/witnesses-form2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/pages/forms/basic_elements3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/pages/icons/mdi.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/pages/icons/mdi.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/pages/tables/basic-table.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/pages/tables/basic-table.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/pages/ui-features/buttons.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/pages/ui-features/buttons.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/pages/ui-features/typography.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/pages/ui-features/typography.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/js/witnesses-form1.js" beforeDir="false" afterPath="$PROJECT_DIR$/template/js/witnesses-form1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/pages/forms/witnesses-form1.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/pages/forms/witnesses-form1.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -62,7 +51,7 @@
       <option name="presentableId" value="Default" />
       <updated>1584097756876</updated>
       <workItem from="1584097758610" duration="11000" />
-      <workItem from="1584197281788" duration="23379000" />
+      <workItem from="1584197281788" duration="28454000" />
     </task>
     <servers />
   </component>
