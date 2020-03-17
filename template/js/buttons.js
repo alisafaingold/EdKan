@@ -1,5 +1,5 @@
 loadCases();
-
+// makeCorsRequest();
 
 
 // var obj = JSON.parse('[{"case":"5134432","age":30,"city":"New York"},{"case":"3543265","age":30,"city":"New York"},{"case":"43543534","age":30,"city":"New York"},{"case":"324324","age":30,"city":"New York"},{"case":"3543265","age":30,"city":"New York"},{"case":"43543534","age":30,"city":"New York"},{"case":"324324","age":30,"city":"New York"},{"case":"3543265","age":30,"city":"New York"},{"case":"43543534","age":30,"city":"New York"},{"case":"324324","age":30,"city":"New York"}]');
@@ -13,9 +13,9 @@ loadCases();
 //     element.appendChild(button);
 // }
 
-var query = window.location.search.substring(1);
-var qs = parse_query_string(query);
-console.log(qs.lawyerID+"");
+// var query = window.location.search.substring(1);
+// var qs = parse_query_string(query);
+// console.log(qs.lawyerID+"");
 
 function loadCases() {
     var element = document.getElementById("insertButtons");
@@ -66,6 +66,9 @@ function showForm() {
 }
 
 function saveCase() {
+    // var desc = getInputValue("IDCase");
+    // var caseID = getInputValue();
+
     //post to the API should save the new case
     loadCases();
 
@@ -100,4 +103,63 @@ function parse_query_string(query) {
         }
     }
     return query_string;
+}
+
+// Create the XHR object.
+function createCORSRequest(method, url) {
+    var xhr = new XMLHttpRequest();
+    if ("withCredentials" in xhr) {
+        // XHR for Chrome/Firefox/Opera/Safari.
+        xhr.open("GET", "http://192.168.1.109:8500");
+        xhr.setRequestHeader("Accept", "*/*");
+        xhr.setRequestHeader("Cache-Control", "no-cache");
+        xhr.setRequestHeader("Postman-Token", "02009d27-0f6b-4384-b4fb-9576ee203100");
+        xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+    } else if (typeof XDomainRequest != "undefined") {
+        // XDomainRequest for IE.
+        xhr = new XDomainRequest();
+        xhr.open(method, url);
+    } else {
+        // CORS not supported.
+        xhr = null;
+    }
+    return xhr;
+}
+
+// Helper method to parse the title tag from the response.
+function getTitle(text) {
+    return text;
+}
+
+// Make the actual CORS request.
+function makeCorsRequest() {
+    // This is a sample server that supports CORS.
+    var url = 'http://192.168.1.109:8500';
+
+    var xhr = createCORSRequest('POST', url);
+    if (!xhr) {
+        alert('CORS not supported');
+        return;
+    }
+
+    // Response handlers.
+    xhr.onload = function() {
+        var text = xhr.response;
+        var title = getTitle(text);
+        alert('Response from CORS request to ' + url + ': ' + title);
+    };
+
+    xhr.onerror = function() {
+        alert('Woops, there was an error making the request.');
+    };
+
+    xhr.send();
+}
+
+function getInputValue(elementID){
+    // Selecting the input element and get its value
+    var inputVal = document.getElementById(elementID).value;
+
+    // Displaying the value
+    alert(inputVal);
 }
