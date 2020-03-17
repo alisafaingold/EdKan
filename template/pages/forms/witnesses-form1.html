@@ -141,7 +141,7 @@
         <li class="nav-item nav-profile dropdown">
           <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
             <img src="../../images/faces/face5.jpg" alt="profile"/>
-            <span class="nav-profile-name">Alisa Faingold</span>
+            <span class="nav-profile-name" id="userName">Alisa Faingold</span>
           </a>
           <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
             <a class="dropdown-item">
@@ -185,7 +185,7 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../../pages/forms/basic_elements.html">
+          <a class="nav-link" href="../../pages/forms/witnesses-form1.html">
             <i class="mdi mdi-view-headline menu-icon"></i>
             <span class="menu-title">הדיונים שלי</span>
           </a>
@@ -207,7 +207,7 @@
     </nav>
      <!-- partial -->
     <!-- partial -->
-    <div class="main-panel" >
+    <div class="main-panel" align="right">
       <div class="content-wrapper">
         <div class="row">
           <div class="col-12 grid-margin">
@@ -221,7 +221,7 @@
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">מספר חוצץ</label>
+                        <label class="col-sm-3 col-form-label">מספר תיק</label>
                         <div class="col-sm-9">
                           <input type="text" class="form-control" />
                         </div>
@@ -229,23 +229,44 @@
                     </div>
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">תאריך</label>
+                        <label class="col-sm-3 col-form-label">תיאור</label>
                         <div class="col-sm-9">
-                          <input class="form-control" placeholder="dd/mm/yyyy"/>
+                          <input type="text" class="form-control" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">פרליקט מטפל</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="lawyerName"/>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" id="dateCase">תאריך פתיחה</label>
+                        <div class="input-group col-sm-9">
+                          <input type="text" class="form-control file-upload-info" placeholder="dd/mm/yyyy"/>
+                          <span class="input-group-append ">
+                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                        </span>
                         </div>
                       </div>
                     </div>
                   </div>
                 </form>
-                <div class="row" align="left">
+                <div class="row" style="float: left">
                   <div class="input-group-btn" align="left">
-                    <a class="nav-link" href="../../pages/forms/basic_elements2.html">
-                      <button type="button" class="btn btn-outline-primary mb-2">Primary</button>
+                    <a class="nav-link" href="witnesses-form2.html">
+                      <button type="button" class="btn btn-outline-primary mb-2">שמור</button>
                     </a>
                   </div>
                   <div class="input-group-btn" align="left">
-                    <a class="nav-link" href="../../pages/forms/basic_elements2.html">
-                      <button type="button" class="btn btn-outline-primary mb-2">הגש</button>
+                    <a class="nav-link" href="witnesses-form2.html">
+                      <button type="button" class="btn btn-outline-primary mb-2">הבא</button>
                     </a>
                   </div>
                 </div>
@@ -253,8 +274,7 @@
             </div>
           </div>
         </div>
-
-    </div>
+      </div>
       <!-- content-wrapper ends -->
       <!-- partial:../../partials/_footer.html -->
       <footer class="footer">
@@ -277,6 +297,7 @@
   <script src="../../js/off-canvas.js"></script>
   <script src="../../js/hoverable-collapse.js"></script>
   <script src="../../js/template.js"></script>
+<script src="../../js/witnesses-form1.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
   <script src="../../js/file-upload.js"></script>

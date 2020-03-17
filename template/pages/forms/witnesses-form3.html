@@ -185,7 +185,7 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../../pages/forms/basic_elements.html">
+          <a class="nav-link" href="witnesses-form1.html">
             <i class="mdi mdi-view-headline menu-icon"></i>
             <span class="menu-title">הדיונים שלי</span>
           </a>
@@ -205,103 +205,82 @@
         </li>
       </ul>
     </nav>
-     <!-- partial -->
+    <!-- partial -->
     <!-- partial -->
     <div class="main-panel" >
       <div class="content-wrapper">
         <div class="row">
-          <div class="col-12 grid-margin">
+          <div class="col-12 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-                <h4 class="card-title">Horizontal Two column</h4>
-                <form class="form-sample">
-                  <p class="card-description">
-                    Personal info
-                  </p>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">מספר תיק</label>
-                        <div class="col-sm-9">
-                          <input type="text" class="form-control" />
-                        </div>
-                      </div>
+                <h4 class="card-title">הזן פרטי עדים</h4>
+                <p class="card-description">
+                </p>
+                <form class="form-inline" id="witnessesForm">
+                  <div class="form-row">
+                    <div class="form-check mx-sm-2" dir="ltr">
+                      <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input">
+                        שוטר</label>
                     </div>
-                    <div class="col-md-6">
-                      <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">תיאור</label>
-                        <div class="col-sm-9">
-                          <input type="text" class="form-control" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">פרליקט מטפל</label>
-                        <div class="col-sm-9">
-                          <select class="form-control">
-                            <option>Male</option>
-                            <option>Female</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">תאריך פתיחה</label>
-                        <div class="col-sm-9">
-                          <input class="form-control" placeholder="dd/mm/yyyy"/>
-                        </div>
-                      </div>
+                    <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="שם פרטי">
+                    <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputGroupUsername2" placeholder="שם משפחה">
+                    <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputGroupUsername3" placeholder="ת.ז">
+                    <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputGroupUsername4" placeholder="טלפון">
+                    <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputGroupUsername5" placeholder="מייל">
+                    <div id="addHere">
                     </div>
                   </div>
                 </form>
-                <div class="row" align="left">
-                  <div class="input-group-btn" align="left">
-                    <a class="nav-link" href="../../pages/forms/basic_elements2.html">
-                      <button type="button" class="btn btn-outline-primary mb-2">Primary</button>
+                <div class="row" style="float: left">
+                  <div class="input-group-btn">
+                    <button type="button" id="addRowToWitnessesForm" class="btn btn-primary btn-rounded btn-icon mb-2 mr-sm-5">+</button>
+                  </div>
+                  <div class="input-group-btn" >
+                    <a class="nav-link" href="../../pages/forms/witnesses-form3.html">
+                      <button type="button" class="btn btn-outline-primary mb-2">שמור</button>
                     </a>
                   </div>
-                  <div class="input-group-btn" align="left">
-                    <a class="nav-link" href="../../pages/forms/basic_elements2.html">
-                      <button type="button" class="btn btn-outline-primary mb-2">הגש</button>
+                  <div class="input-group-btn" >
+                    <a class="nav-link" href="../../pages/forms/witnesses-form3.html">
+                      <button type="button" class="btn btn-outline-primary mb-2">הבא</button>
                     </a>
                   </div>
-                </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <!-- content-wrapper ends -->
-      <!-- partial:../../partials/_footer.html -->
-      <footer class="footer">
-        <div class="d-sm-flex justify-content-center justify-content-sm-between">
-          <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2018 <a href="https://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
-          <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
-        </div>
-      </footer>
-      <!-- partial -->
     </div>
-    <!-- main-panel ends -->
+    <!-- content-wrapper ends -->
+    <!-- partial:../../partials/_footer.html -->
+    <!--      <footer class="footer">-->
+    <!--        <div class="d-sm-flex justify-content-center justify-content-sm-between">-->
+    <!--          <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2018 <a href="https://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>-->
+    <!--          <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>-->
+    <!--        </div>-->
+    <!--      </footer>-->
+    <!-- partial -->
   </div>
-    <!-- page-body-wrapper ends -->
-  </div>
-  <!-- container-scroller -->
-  <!-- plugins:js -->
-  <script src="../../vendors/base/vendor.bundle.base.js"></script>
-  <!-- endinject -->
-  <!-- inject:js -->
-  <script src="../../js/off-canvas.js"></script>
-  <script src="../../js/hoverable-collapse.js"></script>
-  <script src="../../js/template.js"></script>
-  <!-- endinject -->
-  <!-- Custom js for this page-->
-  <script src="../../js/file-upload.js"></script>
-  <!-- End custom js for this page-->
+  <!-- main-panel ends -->
+</div>
+<!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+<!-- plugins:js -->
+<script src="../../vendors/base/vendor.bundle.base.js"></script>
+<!-- endinject -->
+<!-- inject:js -->
+<script src="../../js/off-canvas.js"></script>
+<script src="../../js/hoverable-collapse.js"></script>
+<script src="../../js/template.js"></script>
+<script src="../../js/witnesses-form3.js"></script>
+
+<!-- endinject -->
+<!-- Custom js for this page-->
+<script src="../../js/file-upload.js"></script>
+<!-- End custom js for this page-->
 </body>
 
 </html>
