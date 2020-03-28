@@ -10333,7 +10333,7 @@ pre code {
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-.form-control::placeholder, .dataTables_wrapper select::placeholder {
+.btn btn-outline-primary btn-fwform-control::placeholder, .dataTables_wrapper select::placeholder {
   color: #c9c8c8;
   opacity: 1;
 }
