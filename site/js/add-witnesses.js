@@ -6,21 +6,21 @@ document.getElementById('addRowToWitnessesForm').onclick=function () {
     newDivFormRow.setAttribute("class","form-row");
     //Check box div
     var newDivForm = document.createElement("div");
-    newDivForm.setAttribute("class","form-check mx-sm-2");
-    newDivForm.setAttribute("dir","ltr");
+    newDivForm.setAttribute("class","form-check");
     //check box label
     var newlabel = document.createElement("label");
     newlabel.setAttribute("class","form-check-label");
+    newlabel.setAttribute("for","officer"+numID);
     newlabel.innerHTML = "שוטר";
     //check box input
     var newInput = document.createElement("input");
     newInput.setAttribute("type","checkbox");
     newInput.setAttribute("class","form-check-input");
-    newInput.setAttribute("checked","")
+    newInput.setAttribute("id","officer"+numID);
     //Add
 
 
-    newlabel.appendChild(newInput);
+    newDivForm.appendChild(newInput);
     newDivForm.appendChild(newlabel);
     newDivFormRow.appendChild(newDivForm);
 
