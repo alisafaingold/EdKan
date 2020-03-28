@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>EdKan Admin</title>
-
+    <meta charset="UTF-8">
+    <title>Title</title>
     <link rel="stylesheet" href="../../../template/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../../template/vendors/base/vendor.bundle.base.css">
     <!-- endinject -->
     <!-- plugin css for this page -->
-    <link rel="stylesheet" href="../../../template/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="../../../template/css/style.css">
     <!-- endinject -->
     <link rel="shortcut icon" href="../../../template/images/favicon.png"/>
-    <style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}</style>
-
-
 </head>
 <body>
+<!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
+<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css"/>
+
+<!-- Inline CSS based on choices in "Settings" tab -->
+<style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form {
+    font-family: Arial, Helvetica, sans-serif;
+    color: black
+}
+
+.bootstrap-iso form button, .bootstrap-iso form button:hover {
+    color: white !important;
+}
+
+.asteriskField {
+    color: red;
+}</style>
 <div id="header">
     <nav class="navbar navbar-nav-right col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="navbar-brand-wrapper d-flex justify-content-center">
@@ -29,7 +38,8 @@
                         data-toggle="minimize">
                     <span class="mdi mdi mdi-menu"></span>
                 </button>
-                <a class="navbar-brand brand-logo" href="../../index.html"><img src="../../../template/images/logo.svg" alt="logo"/></a>
+                <a class="navbar-brand brand-logo" href="../../index.html"><img src="../../../template/images/logo.svg"
+                                                                                alt="logo"/></a>
                 <a class="navbar-brand brand-logo-mini" href="../../index.html"><img
                         src="../../../template/images/logo-mini.svg" alt="logo"/></a>
             </div>
@@ -236,50 +246,38 @@
                 </li>
             </ul>
         </nav>
-        <div class="main-panel" >
-            <div class="content-wrapper">
+
+        <!-- HTML Form (wrapped in a .bootstrap-iso div) -->
+        <div class="bootstrap-iso">
+            <div class="container-fluid">
                 <div class="row">
-                    <div class="col-12 grid-margin">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">הוסף חוצץ</h4>
-                                <form class="form-sample" method="post">
-                                    <p class="card-description">
-                                    הוסף חוצץ רלוונטי לתיק
-                                    </p>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">מספר חוצץ</label>
-                                                <div class="col-sm-9">
-                                                    <input type="text" class="form-control" data-rule-required="true"/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">תאריך</label>
-                                                <div class="col-sm-9">
-                                                    <input class="form-control" id="date" name="date" type="text" placeholder="dd/mm/yyyy" data-rule-required="true"/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                                <div class="row" style="float: left">
-                                    <div class="input-group-btn" align="left">
-                                        <a class="nav-link" href="exist-case.html">
-                                            <button type="button" class="btn btn-outline-primary mb-2">שמור</button>
-                                        </a>
-                                    </div>
-                                    <div class="input-group-btn" align="left">
-                                        <a class="nav-link" href="add-witnesses.html">
-                                            <button type="button" class="btn btn-outline-primary mb-2">הבא</button>
-                                        </a>
-                                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <form class="form-horizontal" method="post">
+                            <div class="form-group ">
+                                <label class="control-label col-sm-2" for="date">
+                                    Date
+                                </label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY"
+                                           type="text"/>
                                 </div>
                             </div>
-                        </div>
+                            <div class="form-group ">
+                                <label class="control-label col-sm-2" for="name">
+                                    Name
+                                </label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="name" name="name" type="text"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-10 col-sm-offset-2">
+                                    <button class="btn btn-primary " name="submit" type="submit">
+                                        Submit
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -287,25 +285,10 @@
     </div>
 </div>
 
-</body>
-<!-- Include jQuery -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-<!-- Include Date Range Picker -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 
-<script>
-    $(document).ready(function(){
-        var date_input=$('input[name="date"]'); //our date input has the name "date"
-        var container=$('.form').length>0 ? $('.form').parent() : "body";
-        date_input.datepicker({
-            format: 'mm/dd/yyyy',
-            container: container,
-            todayHighlight: true,
-            autoclose: true,
-        })
-    })
-</script>
-<script src="../../../template/vendors/base/vendor.bundle.base.js"></script>
-<script src="../../../site/js/template.js"></script>
+</body>
+<!-- Extra JavaScript/CSS added manually in "Settings" tab -->
+<!-- Include jQuery -->
+
+
 </html>
