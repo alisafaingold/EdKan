@@ -249,9 +249,10 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">מספר תיק</label>
+                                                <label class="col-sm-2 col-form-label">תיק בית משפט</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" id="caseId" class="form-control is-invalid" required/>
+                                                    <input type="text" id="courtType" class="form-control is-invalid"
+                                                           required/>
                                                     <div class="invalid-feedback">
                                                         אנא הכנס מזהה עבור התיק
                                                     </div>
@@ -260,9 +261,9 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">תיאור</label>
+                                                <label class="col-sm-2 col-form-label" for="caseID">מ.ת.</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" id="describeId" class="form-control"/>
+                                                    <input type="text" id="caseID" class="form-control"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -270,9 +271,34 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">פרליקט מטפל</label>
+                                                <label class="col-sm-2 col-form-label" for="attorneySelector">פרליקט מטפל</label>
+                                                <div class="input-group form-group col-sm-9">
+                                                  <input id="attorneySelector" class="form-control"/>
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    אנא הכנס מזהה עבור התיק
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label" for="dateCase">תאריך פתיחה</label>
+                                                <div class="input-group form-group col-sm-9">
+                                                    <input type="text" class="form-control is-invalid"
+                                                           placeholder="dd/mm/yyyy" id="dateCase" required/>
+                                                    <div class="invalid-feedback">
+                                                        אנא הכנס מזהה עבור התיק
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label" for="innerID">מספר פמ"ד</label>
                                                 <div class="col-sm-9">
-                                                    <select class="form-control is-invalid" id="attorneySelector" required>
+                                                    <select class="form-control is-invalid" id="innerID" required>
                                                     </select>
                                                 </div>
                                                 <div class="invalid-feedback">
@@ -282,20 +308,21 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label" id="dateCase">תאריך פתיחה</label>
+                                                <label class="col-sm-2 col-form-label" for="caseType">סוג התיק</label>
                                                 <div class="input-group form-group col-sm-9">
-                                                    <input type="text" class="form-control is-invalid"
-                                                           placeholder="dd/mm/yyyy" required/>
-                                                    <span class="input-group-append">
-                                                      <button class="btn btn-primary" type="button" id="datetimepicker">
-                                                        <i class="mdi mdi-calendar"></i>
-                                                      </button>
-                                                    </span>
+                                                    <input type="text" class="form-control is-invalid" id="caseType" placeholder="dd/mm/yyyy" required/>
                                                     <div class="invalid-feedback">
                                                         אנא הכנס מזהה עבור התיק
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label" for="textArea">הערות</label>
+                                        <textarea class="form-control" id="textArea" rows="4"></textarea>
+                                        <div class="invalid-feedback">
+                                            אנא הכנס מזהה עבור התיק
                                         </div>
                                     </div>
                                 </form>
@@ -321,9 +348,11 @@
 </div>
 </body>
 
-<script src="../../../template/vendors/base/vendor.bundle.base.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="../../../site/js/template.js"></script>
 <script src="../../../site/js/add-case.js"></script>
+<script src="../../../site/js/add-attorney.js"></script>
 
 
 </html>

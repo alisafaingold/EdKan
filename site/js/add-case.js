@@ -1,16 +1,10 @@
-function addAttorney() {
-    let dropdown = document.getElementById("attorneySelector");
-
+function getAttorney() {
     request.open('GET', url, true);
     request.onload = function () {
         if (request.status === 200) {
             const data = JSON.parse(request.responseText);
-            let option;
             for (let i = 0; i < data.data.length; i++) {
-                option = document.createElement('option');
-                option.text = data.data[i].employee_name;
-                option.id='attorney'+i;
-                dropdown.add(option);
+                attorney.push(data.data[i].employee_name);
             }
         } else {
             console.log("??????????")
@@ -76,5 +70,6 @@ function setGetParameter(paramName, paramValue)
 
 const url = 'http://dummy.restapiexample.com/api/v1/employees';
 const request = new XMLHttpRequest();
-addAttorney();
+const attorney =new Array;
+// getAttorney();
 // validation();

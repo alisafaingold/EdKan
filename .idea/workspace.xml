@@ -2,13 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce420a82-4dc1-4da1-86e9-1fa25d18d818" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/site/js/case.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/site/pages/cases/case.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/site/js/add-attorney.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template/vendors/jqueryui/AUTHORS.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template/vendors/jqueryui/LICENSE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template/vendors/jqueryui/external/jquery/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template/vendors/jqueryui/images/ui-icons_444444_256x240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template/vendors/jqueryui/images/ui-icons_555555_256x240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template/vendors/jqueryui/images/ui-icons_777620_256x240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template/vendors/jqueryui/images/ui-icons_777777_256x240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template/vendors/jqueryui/images/ui-icons_cc0000_256x240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template/vendors/jqueryui/images/ui-icons_ffffff_256x240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template/vendors/jqueryui/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template/vendors/jqueryui/jquery-ui.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template/vendors/jqueryui/jquery-ui.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template/vendors/jqueryui/jquery-ui.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template/vendors/jqueryui/jquery-ui.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template/vendors/jqueryui/jquery-ui.structure.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template/vendors/jqueryui/jquery-ui.structure.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template/vendors/jqueryui/jquery-ui.theme.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template/vendors/jqueryui/jquery-ui.theme.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template/vendors/jqueryui/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/site/js/add-case.js" beforeDir="false" afterPath="$PROJECT_DIR$/site/js/add-case.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site/js/add-witnesses.js" beforeDir="false" afterPath="$PROJECT_DIR$/site/js/add-witnesses.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/site/pages/cases/add-case.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/pages/cases/add-case.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site/pages/cases/add-witnesses.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/pages/cases/add-witnesses.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -95,7 +111,7 @@
       <updated>1584097756876</updated>
       <workItem from="1584097758610" duration="11000" />
       <workItem from="1584197281788" duration="41386000" />
-      <workItem from="1585322363704" duration="44541000" />
+      <workItem from="1585322363704" duration="46878000" />
     </task>
     <task id="LOCAL-00001" summary="All relevant pages under &quot;site&quot;">
       <created>1585391315901</created>
