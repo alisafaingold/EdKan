@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>EdKan Admin</title>
+    <!-- Extra JavaScript/CSS added manually in "Settings" tab -->
 
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
     <link rel="stylesheet" href="../../../template/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../../template/vendors/base/vendor.bundle.base.css">
     <!-- endinject -->
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../../../template/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
     <!-- End plugin css for this page -->
     <!-- inject:css -->
-    <link rel="stylesheet" href="../../../template/css/style.css">
+    <link rel="stylesheet" href="../../../site/css/style.css">
     <!-- endinject -->
     <link rel="shortcut icon" href="../../../template/images/favicon.png"/>
 </head>
@@ -241,89 +241,92 @@
                     <div class="col-12 grid-margin">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">הוסף תיק חדש</h4>
-                                <form class="form-sample needs-validation" novalidate>
-                                    <p class="card-description">
-                                        הכנס את הפרטים עבור התיק החדש
-                                    </p>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">מספר תיק</label>
-                                                <div class="col-sm-9">
-                                                    <input type="text" id="caseId" class="form-control is-invalid" required/>
-                                                    <div class="invalid-feedback">
-                                                        אנא הכנס מזהה עבור התיק
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">תיאור</label>
-                                                <div class="col-sm-9">
-                                                    <input type="text" id="describeId" class="form-control"/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">פרליקט מטפל</label>
-                                                <div class="col-sm-9">
-                                                    <select class="form-control is-invalid" id="attorneySelector" required>
-                                                    </select>
-                                                </div>
-                                                <div class="invalid-feedback">
-                                                    אנא הכנס מזהה עבור התיק
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label" id="dateCase">תאריך פתיחה</label>
-                                                <div class="input-group form-group col-sm-9">
-                                                    <input type="text" class="form-control is-invalid"
-                                                           placeholder="dd/mm/yyyy" required/>
-                                                    <span class="input-group-append">
-                                                      <button class="btn btn-primary" type="button" id="datetimepicker">
-                                                        <i class="mdi mdi-calendar"></i>
-                                                      </button>
-                                                    </span>
-                                                    <div class="invalid-feedback">
-                                                        אנא הכנס מזהה עבור התיק
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                                <div class="row" style="float: left">
-                                    <div class="input-group-btn" align="left">
-                                        <a class="nav-link" href="exist-case.html">
-                                            <button type="submit" class="btn btn-outline-primary mb-2">שמור</button>
-                                        </a>
-                                    </div>
-                                    <div class="input-group-btn" align="left">
-                                        <a class="nav-link" onclick="saveAndNext()">
-                                            <button type="submit" class="btn btn-outline-primary mb-2">הבא</button>
-                                        </a>
-                                    </div>
+                                <h4 class="card-title"> תיק מס</h4>
+                                <p class="card-description">
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 grid-margin">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a data-toggle="collapse" href="#buffers">חוצצים בתיק</a>
+                                </h4>
+                                <p class="card-description">
+                                </p>
+                                <div class="row">
+                                <div class="template-demo collapse" id="buffers">
+
+                                </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col-12 grid-margin">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a data-toggle="collapse" href="#collapse2">דיונים קרובים</a>
+                                </h4>
+                                <p class="card-description">
+                                </p>
+
+                                <div class="template-demo collapse" id="collapse2">
+                                    <p>
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 grid-margin">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a data-toggle="collapse" href="#collapse1">עדים בתיק</a>
+                                </h4>
+                                <p class="card-description">
+                                </p>
+
+                                <div class="template-demo collapse" id="collapse3">
+                                    <p>
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 grid-margin">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a data-toggle="collapse" href="#collapse1">תזכורות</a>
+                                </h4>
+                                <p class="card-description">
+                                </p>
+                                <div class="template-demo collapse" id="collapse4">
+                                    <p>
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+</div>
+</div>
+</div>
+
 </body>
 
 <script src="../../../template/vendors/base/vendor.bundle.base.js"></script>
 <script src="../../../site/js/template.js"></script>
-<script src="../../../site/js/add-case.js"></script>
-
-
+<script src="../../../site/js/case.js"></script>
 </html>

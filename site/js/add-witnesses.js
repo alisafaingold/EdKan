@@ -1,24 +1,25 @@
 document.getElementById('addRowToWitnessesForm').onclick=function () {
 
-    var element = document.getElementById("addHere");
+    var element = document.getElementById("witnessesForm");
+
     //First div
     var newDivFormRow = document.createElement("div");
     newDivFormRow.setAttribute("class","form-row");
     //Check box div
     var newDivForm = document.createElement("div");
-    newDivForm.setAttribute("class","form-check");
+    newDivForm.setAttribute("class","form-check mx-sm-2");
     //check box label
     var newlabel = document.createElement("label");
     newlabel.setAttribute("class","form-check-label");
-    newlabel.setAttribute("for","officer"+numID);
+    newlabel.setAttribute("for",numID);
     newlabel.innerHTML = "שוטר";
     //check box input
     var newInput = document.createElement("input");
     newInput.setAttribute("type","checkbox");
     newInput.setAttribute("class","form-check-input");
-    newInput.setAttribute("id","officer"+numID);
+    newInput.setAttribute("id",numID);
+    newInput.setAttribute("onchange","officerChecked("+numID+")");
     //Add
-
 
     newDivForm.appendChild(newInput);
     newDivForm.appendChild(newlabel);
@@ -60,12 +61,27 @@ document.getElementById('addRowToWitnessesForm').onclick=function () {
     newInput6.setAttribute("type","text");
     newInput6.setAttribute("class","form-control mb-2 mr-sm-2");
     newInput6.setAttribute("id","inlineFormInputGroupUserMail"+numID);
-    newInput6.setAttribute("placeholder","מייל");
+    newInput6.setAttribute("placeholder","כתובת");
     newDivFormRow.appendChild(newInput6);
 
-    element.appendChild(newDivFormRow)
+    element.appendChild(newDivFormRow);
     numID++;
 }
+
+function officerChecked(id) {
+    var bool= $('#' + id).is(":checked");
+    var userId= document.getElementById("inlineFormInputGroupUserID"+id);
+    var userMail= document.getElementById("inlineFormInputGroupUserMail"+id);
+
+    if(bool){
+        userId.placeholder='מספר אישי';
+        userMail.placeholder='תחנה';
+    }
+    else{
+        userId.placeholder='ת.ז';
+        userMail.placeholder='כתובת';
+    }
+    };
 let numID=2;
 
 $('[data-toggle="checkbox"]').each(function () {
