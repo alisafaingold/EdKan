@@ -1,22 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>EdKan Admin</title>
-
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
     <link rel="stylesheet" href="../../../template/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../../template/vendors/base/vendor.bundle.base.css">
-    <!-- endinject -->
-    <!-- plugin css for this page -->
     <link rel="stylesheet" href="../../../template/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
     <link rel="stylesheet" href="../../../template/css/style.css">
-    <!-- endinject -->
     <link rel="shortcut icon" href="../../../template/images/favicon.png"/>
+
 </head>
 <body>
 <div id="header">
@@ -277,8 +271,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label" id="dateCase">תאריך פתיחה</label>
+                                                <p>
+                                                    Date :
+                                                    <input type="text" id="datepicker" />
+                                                </p>
                                                 <div class="input-group form-group col-sm-9">
-                                                    <input type="text" class="form-control file-upload-info"
+                                                    <p class="unset">Date: <input class="unset" type="text"></p>
+                                                    <input name="birthday" type="text" class="unset"
                                                            placeholder="dd/mm/yyyy"/>
                                                     <span class="input-group-append">
                                                       <button class="btn btn-primary" type="button" id="datetimepicker">
@@ -336,6 +335,8 @@
 <script src="../../../template/vendors/base/vendor.bundle.base.js"></script>
 <script src="../../../site/js/template.js"></script>
 <script src="../../../site/js/add-case.js"></script>
+<script>
 
+</script>
 
 </html>
