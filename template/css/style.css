@@ -20,7 +20,7 @@
     + Color Functions Mixins
     + Badge Mixins
     + Blockquote Mixins
-    
+
   * Core Styles
     + Reset Styles
     + Fonts
@@ -43,7 +43,7 @@
     + Lists
     + Tables
   * Plugin overrides
-    + Data-tables  
+    + Data-tables
   * Landing screens
     + Auth
   * Layout
@@ -10333,7 +10333,7 @@ pre code {
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-.form-control::placeholder, .dataTables_wrapper select::placeholder {
+.btn btn-outline-primary btn-fwform-control::placeholder, .dataTables_wrapper select::placeholder {
   color: #c9c8c8;
   opacity: 1;
 }
@@ -21915,3 +21915,6 @@ dl li {
 }
 
 /*# sourceMappingURL=maps/style.css.map */
+.unset * {
+  all: initial;
+}

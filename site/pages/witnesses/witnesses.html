@@ -12,6 +12,9 @@
     <!--            $("#header").load("pages/static/header.html");-->
     <!--        });-->
     <!--    </script>-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../../../template/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../../template/vendors/base/vendor.bundle.base.css">
     <!-- endinject -->
@@ -243,61 +246,62 @@
                         <div class="card">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="card-body" bdo dir="ltr">
-                                        <h4 class="card-title" dir="rtl">התיקים שלי</h4>
-                                        <p class="card-description">מוצגים בפנייך התיקים המשוייכים לחשבון שלך</p>
-                                        <div class="template-demo" id="insertButtons">
+                                    <div class="card-body" bdo dir="rtl">
+                                        <h4 class="card-title" dir="rtl">העדים שלי</h4>
+                                        <p class="card-description">מוצגים בפנייך כל העדים המשוייכים לתיקים שמקושרים אלייך</p>
+                                        <input class="form-control" id="myInput" type="text" style="text-align: right; width: 30%" dir="rtl"
+                                               placeholder="סינון התוצאות...">
+                                        <div id="myDIV">
+                                            <div class="template-demo" id="insertButtons"></div>
                                         </div>
                                         <div class="template-demo" id="addButton">
-                                            <button type="button" id="addButton2" class="btn btn-primary btn-rounded btn-icon" onclick=showForm()>+</button>
-                                            <button type="button" onclick="generate()">Click to generate document</button>
+                                            <button type="button" id="addButton2" class="btn btn-primary btn-rounded btn-icon" onclick=showForm()>+
+                                            </button>
                                             <div class="row" id="spaceBetween" style="padding-bottom: 10px"></div>
-                                            <div class="col-12 grid-margin" id="addCaseForm" style="display: none; padding-top: 20px" align="right">
-                                                <div class="card">
-                                                    <div class="card-body rtl">
-                                                        <h4 class="card-title">הוספת תיק חדש</h4>
-                                                        <form class="form-sample">
-                                                            <div class="row">
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group row rtl">
-                                                                        <label class="col-sm-2 col-form-label">מספר תיק</label>
-                                                                        <div class="col-sm-9">
-                                                                            <input type="text" class="form-control" />
+                                            <div id="addWitnessForm" class="main-panel rtl" style="display: none; padding-top: 20px" align="right">
+                                                <div class="row">
+                                                    <div class="col-12 grid-margin stretch-card">
+                                                        <div class="card">
+                                                            <div class="card-body">
+                                                                <h4 class="card-title">הזן פרטי עדים</h4>
+                                                                <p class="card-description">
+                                                                </p>
+                                                                <form class="form-inline" id="witnessesForm">
+                                                                    <div class="form-row">
+                                                                        <div class="form-check mx-sm-2">
+                                                                            <input type="checkbox" class="form-check-input" id="officer">
+                                                                            <label class="form-check-label" for="officer">שוטר</label>
+                                                                        </div>
+                                                                        <input type="text" class="form-control mb-1 mr-sm-1"
+                                                                               id="inlineFormInputGroupUserName1" placeholder="שם פרטי">
+                                                                        <input type="text" class="form-control mb-2 mr-sm-2"
+                                                                               id="inlineFormInputGroupUserLastName1" placeholder="שם משפחה">
+                                                                        <input type="text" class="form-control mb-2 mr-sm-2"
+                                                                               id="inlineFormInputGroupUserID1" placeholder="ת.ז">
+                                                                        <input type="text" class="form-control mb-2 mr-sm-2"
+                                                                               id="inlineFormInputGroupUserPhone1" placeholder="טלפון">
+                                                                        <input type="text" class="form-control mb-2 mr-sm-2"
+                                                                               id="inlineFormInputGroupUserMail1" placeholder="כתובת">
+                                                                        <div id="addHere">
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group row">
-                                                                        <label class="col-sm-2 col-form-label">תיאור</label>
-                                                                        <div class="col-sm-9">
-                                                                            <input type="text" class="form-control" />
-                                                                        </div>
+                                                                </form>
+                                                                <div class="row" style="float: left">
+                                                                    <div class="input-group-btn">
+                                                                        <a class="nav-link">
+                                                                            <button type="button" class="btn btn-outline-primary mb-2"
+                                                                                    onclick="saveWitness()">שמור
+                                                                            </button>
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="input-group-btn">
+                                                                        <a class="nav-link" href="../../pages/forms/witnesses-form3.html">
+                                                                            <button type="button" class="btn btn-outline-primary mb-2">הבא
+                                                                            </button>
+                                                                        </a>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="row">
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group row">
-                                                                        <label class="col-sm-2 col-form-label">פרליקט מטפל</label>
-                                                                        <div class="col-sm-9">
-                                                                            <select class="form-control" id="attorneySelctor">
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group row">
-                                                                        <label class="col-sm-2 col-form-label">תאריך פתיחה</label>
-                                                                        <div class="col-sm-9">
-                                                                            <input class="form-control" placeholder="dd/mm/yyyy"/>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                        <div  class="template-demo" style="float: left">
-                                                            <button type="button" class="btn btn-outline-primary btn-fw" onclick="saveCase()">שמור</button>
-                                                            <button type="button" class="btn btn-outline-primary btn-fw">הבא</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -317,8 +321,16 @@
 
 <script src="../../../template/vendors/base/vendor.bundle.base.js"></script>
 <script src="../../../site/js/template.js"></script>
-<script src="../../../site/js/exist-case.js"></script>
-<script src="https://unpkg.com/docx@4.0.0/build/index.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.js"></script>
-<script src="../../js/filesUtil.js"></script>
+<script src="../../../site/js/exist-witness.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#myDIV *").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
+
 </html>

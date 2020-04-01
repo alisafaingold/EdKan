@@ -80,4 +80,14 @@ function setGetParameter(paramName, paramValue)
 const url = 'http://dummy.restapiexample.com/api/v1/employees';
 const request = new XMLHttpRequest();
 validation();
-// getAttorney();
+
+addAttorney();
+
+$(function() {
+    $("#datepicker").datepicker({
+        showOn: "button",
+        buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+        buttonImageOnly: true,
+        buttonText: "Select date"
+    });
+});
