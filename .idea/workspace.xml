@@ -2,13 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce420a82-4dc1-4da1-86e9-1fa25d18d818" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/site/js/case.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/site/pages/cases/case.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/site/js/try.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/site/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/add-attorney.js" beforeDir="false" afterPath="$PROJECT_DIR$/site/js/add-attorney.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/site/js/add-case.js" beforeDir="false" afterPath="$PROJECT_DIR$/site/js/add-case.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/site/js/add-witnesses.js" beforeDir="false" afterPath="$PROJECT_DIR$/site/js/add-witnesses.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/site/pages/cases/add-case.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/pages/cases/add-case.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/site/pages/cases/add-witnesses.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/pages/cases/add-witnesses.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/pages/cases/try.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/pages/cases/try.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -95,7 +97,7 @@
       <updated>1584097756876</updated>
       <workItem from="1584097758610" duration="11000" />
       <workItem from="1584197281788" duration="41386000" />
-      <workItem from="1585322363704" duration="44541000" />
+      <workItem from="1585322363704" duration="91537000" />
     </task>
     <task id="LOCAL-00001" summary="All relevant pages under &quot;site&quot;">
       <created>1585391315901</created>
