@@ -13,12 +13,36 @@ function getAttorney() {
     request.send();
 }
 
-function saveAndNext() {
-    let caseID= document.getElementById('caseId').value;
-    let describeID= document.getElementById('describeId').value;
-    let attorneyName= document.querySelector('select').value;
-    let dateCase= document.getElementById('dateCase').value;
 
+
+
+
+function validation() {
+    window.addEventListener('load', function() {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        let ok=true;
+        // Loop over them and prevent submission
+        var valid = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    }, false);
+}
+
+
+function saveAndNext() {
+    let caseID= document.getElementById('caseID').value;
+    let describeID= document.getElementById('caseType').value;
+    let attorneyName= document.getElementById('attorneySelector').value;
+    let innerID= document.getElementById('innerID').value;
+    let caseType= document.getElementById('caseType').value;
+    let textArea= document.getElementById('textArea').value;
     //Save
     // request.open('POST',)
 
@@ -32,7 +56,7 @@ function setGetParameter(paramName, paramValue)
     var url = window.location.href;
     var index =url.lastIndexOf('/')+1;
     var page =url.substring(index);
-    url = url.replace(page, 'add-buffer.html');
+    url = url.replace(page, 'add-witnesses.html');
     if (url.indexOf(paramName + "=") >= 0)
     {
         var prefix = url.substring(0, url.indexOf(paramName + "="));
@@ -52,24 +76,8 @@ function setGetParameter(paramName, paramValue)
 }
 
 
-// function validation()
-// {
-//     var forms = document.getElementsByClassName('needs-validation');
-//     var validation = Array.prototype.filter.call(forms, function(form) {
-//         form.addEventListener('submit', function(event) {
-//             if (form.checkValidity() === false) {
-//                 event.preventDefault();
-//                 event.stopPropagation();
-//             }
-//             form.classList.add('was-validated');
-//         })
-//     })
-// }
-
-
 
 const url = 'http://dummy.restapiexample.com/api/v1/employees';
 const request = new XMLHttpRequest();
-const attorney =new Array;
+validation();
 // getAttorney();
-// validation();

@@ -10894,6 +10894,17 @@ fieldset:disabled a.btn {
   box-shadow: 0 0 0 0.2rem rgba(127, 127, 127, 0.5);
 }
 
+.btn-excel {
+  color: #fff;
+  background-color: #21a165;
+  border-color: #21a165;
+}
+.btn-excel:hover {
+  color: #fff;
+  background-color: #107c41;
+  border-color: #107c41;
+}
+
 .btn-success {
   color: #fff;
   background-color: #71c016;
@@ -15903,7 +15914,9 @@ button.bg-dark:focus {
 .shadow-none {
   box-shadow: none !important;
 }
-
+.w-15 {
+  width: 15% !important;
+}
 .w-25 {
   width: 25% !important;
 }
@@ -19154,6 +19167,7 @@ code {
   height: 40px;
   padding: 0;
 }
+
 
 .btn.btn-icon-text .btn-icon-prepend {
   margin-right: .5rem;

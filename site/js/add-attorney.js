@@ -15,9 +15,9 @@ $(document).ready(function () {
     //     }
     //     request.send();
     // }
-    // function split(val) {
-    //     return val.split(/,\s*/);
-    // }
+    function split(val) {
+        return val.split(/,\s*/);
+    }
     function extractLast(request) {
         data = JSON.parse(request.responseText);
         return data.data.pop().employee_name;
@@ -41,7 +41,7 @@ $(document).ready(function () {
                         term: extractLast(request)
                     },
                     dataType: "json",
-                    type: "POST",
+                    type: "GET",
                     success: function (data) {
                         response(data);
                     },
@@ -70,3 +70,7 @@ $(document).ready(function () {
             }
         });
 });
+
+
+
+request.open('GET', url, true);

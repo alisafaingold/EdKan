@@ -242,20 +242,23 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">הוסף תיק חדש</h4>
-                                <form class="form-sample needs-validation" novalidate>
+                                <form class="form-sample needs-validation" id="form" novalidate>
                                     <p class="card-description">
                                         הכנס את הפרטים עבור התיק החדש
                                     </p>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">תיק בית משפט</label>
+                                                <label class="col-sm-2 col-form-label" for="caseType">תיק בית משפט</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" id="courtType" class="form-control is-invalid"
-                                                           required/>
-                                                    <div class="invalid-feedback">
-                                                        אנא הכנס מזהה עבור התיק
-                                                    </div>
+                                                    <select id="courtType" class="form-control" required>
+                                                    <option>מחוזי</option>
+                                                    <option>שלום</option>
+                                                    <option>פלילי</option>
+                                                    </select>
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    אנא הכנס מזהה עבור התיק
                                                 </div>
                                             </div>
                                         </div>
@@ -263,7 +266,10 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label" for="caseID">מ.ת.</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" id="caseID" class="form-control"/>
+                                                    <input type="text" id="caseID" class="form-control" required/>
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    אנא הכנס מזהה עבור התיק
                                                 </div>
                                             </div>
                                         </div>
@@ -273,7 +279,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label" for="attorneySelector">פרליקט מטפל</label>
                                                 <div class="input-group form-group col-sm-9">
-                                                  <input id="attorneySelector" class="form-control"/>
+                                                  <input id="attorneySelector" class="form-control" type="text" value=" " required/>
                                                 </div>
                                                 <div class="invalid-feedback">
                                                     אנא הכנס מזהה עבור התיק
@@ -284,7 +290,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label" for="dateCase">תאריך פתיחה</label>
                                                 <div class="input-group form-group col-sm-9">
-                                                    <input type="text" class="form-control is-invalid"
+                                                    <input type="date" class="form-control"
                                                            placeholder="dd/mm/yyyy" id="dateCase" required/>
                                                     <div class="invalid-feedback">
                                                         אנא הכנס מזהה עבור התיק
@@ -298,7 +304,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label" for="innerID">מספר פמ"ד</label>
                                                 <div class="col-sm-9">
-                                                    <select class="form-control is-invalid" id="innerID" required>
+                                                    <select class="form-control" id="innerID">
                                                     </select>
                                                 </div>
                                                 <div class="invalid-feedback">
@@ -310,7 +316,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label" for="caseType">סוג התיק</label>
                                                 <div class="input-group form-group col-sm-9">
-                                                    <input type="text" class="form-control is-invalid" id="caseType" placeholder="dd/mm/yyyy" required/>
+                                                    <input type="text" class="form-control" id="caseType" placeholder="dd/mm/yyyy" required/>
                                                     <div class="invalid-feedback">
                                                         אנא הכנס מזהה עבור התיק
                                                     </div>
@@ -321,23 +327,21 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label" for="textArea">הערות</label>
                                         <textarea class="form-control" id="textArea" rows="4"></textarea>
-                                        <div class="invalid-feedback">
-                                            אנא הכנס מזהה עבור התיק
+                                    </div>
+                                    <div class="row" style="float: left">
+                                        <div class="input-group-btn" align="left">
+                                            <a class="nav-link" href="exist-case.html">
+                                                <button type="submit" class="btn btn-outline-primary mb-2">שמור</button>
+                                            </a>
+                                        </div>
+                                        <div class="input-group-btn" align="left">
+                                            <a class="nav-link">
+                                                <button type="submit" class="btn btn-outline-primary mb-2" onclick="saveAndNext()">הבא</button>
+                                            </a>
                                         </div>
                                     </div>
                                 </form>
-                                <div class="row" style="float: left">
-                                    <div class="input-group-btn" align="left">
-                                        <a class="nav-link" href="exist-case.html">
-                                            <button type="submit" class="btn btn-outline-primary mb-2">שמור</button>
-                                        </a>
-                                    </div>
-                                    <div class="input-group-btn" align="left">
-                                        <a class="nav-link" onclick="saveAndNext()">
-                                            <button type="submit" class="btn btn-outline-primary mb-2">הבא</button>
-                                        </a>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -352,7 +356,7 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="../../../site/js/template.js"></script>
 <script src="../../../site/js/add-case.js"></script>
-<script src="../../../site/js/add-attorney.js"></script>
+<!--<script src="../../../site/js/add-attorney.js"></script>-->
 
 
 </html>
