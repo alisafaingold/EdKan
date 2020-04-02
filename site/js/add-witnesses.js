@@ -1,15 +1,13 @@
-
-
 document.getElementById('addRowToWitnessesForm').onclick = function () {
     let div = createNewRow();
-    div.style.display="block";
+    div.style.display = "block";
 };
 
 function createNewRow() {
     var oldDiv = document.getElementById('fromRow1');
     var newDiv = oldDiv.cloneNode(true);
     newDiv.id = newDiv.id.substring(0, newDiv.id.length - 1) + numID;
-    newDiv.style.display= "none";
+    newDiv.style.display = "none";
     for (i = 0; i < newDiv.childNodes.length; i++) {
         if (i == 1) {
             newDiv.childNodes[i].childNodes[1].id = numID;
@@ -25,10 +23,9 @@ function createNewRow() {
 };
 
 
-
-function addAndFill(values){
-    if(numID==2){
-        if(values[0]===0){
+function addAndFill(values) {
+    if (numID == 2) {
+        if (values[0] === 0) {
             var oldDiv = document.getElementById('fromRow1');
             var newDiv = oldDiv.cloneNode(true);
             newDiv.id = newDiv.id.substring(0, newDiv.id.length - 1) + numID;
@@ -42,20 +39,15 @@ function addAndFill(values){
                 }
             }
 
-        }
-        else if(values[0]===1){
+        } else if (values[0] === 1) {
 
-        }
-        else{
+        } else {
 
         }
     }
 
 
-
 };
-
-
 
 
 function changeToOfficer(id) {
@@ -120,18 +112,16 @@ function upload() {
 };
 
 
-
-
 function importFile(evt) {
     var input = evt.target;
     var reader = new FileReader();
-    reader.onload = function(){
+    reader.onload = function () {
         var fileData = reader.result;
-        var wb = XLSX.read(fileData, {type : 'binary'});
-        wb.SheetNames.forEach(function(sheetName){
-            var rowObj =XLSX.utils.sheet_to_row_object_array(wb.Sheets[sheetName]);
+        var wb = XLSX.read(fileData, {type: 'binary'});
+        wb.SheetNames.forEach(function (sheetName) {
+            var rowObj = XLSX.utils.sheet_to_row_object_array(wb.Sheets[sheetName]);
             var jsonObj = JSON.stringify(rowObj);
-            jsonObj=JSON.parse(jsonObj);
+            jsonObj = JSON.parse(jsonObj);
             console.log(jsonObj)
             show(jsonObj);
         })
@@ -140,19 +130,33 @@ function importFile(evt) {
 };
 
 function show(jsonObj) {
+    var text = "";
     let divNum = Object.keys(jsonObj).length;
-    for (var key in jsonObj) {
-        var obj = jsonObj[key];
-        for (var prop in obj) {
-            let values = new Array();
-            if (obj.hasOwnProperty(prop)) {
-                values.push(obj[prop]);
-            }
-            addAndFill(values);
-        }
-
-
+    let data = jsonObj.data;
+    let currID = numID;
+    for (var key of jsonObj) {
+        currID = numID;
+        let div = createNewRow();
+        div.style.display = "block";
+        document.getElementById('FreeText' + currID).value = Object.values(key)[0];
+        document.getElementById('UserID' + currID).value = Object.values(key)[1];
+        document.getElementById('LastName' + currID).value = Object.values(key)[2];
+        document.getElementById('Name' + currID).value = Object.values(key)[3];
+        document.getElementById('UserMail' + currID).value = Object.values(key)[4];
+        document.getElementById('Phone' + currID).value = Object.values(key)[5];
+        document.getElementById('Notes' + currID).value = Object.values(key)[7];
+        console.log(key);
     }
+    // for (var key in jsonObj) {
+    //     var obj = jsonObj[key];
+    //     for (var prop in obj) {
+    //         let values = new Array();
+    //         if (obj.hasOwnProperty(prop)) {
+    //             values.push(obj[prop]);
+    //         }
+    //         addAndFill(values);
+    //     }
+    // }
 }
 
 //     //Validate whether File is valid Excel file.
@@ -238,18 +242,18 @@ function show(jsonObj) {
 //     dvExcel.appendChild(table);
 
 
-    function next() {
-        var url = new URL(window.location.href);
-        let caseID = url.searchParams.get("caseID");
-        const newUrl = new URL('../../pages/cases/case.html', url);
-        newUrl.searchParams.append("caseID", caseID);
-        window.location.href = newUrl.href;
-    };
+function next() {
+    var url = new URL(window.location.href);
+    let caseID = url.searchParams.get("caseID");
+    const newUrl = new URL('../../pages/cases/case.html', url);
+    newUrl.searchParams.append("caseID", caseID);
+    window.location.href = newUrl.href;
+};
 
-    let numID = 2;
-    const url = 'http://dummy.restapiexample.com/api/v1/employees';
-    const request = new XMLHttpRequest();
-    window.onload = onLoad();
+let numID = 2;
+const url = 'http://dummy.restapiexample.com/api/v1/employees';
+const request = new XMLHttpRequest();
+window.onload = onLoad();
 
 
 
