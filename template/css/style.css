@@ -58,6 +58,17 @@
 /* === Import template variables === */
 /*-------------------------------------------------------------------*/
 /* === SCSS Compass Functions === */
+
+
+
+.my-card
+{
+  position:absolute;
+  left:40%;
+  top:-20px;
+  border-radius:50%;
+}
+
 @-moz-keyframes flash {
   0% {
     opacity: 1;
@@ -8927,6 +8938,7 @@ progress {
 [type="search"] {
   outline-offset: -2px;
   -webkit-appearance: none;
+  border-radius: 5px;
 }
 
 [type="search"]::-webkit-search-decoration {
@@ -9971,6 +9983,8 @@ pre code {
 .table thead th {
   vertical-align: bottom;
   border-bottom: 2px solid #f3f3f3;
+  text-align: center;
+
 }
 
 .table tbody + tbody {
@@ -20914,7 +20928,7 @@ dl li {
 
 .dataTables_wrapper .dataTable thead .sorting:before, .dataTables_wrapper .dataTable thead .sorting:after,
 .dataTables_wrapper .dataTable thead .sorting_asc:before,
-.dataTables_wrapper .dataTable thead .sorting_asc:after,
+.dataTables_wrapper .dataTable thead .sorting_asc:after,thead
 .dataTables_wrapper .dataTable thead .sorting_desc:before,
 .dataTables_wrapper .dataTable thead .sorting_desc:after,
 .dataTables_wrapper .dataTable thead .sorting_asc_disabled:before,
@@ -21918,3 +21932,8 @@ dl li {
 .unset * {
   all: initial;
 }
+
+.dataTables_filter {
+  float: left !important;
+}
+

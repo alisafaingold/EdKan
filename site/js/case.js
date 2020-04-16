@@ -1,48 +1,79 @@
 function addCaseDetails() {
-    let buffers = document.getElementById("buffers")
-    request.open('GET', url, true,);
+    addDetails();
 
+}
+
+function addDetails() {
+    let cururl = new URL(window.location.href);
+    let caseID = cururl.searchParams.get("caseID");
+    document.getElementById("title").innerText="תיק מספר "+caseID;
+
+    var url = 'Http://192.168.1.107:8000/getCaseDetails?caseID=' + '2020';
+    var request = new XMLHttpRequest()
+    request.open('GET', url, true);
     request.onload = function () {
         if (request.status === 200) {
             const data = JSON.parse(request.responseText);
-            for (let i = 0; i < data.data.length; i++) {
-                // var mainDiv= document.createElement("div");
-                // mainDiv.setAttribute("class","col-md-4 grid-margin grid-margin-md-0 stretch-card")
-                //
-                // var cardDiv= document.createElement("div");
-                // mainDiv.setAttribute("class","card")
-                //
-                // var cardBodyDiv= document.createElement("div");
-                // mainDiv.setAttribute("class","card-body")
-                //
-                // var h4= document.createElement("h4");
-                // mainDiv.setAttribute("class","card-title")
-                // h4.innerText="חוצץ מס'"+data.data[i].employee_salary;
-                // var p= document.createElement("p");
-                //
-                // p.innerText="Date: "+data.data[i].id;+"</br>";
-                //
-                // cardBodyDiv.appendChild(h4);
-                // cardBodyDiv.appendChild(p);
-                // cardDiv.appendChild(cardBodyDiv);
-                // mainDiv.appendChild(cardDiv);
-                // buffers.appendChild(mainDiv);
 
-                var button = document.createElement("button");
-                button.className = "btn btn-outline-primary btn-fw";
-                button.innerHTML = "תיק מס' " + data.data[i].employee_salary;
-                button.id = data.data[i].employee_salary;
-                button.setAttribute("onClick", "login(" + "this" + ")");
-                buffers.appendChild(button);
+            //======== Case Details =================
+            let courtID = data["caseDetails"].courtID;
+            let lawyer = data["caseDetails"].lawyers[0];
+            let openingDate = data["caseDetails"].openingDate;
+            let PMD = data["caseDetails"].PMD;
+            let notes = data["caseDetails"].notes;
+            let courtName;
+            if(courtID==='1')
+                courtName="מחוזי";
+            else if(courtID==='2')
+                courtName="שלום";
+            else{
+                courtName="פלילי";
             }
-        } else {
+            document.getElementById("caseDetails1").innerText="תאריך פתיחה: "+openingDate +"<br>"+"סוג בית משפט "+courtName+"<br>"+"עורך דין מטפל: "+lawyer+"<br>";
+            document.getElementById("caseDetails2").innerText="<br>"+"מספר פמ'ד: "+PMD+"<br>"+"הערות: "+notes;
+
+
+            //=========== Witnesses =================
+            let cardW = document.getElementById("collapse1");
+            cardW.innerHTML="";
+            for (let i = 0; i < data["witnesses"].length; i++) {
+                let bigDiv = document.createElement("div");
+                bigDiv.className="row mt-4";
+                bigDiv.id="row"+i;
+                for(let j=0; j<6 && i<data["witnesses"].length; j++){
+                    let div = document.createElement("div");
+                    div.className="col-md-2";
+                    let button = document.createElement("button");
+                    button.className = "btn btn-outline-danger btn-lg";
+                    button.innerHTML = data["witnesses"][i].firstname+data["witnesses"][i].lastname;
+                    button.id =data["witnesses"][i].witnessID;
+                    button.setAttribute("onClick", "login(" + "this" + ")");
+                    div.appendChild(button);
+                    i++;
+                    bigDiv.appendChild(div);
+                }
+                cardW.appendChild(bigDiv);
+                i--;
+            }
+
+            // ======== Hearing =========
+            let cardH = document.getElementById("collapse2");
+            for (let i = 0; i < data["hearings"].length; i++) {
+                let button = document.createElement("button");
+                button.className = "btn btn-inverse-info btn-lg btn-block";
+                button.innerHTML = data["hearings"][i].hearingDate +data["hearings"][i].hearingHour;
+                cardH.appendChild(button);
+            }
+        }
+        else{
             console.log("??????????")
         }
+
     }
     request.send();
 }
 
-const url = 'http://dummy.restapiexample.com/api/v1/employees';
-const request = new XMLHttpRequest();
+// const url = 'http://dummy.restapiexample.com/api/v1/employees';
+// const request = new XMLHttpRequest();
 addCaseDetails();
 

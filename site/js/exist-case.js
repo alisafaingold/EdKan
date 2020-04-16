@@ -1,53 +1,66 @@
 loadCases();
 
-
-// var obj = JSON.parse('[{"case":"5134432","age":30,"city":"New York"},{"case":"3543265","age":30,"city":"New York"},{"case":"43543534","age":30,"city":"New York"},{"case":"324324","age":30,"city":"New York"},{"case":"3543265","age":30,"city":"New York"},{"case":"43543534","age":30,"city":"New York"},{"case":"324324","age":30,"city":"New York"},{"case":"3543265","age":30,"city":"New York"},{"case":"43543534","age":30,"city":"New York"},{"case":"324324","age":30,"city":"New York"}]');
-
-// for (let i = 0; i < obj.length; i++) {
-//     var button = document.createElement("button");
-//     button.className = "btn btn-outline-primary btn-fw";
-//     button.innerHTML = "תיק מס' " + obj[i].case ;
-//     button.id = obj[i].case;
-//     button.setAttribute( "onClick", "login("+"this"+")");
-//     element.appendChild(button);
-// }
-
 var query = window.location.search.substring(1);
 var qs = parse_query_string(query);
 console.log(qs.lawyerID + "");
 
 async function loadCases() {
+    // var url = 'Http://192.168.1.107:8000/getLawyerCase?lawyerID=1234';
+    // var request = new XMLHttpRequest();
+    var element = document.getElementById("insertButtons");
+    // var requestOptions = {
+    //     method: 'GET',
+    //     redirect: 'follow'
+    // };
+// Open a new connection, using the GET request on the URL endpoint
     var url = 'http://dummy.restapiexample.com/api/v1/employees';
     var request = new XMLHttpRequest()
-    var element = document.getElementById("insertButtons");
-    var requestOptions = {
-        method: 'GET',
-        redirect: 'follow'
-    };
-// Open a new connection, using the GET request on the URL endpoint
+    request.open('GET', url, true);
+    //data=[11,2021,333]
     request.open('GET', url, true);
     request.onload = function () {
-        element.innerHTML = "";
-        var data = JSON.parse(this.response);
-        for (let i = 0; i < data.data.length; i++) {
-            var button = document.createElement("button");
-            button.className = "btn btn-outline-primary btn-fw";
-            button.innerHTML = "תיק מס' " + data.data[i].employee_salary;
-            button.id = data.data[i].employee_salary;
-            button.setAttribute("onClick", "login(" + "this" + ")");
-            element.appendChild(button);
+        if (request.status === 200) {
+            element.innerHTML = "";
+            var data = JSON.parse(this.response);
+            for (let i = 0; i < data.data.length; i++) {
+                // for (let i = 0; i < data.length; i++) {
+                let bigDiv = document.createElement("div");
+                bigDiv.className = "row mt-4";
+                bigDiv.id = "row" + i;
+                for (let j = 0; j < 6 && i < data.data.length; j++) {
+                    var div = document.createElement("div");
+                    div.className = "col-md-2";
+                    var button = document.createElement("button");
+                    button.className = "btn btn-outline-primary btn-lg";
+                    button.innerHTML = "תיק מס' " + i;
+                    button.id = data[i];
+                    button.setAttribute("onClick", "moveToCase(" + "this" + ")");
+                    div.appendChild(button);
+                    bigDiv.appendChild(div);
+                    i++
+                }
+                element.appendChild(bigDiv);
+                i--;
+            }
         }
     }
-
-
 // Send request
     request.send();
 }
 
 
-function login(element) {
-    alert(element.id);
+function moveToCase(element) {
+    setGetParameter('caseID', element.id);
 }
+
+
+function setGetParameter(paramName, paramValue) {
+    var url = new URL(window.location.href);
+    const newUrl = new URL('../../pages/cases/case.html', url);
+    newUrl.searchParams.append(paramName, paramValue);
+    window.location.href = newUrl.href;
+}
+
 
 function showForm() {
     var x = document.getElementById("addCaseForm");
@@ -60,16 +73,17 @@ function showForm() {
     y.style.display = "none";
     let dropdown = document.getElementById("attorneySelctor")
 
-    var url = 'http://dummy.restapiexample.com/api/v1/employees';
+    var url = 'Http://192.168.1.107:8000/getLawyers';
     var request = new XMLHttpRequest()
     request.open('GET', url, true);
-    request.onload = function() {
+    request.onload = function () {
         if (request.status === 200) {
             const data = JSON.parse(request.responseText);
             let option;
-            for (let i = 0; i < data.data.length; i++) {
+
+            for (let i = 0; i < data["lawyers"].length; i++) {
                 option = document.createElement('option');
-                option.text = data.data[i].employee_name;
+                option.text = data["lawyers"][i]["firstname"].toUpperCase() + " " + data["lawyers"][i]["lastname"].toUpperCase();
                 dropdown.add(option);
             }
         } else {
@@ -80,7 +94,21 @@ function showForm() {
 }
 
 function saveCase() {
-    //post to the API should save the new case
+    let form = document.getElementsByTagName('form')[0];
+    if (form.checkValidity() === true) {
+        var data = {};
+        for (var i = 0, ii = form.length; i < ii; ++i) {
+            var input = form[i];
+            if (input.name) {
+                data[input.name] = input.value;
+            }
+        }
+        data["openingUserID"] = "1";
+        save(data);
+    } else {
+        form.classList.add('was-validated');
+    }
+
     loadCases();
 
     var y = document.getElementById("addButton2");
@@ -93,6 +121,40 @@ function saveCase() {
         x.style.display = "none";
     }
 }
+
+function save(data) {
+    let localUrl = url + '/saveCase';
+    request.open('POST', localUrl, true);
+    request.send(JSON.stringify(data));
+}
+
+function saveAndNext() {
+    let form = document.getElementsByTagName('form')[0];
+    if (form.checkValidity() === true) {
+        var data = {};
+        for (var i = 0, ii = form.length; i < ii; ++i) {
+            var input = form[i];
+            if (input.name) {
+                data[input.name] = input.value;
+            }
+        }
+        data["openingUserID"] = "1";
+        save(data);
+        let caseID = document.getElementById("caseID").value;
+        setGetParameter('caseID', caseID);
+    } else {
+        form.classList.add('was-validated');
+    }
+
+};
+
+function setGetParameter(paramName, paramValue) {
+    var url = new URL(window.location.href);
+    const newUrl = new URL('../../pages/cases/add-witnesses.html', url);
+    newUrl.searchParams.append(paramName, paramValue);
+    window.location.href = newUrl.href;
+}
+
 
 function parse_query_string(query) {
     var vars = query.split("&");

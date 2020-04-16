@@ -1,44 +1,36 @@
-function apiCall() {
-    var searchInput = document.getElementById("searchMovie");
+loadCases();
 
-    // get movie
-    searchInput.onkeydown = function () {
-        var searchData = document.getElementById("searchMovie").value;
 
-        if (searchData.length >= 3) {
-            while (document.getElementsByClassName('autoComplete')[0]) {
-                document.getElementsByClassName('autoComplete')[0].remove();
-            }
+// var obj = JSON.parse('[{"case":"5134432","age":30,"city":"New York"},{"case":"3543265","age":30,"city":"New York"},{"case":"43543534","age":30,"city":"New York"},{"case":"324324","age":30,"city":"New York"},{"case":"3543265","age":30,"city":"New York"},{"case":"43543534","age":30,"city":"New York"},{"case":"324324","age":30,"city":"New York"},{"case":"3543265","age":30,"city":"New York"},{"case":"43543534","age":30,"city":"New York"},{"case":"324324","age":30,"city":"New York"}]');
 
-            var request = new XMLHttpRequest();
-            request.open('GET', 'http://www.omdbapi.com/?s=' + searchData + '&apikey=000000', true);
-            request.onload = function () {
-                // Begin accessing JSON data here
-                var data = JSON.parse(this.response);
+// for (let i = 0; i < obj.length; i++) {
+//     var button = document.createElement("button");
+//     button.className = "btn btn-outline-primary btn-fw";
+//     button.innerHTML = "תיק מס' " + obj[i].case ;
+//     button.id = obj[i].case;
+//     button.setAttribute( "onClick", "login("+"this"+")");
+//     element.appendChild(button);
+// }
 
-                var wrapper = document.createElement('div');
-                wrapper.className = "autoComplete";
-                app.appendChild(wrapper);
-                var results = data;
-                if (request.status >= 200 && request.status < 400) {
-                    console.log(data);
-                    Object.keys(data.Search).map(function (key, index) {
-                        console.log(data.Search[index].Title);
 
-                        const searchResultsContainer = document.createElement('div');
-                        searchResultsContainer.setAttribute('class', 'row');
 
-                        const h1 = document.createElement('h1');
-                        h1.textContent = data.Search[index].Title;
-                        wrapper.appendChild(searchResultsContainer);
-                        searchResultsContainer.appendChild(h1);
-                        console.log(searchResultsContainer);
-                    });
-                } else {
-                    console.log('error');
-                }
-            };
-            request.send();
+async function loadCases() {
+    var url = 'Http://192.168.1.107:8000/getCaseDetails?caseID=2020';
+    var request = new XMLHttpRequest()
+    var element = document.getElementById("insertButtons");
+
+
+    request.open('GET', url, true);
+    request.onload = function () {
+        var data = JSON.parse(this.response);
+            element.innerHTML+=data.buffers[0];
+
         }
-    }
-}
+
+// Send request
+    request.send();
+};
+
+
+
+loadCases();

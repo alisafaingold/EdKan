@@ -5,15 +5,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>EdKan Admin</title>
-    <!-- plugins:css -->
-    <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
-    <!--    <script>-->
-    <!--        $(function(){-->
-    <!--            $("#header").load("pages/static/header.html");-->
-    <!--        });-->
-    <!--    </script>-->
+    <link href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="../../../template/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../../template/vendors/base/vendor.bundle.base.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&display=swap" rel="stylesheet">
     <!-- endinject -->
     <!-- plugin css for this page -->
     <link rel="stylesheet" href="../../../template/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
@@ -24,7 +20,7 @@
     <link rel="shortcut icon" href="../../../template/images/favicon.png"/>
 </head>
 <body>
-<div id="header">
+<div id="header" style="font-family:'Alef', sans-serif;">
     <nav class="navbar navbar-nav-right col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="navbar-brand-wrapper d-flex justify-content-center">
             <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
@@ -32,8 +28,10 @@
                         data-toggle="minimize">
                     <span class="mdi mdi mdi-menu"></span>
                 </button>
-                <a class="navbar-brand brand-logo" href="../../index.html"><img src="../../../template/images/logo.svg" alt="logo"/></a>
-                <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../../template/images/logo-mini.svg" alt="logo"/></a>
+                <a class="navbar-brand brand-logo" href="../../index.html"><img src="../../../template/images/logo.svg"
+                                                                                alt="logo"/></a>
+                <a class="navbar-brand brand-logo-mini" href="../../index.html"><img
+                        src="../../../template/images/logo-mini.svg" alt="logo"/></a>
             </div>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
@@ -178,9 +176,9 @@
     </nav>
     <!--End Of navigation bar-->
     <!--content-->
-    <div class="container-fluid page-body-wrapper rtl">
+    <div class="container-fluid page-body-wrapper rtl" >
         <!-- partial:partials/_sidebar.html -->
-        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <nav class="sidebar sidebar-offcanvas" id="sidebar" style="font-family:'Alef', sans-serif;">
             <ul class="nav rtl">
                 <li class="nav-item">
                     <a class="nav-link" href="../../index.html">
@@ -213,9 +211,10 @@
                     </a>
                     <div class="collapse" id="hearing">
                         <ul class="nav flex-column sub-menu" dir="rtl">
-                            <li class="nav-item"><a class="nav-link" href="../../hearing/my-hearing.html">כל
+                            <li class="nav-item"><a class="nav-link" href="../../pages/hearing/my-hearing.html">כל
                                 הדיונים</a></li>
-                            <li class="nav-item"><a class="nav-link" href="../../hearing/add-hearing.html">הוסף דיון</a>
+                            <li class="nav-item"><a class="nav-link" href="../../pages/hearing/add-hearing.html">הוסף
+                                דיון</a>
                             </li>
                         </ul>
                     </div>
@@ -229,14 +228,15 @@
                     </a>
                     <div class="collapse" id="witnesses">
                         <ul class="nav flex-column sub-menu" dir="rtl">
-                            <li class="nav-item"><a class="nav-link" href="../../pages/witnesses/witnesses.html">כל העדים</a></li>
-                            <li class="nav-item"><a class="nav-link" href="../../pages/witnesses/add-witnesses.html">הוסף עדים</a></li>
+                            <li class="nav-item"><a class="nav-link" href="../witnesses/witnesses.html">כל העדים</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="add-witnesses.html">הוסף עדים</a></li>
                         </ul>
                     </div>
                 </li>
             </ul>
         </nav>
-        <div class="main-panel rtl">
+        <div class="main-panel rtl" style="font-family:'Alef', sans-serif;">
             <div class="content-wrapper">
                 <div class="row">
                     <div class="col-12 grid-margin stretch-card">
@@ -244,34 +244,52 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="card-body" bdo dir="ltr">
-                                        <h4 class="card-title" dir="rtl">התיקים שלי</h4>
-                                        <p class="card-description">מוצגים בפנייך התיקים המשוייכים לחשבון שלך</p>
+                                        <h4 class="card-title" dir="rtl" style="font-size: x-large; font-weight: bold" >התיקים שלי</h4>
+                                        <p class="card-description" style="font-size: large">מוצגים בפנייך התיקים המשוייכים לחשבון שלך</p>
                                         <div class="template-demo" id="insertButtons">
                                         </div>
-                                        <div class="template-demo" id="addButton">
-                                            <button type="button" id="addButton2" class="btn btn-primary btn-rounded btn-icon" onclick=showForm()>+</button>
-                                            <button type="button" onclick="generateWord()">Click to generate document</button>
-                                            <button class='gen_btn' onclick="generateCSV()">Generate File</button>
+                                        <div class="template-demo text-center mt-5" id="addButton">
+                                            <button type="button" id="addButton2"
+                                                    class="btn btn-primary btn-rounded btn-icon btn-social-icon" onclick=showForm()>
+                                              <p style="font-size: xx-large"> <strong>+</strong></p>
+                                            </button>
+                                            <!--                                            <button type="button" onclick="generateWord()">Click to generate document-->
+                                            <!--                                            </button>-->
+                                            <!--                                            <button class='gen_btn' onclick="generateCSV()">Generate File</button>-->
                                             <div class="row" id="spaceBetween" style="padding-bottom: 10px"></div>
-                                            <div class="col-12 grid-margin" id="addCaseForm" style="display: none; padding-top: 20px" align="right">
+                                            <div class="col-12 grid-margin" id="addCaseForm"
+                                                 style="display: none; padding-top: 20px" align="right">
                                                 <div class="card">
                                                     <div class="card-body rtl">
-                                                        <h4 class="card-title">הוספת תיק חדש</h4>
-                                                        <form class="form-sample">
+                                                        <h4 class="card-title" style="font-size: large">הוספת תיק חדש</h4>
+                                                        <form class="form-sample needs-validation" id="form" novalidate>
+                                                            <p class="card-description mb-5"  style="font-size: large">
+                                                                הכנס את הפרטים עבור התיק החדש
+                                                            </p>
                                                             <div class="row">
                                                                 <div class="col-md-6">
-                                                                    <div class="form-group row rtl">
-                                                                        <label class="col-sm-2 col-form-label">מספר תיק</label>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-sm-2 col-form-label" for="courtType">תיק בית משפט</label>
                                                                         <div class="col-sm-9">
-                                                                            <input type="text" class="form-control" />
+                                                                            <select id="courtType" class="form-control" name="courtID" required>
+                                                                                <option name="1">מחוזי</option>
+                                                                                <option name="2">שלום</option>
+                                                                                <option name="3">פלילי</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="invalid-feedback">
+                                                                            אנא הכנס מזהה עבור התיק
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <div class="form-group row">
-                                                                        <label class="col-sm-2 col-form-label">תיאור</label>
+                                                                        <label class="col-sm-2 col-form-label" for="caseID">מ.ת.</label>
                                                                         <div class="col-sm-9">
-                                                                            <input type="text" class="form-control" />
+                                                                            <input type="text" id="caseID" name= "caseID" class="form-control" required/>
+                                                                        </div>
+                                                                        <div class="invalid-feedback">
+                                                                            אנא הכנס מזהה עבור התיק
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -279,26 +297,70 @@
                                                             <div class="row">
                                                                 <div class="col-md-6">
                                                                     <div class="form-group row">
-                                                                        <label class="col-sm-2 col-form-label">פרליקט מטפל</label>
+                                                                        <label class="col-sm-2 col-form-label" for="attorneySelector">פרליקט מטפל</label>
                                                                         <div class="col-sm-9">
-                                                                            <select class="form-control" id="attorneySelctor">
+                                                                            <select id="attorneySelector" class="form-control" name="attorneySelector" required>
                                                                             </select>
+                                                                        </div>
+                                                                        <div class="invalid-feedback">
+                                                                            אנא הכנס מזהה עבור התיק
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <div class="form-group row">
-                                                                        <label class="col-sm-2 col-form-label">תאריך פתיחה</label>
+                                                                        <label class="col-sm-2 col-form-label" for="dateCase">תאריך פתיחה</label>
+                                                                        <div class="input-group form-group col-sm-9">
+                                                                            <input type="date" class="form-control" name="openingDate" placeholder="dd/mm/yyyy" id="dateCase" required/>
+                                                                            <div class="invalid-feedback">
+                                                                                אנא הכנס מזהה עבור התיק
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-sm-2 col-form-label" for="innerID">מספר פמ"ד</label>
                                                                         <div class="col-sm-9">
-                                                                            <input class="form-control" placeholder="dd/mm/yyyy"/>
+                                                                            <input type="number" class="form-control" name="PMD" id="innerID">
+                                                                        </div>
+                                                                        <div class="invalid-feedback">
+                                                                            אנא הכנס מזהה עבור התיק
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-sm-2 col-form-label" for="caseType">סוג התיק</label>
+                                                                        <div class="input-group form-group col-sm-9">
+                                                                            <input type="text" class="form-control" id="caseType" name="type" required/>
+                                                                            <div class="invalid-feedback">
+                                                                                אנא הכנס מזהה עבור התיק
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div CLASS="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-sm-2 col-form-label" for="textArea">הערות</label>
+                                                                        <div class="col-sm-9">
+                                                                            <textarea class="form-control" name= "notes" id="textArea" rows="4"></textarea>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </form>
-                                                        <div  class="template-demo" style="float: left">
-                                                            <button type="button" class="btn btn-outline-primary btn-fw" onclick="saveCase()">שמור</button>
-                                                            <button type="button" class="btn btn-outline-primary btn-fw">הבא</button>
+                                                        <div class="template-demo" style="float: left">
+                                                            <button type="button" class="btn btn-outline-primary btn-fw"
+                                                                    onclick="saveCase()">שמור
+                                                            </button>
+                                                            <button type="button"
+                                                                    class="btn btn-outline-primary btn-fw" onclick="saveAndNext()">הבא
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -317,8 +379,8 @@
 </body>
 
 <script src="../../../template/vendors/base/vendor.bundle.base.js"></script>
-<script src="../../../site/js/template.js"></script>
-<script src="../../../site/js/exist-case.js"></script>
+<script src="../../js/template.js"></script>
+<script src="../../js/exist-case.js"></script>
 <script src="https://unpkg.com/docx@4.0.0/build/index.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.js"></script>
 <script src="../../js/filesUtil.js"></script>

@@ -1,10 +1,17 @@
 function getAttorney() {
+    let dropdown = document.getElementById("attorneySelector")
+    var url = 'Http://192.168.1.107:8000/getLawyers';
+    var request = new XMLHttpRequest()
     request.open('GET', url, true);
-    request.onload = function () {
+    request.onload = function() {
         if (request.status === 200) {
             const data = JSON.parse(request.responseText);
-            for (let i = 0; i < data.data.length; i++) {
-                attorney.push(data.data[i].employee_name);
+            let option;
+            for (let i = 0; i < data["lawyers"].length; i++) {
+                option = document.createElement('option');
+                option.name=data["lawyers"][i]["lawyerID"]
+                option.text = data["lawyers"][i]["firstname"].toUpperCase()+" "+data["lawyers"][i]["lastname"].toUpperCase();
+                dropdown.add(option);
             }
         } else {
             console.log("??????????")
@@ -13,81 +20,61 @@ function getAttorney() {
     request.send();
 }
 
-
-
-
-
-function validation() {
-    window.addEventListener('load', function() {
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.getElementsByClassName('needs-validation');
-        let ok=true;
-        // Loop over them and prevent submission
-        var valid = Array.prototype.filter.call(forms, function(form) {
-            form.addEventListener('submit', function(event) {
-                if (form.checkValidity() === false) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                }
-                form.classList.add('was-validated');
-            }, false);
-        });
-    }, false);
+function save(data) {
+    let localUrl =url+'/saveCase';
+    request.open('POST',localUrl,true);
+    request.send(JSON.stringify(data));
 }
-
 
 function saveAndNext() {
-    let caseID= document.getElementById('caseID').value;
-    let describeID= document.getElementById('caseType').value;
-    let attorneyName= document.getElementById('attorneySelector').value;
-    let innerID= document.getElementById('innerID').value;
-    let caseType= document.getElementById('caseType').value;
-    let textArea= document.getElementById('textArea').value;
-    //Save
-    // request.open('POST',)
+    let form  = document.getElementsByTagName('form')[0];
+    if(form.checkValidity()===true){
+        var data = {};
+        for (var i = 0, ii = form.length; i < ii; ++i) {
+            var input = form[i];
+            if (input.name) {
+                data[input.name] = input.value;
+            }
+        }
+        data["openingUserID"]="1";
+        save(data);
+        let caseID= document.getElementById("caseID").value;
+        setGetParameter('caseID',caseID);
+    }
+    else{
+        form.classList.add('was-validated');
+    }
 
-    //next page
+};
 
-    setGetParameter('caseID',caseID);
+function saveCase() {
+    let form = document.getElementsByTagName('form')[0];
+    if (form.checkValidity() === true) {
+        var data = {};
+        for (var i = 0, ii = form.length; i < ii; ++i) {
+            var input = form[i];
+            if (input.name) {
+                data[input.name] = input.value;
+            }
+        }
+        data["openingUserID"] = "1";
+        save(data);
+    } else {
+        form.classList.add('was-validated');
+    }
 }
 
-function setGetParameter(paramName, paramValue)
-{
-    var url = window.location.href;
-    var index =url.lastIndexOf('/')+1;
-    var page =url.substring(index);
-    url = url.replace(page, 'add-witnesses.html');
-    if (url.indexOf(paramName + "=") >= 0)
-    {
-        var prefix = url.substring(0, url.indexOf(paramName + "="));
-        var suffix = url.substring(url.indexOf(paramName + "="));
-        suffix = suffix.substring(suffix.indexOf("=") + 1);
-        suffix = (suffix.indexOf("&") >= 0) ? suffix.substring(suffix.indexOf("&")) : "";
-        url = prefix + paramName + "=" + paramValue + suffix;
-    }
-    else
-    {
-        if (url.indexOf("?") < 0)
-            url += "?" + paramName + "=" + paramValue;
-        else
-            url += "&" + paramName + "=" + paramValue;
-    }
-    window.location.href = url;
+
+
+function setGetParameter(paramName, paramValue){
+var url = new URL(window.location.href);
+const newUrl = new URL('../../pages/cases/add-witnesses.html', url);
+newUrl.searchParams.append(paramName, paramValue);
+window.location.href = newUrl.href;
 }
 
 
-
-const url = 'http://dummy.restapiexample.com/api/v1/employees';
+let url = 'Http://192.168.1.107:8000';
 const request = new XMLHttpRequest();
-validation();
+getAttorney();
 
-addAttorney();
-
-$(function() {
-    $("#datepicker").datepicker({
-        showOn: "button",
-        buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
-        buttonImageOnly: true,
-        buttonText: "Select date"
-    });
-});

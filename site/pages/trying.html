@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery UI Datepicker - Default functionality</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+
+    <!-- (Optional) Latest compiled and minified JavaScript translation files -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/i18n/defaults-*.min.js"></script>
+
+    <script>
+        $( function() {
+            $( "#datepicker" ).datepicker();
+        } );
+    </script>
+</head>
+<body>
+
+<table id="mytable" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+    <thead>
+    <th><input type="checkbox" id="checkall" /></th>
+    <th sortable="true">שם פרטי</th>
+    <th>שפ משפחה</th>
+    <th>ת"ז</th>
+    <th>טלפון</th>
+    <th>אימייל</th>
+    <th>ערוך הודעה</th>
+    </thead>
+    <tbody>
+
+    <tr>
+        <td><input type="checkbox" class="checkthis"/></td>
+        <td>Mohsin</td>
+        <td>Irshad</td>
+        <td>CB 1abad Pakistan</td>
+        <td>isometric.mohsin@gmail.com</td>
+        <td>+923335586757</td>
+        <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+    </tr>
+    </tbody>
+</table>
+
+
+
+<p>Date: <input type="text" id="datepicker"></p>
+
+
+</body>
+</html>

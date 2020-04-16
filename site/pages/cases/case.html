@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>EdKan Admin</title>
-    <!-- Extra JavaScript/CSS added manually in "Settings" tab -->
-
     <link rel="stylesheet" href="../../../template/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../../template/vendors/base/vendor.bundle.base.css">
     <!-- endinject -->
@@ -14,12 +11,27 @@
     <link rel="stylesheet" href="../../../template/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
     <!-- End plugin css for this page -->
     <!-- inject:css -->
-    <link rel="stylesheet" href="../../../site/css/style.css">
+    <link rel="stylesheet" href="../../../template/css/style.css">
     <!-- endinject -->
     <link rel="shortcut icon" href="../../../template/images/favicon.png"/>
+    <link href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/js/mdb.min.js"></script>
+
+
 </head>
 <body>
-<div id="header">
+<div id="header" style="font-family:'Alef', sans-serif;">
     <nav class="navbar navbar-nav-right col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="navbar-brand-wrapper d-flex justify-content-center">
             <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
@@ -177,7 +189,7 @@
     <!--content-->
     <div class="container-fluid page-body-wrapper rtl">
         <!-- partial:partials/_sidebar.html -->
-        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <nav class="sidebar sidebar-offcanvas" id="sidebar" style="font-family:'Alef', sans-serif;">
             <ul class="nav rtl">
                 <li class="nav-item">
                     <a class="nav-link" href="../../index.html">
@@ -210,9 +222,10 @@
                     </a>
                     <div class="collapse" id="hearing">
                         <ul class="nav flex-column sub-menu" dir="rtl">
-                            <li class="nav-item"><a class="nav-link" href="../../hearing/my-hearing.html">כל
+                            <li class="nav-item"><a class="nav-link" href="../../pages/hearing/my-hearing.html">כל
                                 הדיונים</a></li>
-                            <li class="nav-item"><a class="nav-link" href="../../hearing/add-hearing.html">הוסף דיון</a>
+                            <li class="nav-item"><a class="nav-link" href="../../pages/hearing/add-hearing.html">הוסף
+                                דיון</a>
                             </li>
                         </ul>
                     </div>
@@ -226,24 +239,42 @@
                     </a>
                     <div class="collapse" id="witnesses">
                         <ul class="nav flex-column sub-menu" dir="rtl">
-                            <li class="nav-item"><a class="nav-link" href="../../pages/witnesses/witnesses.html">כל
+                            <li class="nav-item"><a class="nav-link" href="../witnesses/witnesses.html">כל
                                 העדים</a></li>
-                            <li class="nav-item"><a class="nav-link" href="../../pages/witnesses/add-witnesses.html">הוסף
+                            <li class="nav-item"><a class="nav-link" href="add-witnesses.html">הוסף
                                 עדים</a></li>
                         </ul>
                     </div>
                 </li>
             </ul>
         </nav>
-        <div class="main-panel rtl">
+
+
+        <div class="main-panel rtl" style="font-family:'Alef', sans-serif;">
             <div class="content-wrapper">
                 <div class="row">
-                    <div class="col-12 grid-margin">
+                    <div class="col-12 grid-margin stretch-card">
                         <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title"> תיק מס</h4>
-                                <p class="card-description">
-                                </p>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="card-body">
+                                        <h4 class="card-title" id="title" style="font-size: x-large; font-weight: bold"></h4>
+                                        <p class="card-description">
+                                        <div class="template-demo" id="caseDetails1">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card-body">
+                                        <h4 class="card-title"></h4>
+                                        <p class="card-description" id="caseDetails2" style="font-size: large">
+
+                                        <div class="template-demo">
+
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -251,63 +282,104 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">
-                                    <a data-toggle="collapse" href="#buffers">חוצצים בתיק</a>
+                                    <a class="collapsed accordion-toggle" data-toggle="collapse" href="#collapse1" style="font-size: x-large; font-weight: bold">עדים בתיק</a>
                                 </h4>
-                                <p class="card-description">
+                                <p class="card-description" id="cardWitnesses">
+                                    עדים אשר
+                                    <font color="#228b22"><strong>יצרו קשר</strong></font><br>
+                                    עדים אשר
+                                    <font color="red"><strong>לא יצרו קשר</strong></font><br>
                                 </p>
-                                <div class="row">
-                                <div class="template-demo collapse" id="buffers">
 
-                                </div>
+                                <div class="template-demo collapse show" id="collapse1">
+                                    <div class="row mt-4">
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn btn-outline-danger btn-lg">אליסה פיינגולד
+                                            </button>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn btn-outline-success btn-lg mr-2">אליסה
+                                                פיינגולד
+                                            </button>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn btn-outline-danger btn-lg">אליסה פיינגולד
+                                            </button>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn btn-outline-danger btn-lg">אליסה פיינגולד
+                                            </button>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn btn-outline-success btn-lg">אליסה פיינגולד
+                                            </button>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn btn-outline-danger btn-lg">אליסה פיינגולד
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-4">
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn btn-outline-danger btn-lg">אליסה פיינגולד
+                                            </button>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn btn-outline-danger btn-lg mr-2">אליסה
+                                                פיינגולד
+                                            </button>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn btn-outline-success btn-lg">אליסה פיינגולד
+                                            </button>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn btn-outline-danger btn-lg">אליסה פיינגולד
+                                            </button>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn btn-outline-success btn-lg">אליסה פיינגולד
+                                            </button>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn btn-outline-success btn-lg">אליסה פיינגולד
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 grid-margin">
+                    <div class="col-6 grid-margin">
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">
-                                    <a data-toggle="collapse" href="#collapse2">דיונים קרובים</a>
+                                    <a class="collapsed" href="#collapse2" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseOne" style="font-size: x-large; font-weight: bold">דיונים קרובים</a>
                                 </h4>
                                 <p class="card-description">
                                 </p>
+                                <div class="template-demo collapse show" id="collapse2">
+                                        <button type="button" class="btn btn-inverse-info btn-lg btn-block">Block buttons</button>
+                                        <button type="button" class="btn btn-inverse-info btn-lg btn-block">Block buttons</button>
+                                        <button type="button" class="btn btn-inverse-info btn-lg btn-block">Block buttons</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                                <div class="template-demo collapse" id="collapse2">
+                    <div class="col-6 grid-margin">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a data-toggle="collapse" href="#collapse1" style="font-size: x-large; font-weight: bold">תזכורות</a>
+                                </h4>
+                                <p class="card-description">
+                                </p>
+                                <div class="template-demo collapse show" id="collapse4">
                                     <p>
-
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 grid-margin">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a data-toggle="collapse" href="#collapse1">עדים בתיק</a>
-                                </h4>
-                                <p class="card-description">
-                                </p>
-
-                                <div class="template-demo collapse" id="collapse3">
-                                    <p>
-
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 grid-margin">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a data-toggle="collapse" href="#collapse1">תזכורות</a>
-                                </h4>
-                                <p class="card-description">
-                                </p>
-                                <div class="template-demo collapse" id="collapse4">
-                                    <p>
-
+                                        <button type="button" class="btn btn-inverse-warning btn-lg btn-block">Block buttons</button>
+                                        <button type="button" class="btn btn-outline-warning btn-lg btn-block">Block buttons</button>
+                                        <button type="button" class="btn btn-warning btn-lg btn-block">Block buttons</button>
                                     </p>
                                 </div>
                             </div>
@@ -320,13 +392,10 @@
         </div>
     </div>
 </div>
-</div>
-</div>
-</div>
-
 </body>
 
 <script src="../../../template/vendors/base/vendor.bundle.base.js"></script>
 <script src="../../../site/js/template.js"></script>
 <script src="../../../site/js/case.js"></script>
+
 </html>
