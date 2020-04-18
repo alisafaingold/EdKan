@@ -17,6 +17,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../../../template/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../../template/vendors/base/vendor.bundle.base.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&display=swap" rel="stylesheet">
+
     <!-- endinject -->
     <!-- plugin css for this page -->
     <link rel="stylesheet" href="../../../template/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
@@ -27,7 +29,7 @@
     <link rel="shortcut icon" href="../../../template/images/favicon.png"/>
 </head>
 <body>
-<div id="header">
+<div id="header" style="font-family:'Alef', sans-serif;">
     <nav class="navbar navbar-nav-right col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="navbar-brand-wrapper d-flex justify-content-center">
             <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
@@ -183,7 +185,7 @@
     <!--content-->
     <div class="container-fluid page-body-wrapper rtl">
         <!-- partial:partials/_sidebar.html -->
-        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <nav class="sidebar sidebar-offcanvas" id="sidebar" style="font-family:'Alef', sans-serif;">
             <ul class="nav rtl">
                 <li class="nav-item">
                     <a class="nav-link" href="../../index.html">
@@ -200,9 +202,9 @@
                     </a>
                     <div class="collapse" id="cases">
                         <ul class="nav flex-column sub-menu" dir="rtl">
-                            <li class="nav-item"><a class="nav-link" href="../cases/exist-case.html">תיקים
+                            <li class="nav-item"><a class="nav-link" href="../../pages/cases/exist-case.html">תיקים
                                 קיימים</a></li>
-                            <li class="nav-item"><a class="nav-link" href="../cases/add-case.html">הוסף תיק
+                            <li class="nav-item"><a class="nav-link" href="../../pages/cases/add-case.html">הוסף תיק
                                 חדש</a></li>
                         </ul>
                     </div>
@@ -216,9 +218,9 @@
                     </a>
                     <div class="collapse" id="hearing">
                         <ul class="nav flex-column sub-menu" dir="rtl">
-                            <li class="nav-item"><a class="nav-link" href="../../hearing/my-hearing.html">כל
+                            <li class="nav-item"><a class="nav-link" href="../../pages/hearing/my-hearing.html">כל
                                 הדיונים</a></li>
-                            <li class="nav-item"><a class="nav-link" href="../../hearing/add-hearing.html">הוסף דיון</a>
+                            <li class="nav-item"><a class="nav-link" href="../../pages/hearing/add-hearing.html">הוסף דיון</a>
                             </li>
                         </ul>
                     </div>
@@ -233,7 +235,7 @@
                     <div class="collapse" id="witnesses">
                         <ul class="nav flex-column sub-menu" dir="rtl">
                             <li class="nav-item"><a class="nav-link" href="../../pages/witnesses/witnesses.html">כל העדים</a></li>
-                            <li class="nav-item"><a class="nav-link" href="../cases/add-witnesses.html">הוסף עדים</a></li>
+                            <li class="nav-item"><a class="nav-link" href="../../pages/cases/add-witnesses.html">הוסף עדים</a></li>
                         </ul>
                     </div>
                 </li>
@@ -247,8 +249,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="card-body" bdo dir="rtl">
-                                        <h4 class="card-title" dir="rtl">העדים שלי</h4>
-                                        <p class="card-description">מוצגים בפנייך כל העדים המשוייכים לתיקים שמקושרים אלייך</p>
+                                        <h4 class="card-title" dir="rtl" style="font-size: x-large; font-weight: bold">העדים שלי</h4>
+                                        <p class="card-description" style="font-size: large">מוצגים בפנייך כל העדים המשוייכים לתיקים שמקושרים אלייך</p>
                                         <input class="form-control" id="myInput" type="text" style="text-align: right; width: 30%" dir="rtl"
                                                placeholder="סינון התוצאות...">
                                         <div id="myDIV">
@@ -317,6 +319,9 @@
         </div>
     </div>
 </div>
+
+
+
 </body>
 
 <script src="../../../template/vendors/base/vendor.bundle.base.js"></script>

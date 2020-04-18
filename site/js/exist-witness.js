@@ -30,23 +30,45 @@ async function loadCases() {
         element.innerHTML = "";
         var data = JSON.parse(this.response);
         for (let i = 0; i < data.data.length; i++) {
-            var button = document.createElement("button");
-            button.className = "btn btn-outline-primary btn-fw";
-            button.innerHTML = "שם " + data.data[i].employee_salary + "</br>" +"מספר זהות "+ data.data[i].employee_salary ;
-            button.id = data.data[i].employee_salary;
-            button.setAttribute("onClick", "login(" + "this" + ")");
-            element.appendChild(button);
+            // for (let i = 0; i < data.length; i++) {
+            let bigDiv = document.createElement("div");
+            bigDiv.className = "row mt-4";
+            bigDiv.id = "row" + i;
+            for (let j = 0; j < 6 && i < data.data.length; j++) {
+                var div = document.createElement("div");
+                div.className = "col-md-2";
+                var button = document.createElement("button");
+                button.className = "btn  btn-fw btn-lg";
+                if(data.data[i].employee_salary>200000){
+                    button.classList.add("btn-inverse-success");
+                }
+                else{
+                    button.classList.add("btn-inverse-primary");
+                }
+                button.innerHTML ="שם " + data.data[i].employee_salary + "</br>" +"מספר זהות "+ data.data[i].employee_salary ;
+                button.id = data[i];
+                button.setAttribute("onClick", "showModal(" + "this" + ")");
+                div.appendChild(button);
+                bigDiv.appendChild(div);
+                i++
+            }
+            element.appendChild(bigDiv);
+            i--;
         }
     }
-
 
 // Send request
     request.send();
 }
 
 
-function login(element) {
-    alert(element.id);
+function showModal(element) {
+    let model = document.getElementById("modal");
+    document.getElementById("wName").value=element.id;
+    $("#modal").modal();
+
+
+
 }
 
 function showForm() {

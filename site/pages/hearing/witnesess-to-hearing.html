@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>EdKan Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../../template/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../../template/vendors/base/vendor.bundle.base.css">
@@ -174,7 +176,7 @@
     </nav>
     <!--End Of navigation bar-->
     <!--content-->
-    <div class="container-fluid page-body-wrapper rtl">
+    <div class="container-fluid page-body-wrapper rtl" style="font-family:'Alef', sans-serif;">
         <!-- partial:partials/_sidebar.html -->
         <nav class="sidebar sidebar-offcanvas" id="sidebar" style="font-family:'Alef', sans-serif;">
             <ul class="nav rtl">
@@ -235,7 +237,7 @@
                 </li>
             </ul>
         </nav>
-        <div class="main-panel rtl" style="font-family:'Alef', sans-serif;">
+        <div class="main-panel rtl">
             <div class="content-wrapper">
                 <div class="row">
                     <div class="col-12 grid-margin stretch-card">
@@ -258,10 +260,9 @@
                                                     <th>שם משפחה</th>
                                                     <th>טלפון</th>
                                                     <th>אימייל</th>
-                                                    <th>ערוך</th>
                                                 </tr>
                                                 </thead>
-                                                <tbody>
+                                                <tbody id="witnessesTable">
                                                 <tr>
                                                     <td><input type="checkbox" class="checkthis" /></td>
                                                     <td>אליסה פיינגולד</td>
@@ -269,7 +270,7 @@
                                                     <td>Catalinaborough</td>
                                                     <td>$790</td>
                                                     <td>06 Jan 2018</td>
-                                                    <td>$2274253</td>
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td><input type="checkbox" class="checkthis" /></td>
@@ -278,7 +279,6 @@
                                                     <td>East Mayra</td>
                                                     <td>$23230</td>
                                                     <td>18 Jul 2018</td>
-                                                    <td>$83127</td>
                                                 </tr>
                                                 <tr>
                                                     <td><input type="checkbox" class="checkthis" /></td>
@@ -287,7 +287,6 @@
                                                     <td>Makennaton</td>
                                                     <td>$939</td>
                                                     <td>16 Jul 2018</td>
-                                                    <td>$29177</td>
                                                 </tr>
                                                 <tr>
                                                     <td><input type="checkbox" class="checkthis" /></td>
@@ -296,7 +295,6 @@
                                                     <td>Agustinaborough</td>
                                                     <td>$30</td>
                                                     <td>30 Apr 2018</td>
-                                                    <td>$44617</td>
                                                 </tr>
                                                 <tr>
                                                     <td><input type="checkbox" class="checkthis" /></td>
@@ -305,7 +303,6 @@
                                                     <td>Lake Sandrafort</td>
                                                     <td>$571</td>
                                                     <td>25 Jun 2018</td>
-                                                    <td>$78952</td>
                                                 </tr>
                                                 <tr>
                                                     <td><input type="checkbox" class="checkthis" /></td>
@@ -314,7 +311,6 @@
                                                     <td>Cassinbury</td>
                                                     <td>$36</td>
                                                     <td>05 Nov 2018</td>
-                                                    <td>$36422</td>
                                                 </tr>
                                                 <tr>
                                                     <td><input type="checkbox" class="checkthis" /></td>
@@ -323,7 +319,6 @@
                                                     <td>Cletaborough</td>
                                                     <td>$314</td>
                                                     <td>12 Jul 2018</td>
-                                                    <td>$34167</td>
                                                 </tr>
                                                 <tr>
                                                     <td><input type="checkbox" class="checkthis" /></td>
@@ -332,11 +327,39 @@
                                                     <td>West Fidelmouth</td>
                                                     <td>$484</td>
                                                     <td>08 Sep 2018</td>
-                                                    <td>$50862</td>
                                                 </tr>
                                                 </tbody>
                                             </table>
+
+                                            <div id="myModal" class="modal fade rtl" role="dialog">
+                                                <div class="modal-dialog">
+                                                    <!-- Modal content-->
+                                                    <div class="modal-content" >
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                            <h4 class="modal-title">הודעה כרגע ללא פרטי הדיון, יתווספו בסוף</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                           <form class="form-sample">
+                                                               <div class="form-group row">
+                                                                       <textarea class="form-control" name= "notes" id="textArea" rows="4"></textarea>
+                                                               </div>
+                                                           </form>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondar" data-dismiss="modal">שמור</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="float: left">
+                                    <div class="input-group-btn" align="left">
+                                        <a class="nav-link">
+                                            <button type="button" class="btn btn-outline-primary mb-2" id="save">הבא</button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -368,11 +391,11 @@
 <script src="../../../template/js/jquery.dataTables.js"></script>
 <script src="../../../template/js/dataTables.bootstrap4.js"></script>
 <!-- End custom js for this page-->
+<script src="../../js/witnesses-to-hearing.js"></script>
 
 
 </body>
 
-<!--<script src="../../../site/js/add-attorney.js"></script>-->
 
 <script>
     $(document).ready(function(){

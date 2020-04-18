@@ -1,132 +1,62 @@
-var $table = $('#table')
-var $remove = $('#remove')
-var selections = []
+// // function init() {
+// //     let curUrl = new URL(window.location.href);
+// //     let caseID = curUrl.searchParams.get("caseID");
+// //
+// //     //
+// //     var url = 'Http://192.168.1.107:8000/getCaseDetails?caseID=' + '2020';
+// //     var request = new XMLHttpRequest()
+// //     request.open('GET', url, true);
+// //     request.onload = function () {
+// //         if (request.status === 200) {
+// //             let witnessesTable = document.getElementById("witnessesTable");
+// //             const data = JSON.parse(request.responseText);
+// //             for (let i = 0; i < data["witnesses"].length; i++) {
+// //                 witnessesTable.row.add( ["<input type=\"checkbox\" class=\"checkthis\" />",data["witnesses"][i].firstname, data["witnesses"][i].firstname, 'Edinburgh' ] ).draw();
+// //
+// //
+// //             }
+// //         }
+// //     }
+// //
+// // }
+//
+// 'use strict';
+// $(function() {
+//     $('#recent-purchases-listing').DataTable().row.add([ "<input type=\"checkbox\" class=\"checkthis\" />", "1","2","3","4","5","6"]).draw();
+// });
+// $()
 
-function getIdSelections() {
-    return $.map($table.bootstrapTable('getSelections'), function (row) {
-        return row.id
-    })
+
+function goNext(ids, names) {
+    localStorage.setItem('ids', JSON.stringify(ids));
+    localStorage.setItem('names', JSON.stringify(names));
+    localStorage.setItem("caseID", JSON.stringify(url.searchParams.get("caseID")));
+    const newUrl = new URL('../../pages/hearing/hearing-summary.html', url);
+    window.location.href = newUrl.href;
 }
 
-function responseHandler(res) {
-    $.each(res.rows, function (i, row) {
-        row.state = $.inArray(row.id, selections) !== -1
-    })
-    return res
-}
-
-function detailFormatter(index, row) {
-    var html = []
-    $.each(row, function (key, value) {
-        html.push('<p><b>' + key + ':</b> ' + value + '</p>')
-    })
-    return html.join('')
-}
-
-function operateFormatter(value, row, index) {
-    return [
-        '<a class="like" href="javascript:void(0)" title="Like">',
-        '<i class="fa fa-heart"></i>',
-        '</a>  ',
-        '<a class="remove" href="javascript:void(0)" title="Remove">',
-        '<i class="fa fa-trash"></i>',
-        '</a>'
-    ].join('')
-}
-
-window.operateEvents = {
-    'click .like': function (e, value, row, index) {
-        alert('You click like action, row: ' + JSON.stringify(row))
-    },
-    'click .remove': function (e, value, row, index) {
-        $table.bootstrapTable('remove', {
-            field: 'id',
-            values: [row.id]
+$(document).ready(
+    (function ($) {
+        'use strict';
+        $(function () {
+            $('#recent-purchases-listing').DataTable().row.add(["<input type=\"checkbox\" class=\"checkthis\"/>", "1", "2", "3", "4", "5", "6"]).draw().node().id = "11";
+        });
+        $('#save').on('click', function () {
+            let client_table = $('#recent-purchases-listing');
+            var ids = $('input[type="checkbox"]').map(function () {
+                return $(this).prop("checked") ? $(this).closest('tr')[0].cells[1].innerHTML : null;
+            });
+            var names = $('input[type="checkbox"]').map(function () {
+                return $(this).prop("checked") ? $(this).closest('tr')[0].cells[2].innerHTML : null;
+            });
+            goNext(ids, names);
         })
-    }
-}
+    })(jQuery)
+);
 
-function totalTextFormatter(data) {
-    return 'Total'
-}
+var url = new URL(window.location.href);
 
-function totalNameFormatter(data) {
-    return data.length
-}
 
-function totalPriceFormatter(data) {
-    var field = this.field
-    return '$' + data.map(function (row) {
-        return +row[field].substring(1)
-    }).reduce(function (sum, i) {
-        return sum + i
-    }, 0)
-}
 
-function initTable() {
-    $table.bootstrapTable('destroy').bootstrapTable({
-        height: 550,
-        locale: $('#locale').val(),
-        columns: [
-            [{
-                field: 'choose',
-                checkbox: true,
-                align: 'center',
-                valign: 'middle'
-            }, {
-                title: 'ID',
-                field: 'id',
-                align: 'center',
-                valign: 'middle',
-                sortable: true,
-            }, {
-                field: 'Name',
-                align: 'center',
-                valign: 'middle',
-                sortable: true,
-            }, {
-                title: 'Last Name',
-                field: 'id',
-                align: 'center',
-                valign: 'middle',
-                sortable: true,
-            }, {
-                title: 'Tel',
-                field: 'id',
-                align: 'center',
-                valign: 'middle',
-                sortable: true,
-            }, {
-                title: 'Item Detail',
-                colspan: 3,
-                align: 'center'
-            }]
-        ]
-    })
-    $table.on('check.bs.table uncheck.bs.table ' +
-        'check-all.bs.table uncheck-all.bs.table',
-        function () {
-            $remove.prop('disabled', !$table.bootstrapTable('getSelections').length)
 
-            // save your data, here just save the current page
-            selections = getIdSelections()
-            // push or splice the selections if you want to save all data selections
-        })
-    $table.on('all.bs.table', function (e, name, args) {
-        console.log(name, args)
-    })
-    $remove.click(function () {
-        var ids = getIdSelections()
-        $table.bootstrapTable('remove', {
-            field: 'id',
-            values: ids
-        })
-        $remove.prop('disabled', true)
-    })
-}
 
-$(function () {
-    initTable()
-
-    $('#locale').change(initTable)
-})

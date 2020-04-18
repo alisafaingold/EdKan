@@ -3,6 +3,8 @@ function addCaseDetails() {
 
 }
 
+
+
 function addDetails() {
     let cururl = new URL(window.location.href);
     let caseID = cururl.searchParams.get("caseID");
@@ -47,7 +49,7 @@ function addDetails() {
                     button.className = "btn btn-outline-danger btn-lg";
                     button.innerHTML = data["witnesses"][i].firstname+data["witnesses"][i].lastname;
                     button.id =data["witnesses"][i].witnessID;
-                    button.setAttribute("onClick", "login(" + "this" + ")");
+                    button.setAttribute("onClick", "moveToWitness(" + "this" + ")");
                     div.appendChild(button);
                     i++;
                     bigDiv.appendChild(div);
@@ -64,14 +66,27 @@ function addDetails() {
                 button.innerHTML = data["hearings"][i].hearingDate +data["hearings"][i].hearingHour;
                 cardH.appendChild(button);
             }
+
+            // ======== Remember
+
+
         }
         else{
-            console.log("??????????")
+            console.log("??????????");
         }
+
+
 
     }
     request.send();
 }
+
+function moveToWitness(button){
+    var url = new URL(window.location.href);
+    const newUrl = new URL('../../pages/cases/witness.html', url);
+    newUrl.searchParams.append("witnessID", button.id);
+    window.location.href = newUrl.href;
+};
 
 // const url = 'http://dummy.restapiexample.com/api/v1/employees';
 // const request = new XMLHttpRequest();

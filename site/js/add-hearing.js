@@ -38,6 +38,7 @@ function save(data) {
     // request.open('POST',localUrl,true);
     // request.send(JSON.stringify(data));
 
+    localStorage.setItem("hearing", JSON.stringify(data));
     //TODO where we go after that?
 };
 
@@ -50,6 +51,7 @@ function saveAndNext() {
             var input = form[i];
             if (input.name) {
                 data[input.name] = input.value;
+                localStorage.setItem(input.name, JSON.stringify(input.value));
             }
         }
         save(data);
@@ -71,6 +73,7 @@ function saveCase() {
             var input = form[i];
             if (input.name) {
                 data[input.name] = input.value;
+
             }
         }
         data["openingUserID"] = "1";
@@ -83,10 +86,9 @@ function saveCase() {
 
 
 function setGetParameter(paramName, paramValue){
-    var url = new URL(window.location.href);
     const newUrl = new URL('../../pages/hearing/witnesess-to-hearing.html', url);
     newUrl.searchParams.append(paramName, paramValue);
     window.location.href = newUrl.href;
 };
 
-let url="";
+var url = new URL(window.location.href);
