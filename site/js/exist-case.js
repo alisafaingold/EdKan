@@ -5,29 +5,29 @@ var qs = parse_query_string(query);
 console.log(qs.lawyerID + "");
 
 async function loadCases() {
-    // var url = 'Http://192.168.1.107:8000/getLawyerCase?lawyerID=1234';
-    // var request = new XMLHttpRequest();
+    var url = 'Http://192.168.1.6:8000/getLawyerCase?lawyerID=1234';
+    var request = new XMLHttpRequest();
     var element = document.getElementById("insertButtons");
-    // var requestOptions = {
-    //     method: 'GET',
-    //     redirect: 'follow'
-    // };
+    var requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+    };
 // Open a new connection, using the GET request on the URL endpoint
-    var url = 'http://dummy.restapiexample.com/api/v1/employees';
-    var request = new XMLHttpRequest()
-    request.open('GET', url, true);
+//     var url = 'http://dummy.restapiexample.com/api/v1/employees';
+// //     var request = new XMLHttpRequest()
+//     request.open('GET', url, true);
     //data=[11,2021,333]
     request.open('GET', url, true);
     request.onload = function () {
         if (request.status === 200) {
             element.innerHTML = "";
             var data = JSON.parse(this.response);
-            for (let i = 0; i < data.data.length; i++) {
+            for (let i = 0; i < data.length; i++) {
                 // for (let i = 0; i < data.length; i++) {
                 let bigDiv = document.createElement("div");
                 bigDiv.className = "row mt-4";
                 bigDiv.id = "row" + i;
-                for (let j = 0; j < 6 && i < data.data.length; j++) {
+                for (let j = 0; j < 6 && i < data.length; j++) {
                     var div = document.createElement("div");
                     div.className = "col-md-2";
                     var button = document.createElement("button");
@@ -73,14 +73,13 @@ function showForm() {
     y.style.display = "none";
     let dropdown = document.getElementById("attorneySelctor")
 
-    var url = 'Http://192.168.1.107:8000/getLawyers';
+    var url = 'Http://192.168.1.6:8000/getLawyers';
     var request = new XMLHttpRequest()
     request.open('GET', url, true);
     request.onload = function () {
         if (request.status === 200) {
             const data = JSON.parse(request.responseText);
             let option;
-
             for (let i = 0; i < data["lawyers"].length; i++) {
                 option = document.createElement('option');
                 option.text = data["lawyers"][i]["firstname"].toUpperCase() + " " + data["lawyers"][i]["lastname"].toUpperCase();

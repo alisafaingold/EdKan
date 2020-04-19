@@ -173,22 +173,22 @@ function next() {
 
     let witnesses ={};
     witnesses['witnesses']=formData;
+    let caseID = url.searchParams.get("caseID");
+    // let caseID = '14145788';
 
-    var url = 'Http://192.168.1.107:8000/saveWitnesses?caseID=2022';
+    var urlToAsk = 'Http://192.168.1.6:8000/saveWitnesses?caseID='+caseID;
     var request = new XMLHttpRequest();
-    request.open('POST', url, true);
+    request.open('POST', urlToAsk, true);
     request.send(JSON.stringify(witnesses));
 
-    var url = new URL(window.location.href);
-    let caseID = url.searchParams.get("caseID");
     const newUrl = new URL('../../pages/cases/case.html', url);
     newUrl.searchParams.append("caseID", caseID);
     window.location.href = newUrl.href;
 };
 
 let numID = 2;
-const url = 'http://dummy.restapiexample.com/api/v1/employees';
 const request = new XMLHttpRequest();
+var url = new URL(window.location.href);
 
 
 
