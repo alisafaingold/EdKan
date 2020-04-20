@@ -1,8 +1,8 @@
 window.onload = function(){
-    let url = new URL(window.location.href);
-    let caseID = url.searchParams.get("caseID");
+    caseID = curUrl.searchParams.get("caseID");
     if(caseID!=null){
         document.getElementById("caseID").value=caseID;
+        _id = localStorage.getItem(caseID);
     }
 
     let courtSelector = document.getElementById("courtSelector");
@@ -32,14 +32,45 @@ window.onload = function(){
 
 
 };
+function saveCase() {
+    let form = document.getElementsByTagName('form')[0];
+    if (form.checkValidity() === true) {
+        var data = {};
+        for (var i = 0, ii = form.length; i < ii; ++i) {
+            var input = form[i];
+            if (input.name) {
+                if(input.name==='caseID' && caseID==null){
+                    caseID=input.value;
+                }
+                data[input.name] = input.value;
+            }
+        }
+        data["openingUserID"] = "1";
+        localStorage.setItem('hearing', data);
+        saveToService(data);
+    } else {
+        form.classList.add('was-validated');
+    }
+};
 
-function save(data) {
-    // let localUrl =url+'/saveHearing';
-    // request.open('POST',localUrl,true);
-    // request.send(JSON.stringify(data));
-
+function saveToService(data) {
+    let localUrl =url+'/saveHearing';
+    if(_id!=null){
+        localUrl +='?caseID='+_id;
+    }
+    request.open('POST',localUrl,true);
+    request.send(JSON.stringify(data));
+    //TODO TALK WITH ITAI ABOUT THIS API ==> SHOULD RETURN _ID FOR CASE IF NOT EXIST
+    request.onreadystatechange = function() {
+        // If the request completed, close the extension popup
+        if (request.readyState == 4){
+            if (request.status == 200){
+                localStorage.setItem(caseID,request.responseText);
+            }
+        }
+    }
+    request.send(JSON.stringify(data));
     localStorage.setItem("hearing", JSON.stringify(data));
-    //TODO where we go after that?
 };
 
 
@@ -50,13 +81,15 @@ function saveAndNext() {
         for (var i = 0, ii = form.length; i < ii; ++i) {
             var input = form[i];
             if (input.name) {
+                if(input.name==='caseID' && caseID==null){
+                    caseID=input.value;
+                }
                 data[input.name] = input.value;
-                localStorage.setItem(input.name, JSON.stringify(input.value));
+                localStorage.setItem(input.name, input.value);
             }
         }
-        save(data);
-        let caseID= document.getElementById("caseID").value;
-        setGetParameter('caseID',caseID);
+        saveToService(data);
+        goToWitnessesToHearingUrl('caseID',caseID);
     }
     else{
         form.classList.add('was-validated');
@@ -64,31 +97,14 @@ function saveAndNext() {
 
 };
 
-
-function saveCase() {
-    let form = document.getElementsByTagName('form')[0];
-    if (form.checkValidity() === true) {
-        var data = {};
-        for (var i = 0, ii = form.length; i < ii; ++i) {
-            var input = form[i];
-            if (input.name) {
-                data[input.name] = input.value;
-
-            }
-        }
-        data["openingUserID"] = "1";
-        save(data);
-    } else {
-        form.classList.add('was-validated');
-    }
-};
-
-
-
-function setGetParameter(paramName, paramValue){
+function goToWitnessesToHearingUrl(paramName, paramValue){
     const newUrl = new URL('../../pages/hearing/witnesess-to-hearing.html', url);
     newUrl.searchParams.append(paramName, paramValue);
     window.location.href = newUrl.href;
 };
 
-var url = new URL(window.location.href);
+let ip = 'Http://192.168.1.6:8000';
+const request = new XMLHttpRequest();
+let curUrl = new URL(window.location.href);
+let caseID;
+let _id;

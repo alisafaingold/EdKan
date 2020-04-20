@@ -253,9 +253,6 @@
                                                     class="btn btn-primary btn-rounded btn-icon btn-social-icon" onclick=showForm()>
                                               <p style="font-size: xx-large"> <strong>+</strong></p>
                                             </button>
-                                            <!--                                            <button type="button" onclick="generateWord()">Click to generate document-->
-                                            <!--                                            </button>-->
-                                            <!--                                            <button class='gen_btn' onclick="generateCSV()">Generate File</button>-->
                                             <div class="row" id="spaceBetween" style="padding-bottom: 10px"></div>
                                             <div class="col-12 grid-margin" id="addCaseForm"
                                                  style="display: none; padding-top: 20px" align="right">
@@ -272,9 +269,9 @@
                                                                         <label class="col-sm-2 col-form-label" for="courtType">תיק בית משפט</label>
                                                                         <div class="col-sm-9">
                                                                             <select id="courtType" class="form-control" name="courtID" required>
-                                                                                <option name="1">מחוזי</option>
-                                                                                <option name="2">שלום</option>
-                                                                                <option name="3">פלילי</option>
+                                                                                <option value="1">מחוזי</option>
+                                                                                <option value="2">שלום</option>
+                                                                                <option value="3">פלילי</option>
                                                                             </select>
                                                                         </div>
                                                                         <div class="invalid-feedback">
@@ -297,10 +294,12 @@
                                                             <div class="row">
                                                                 <div class="col-md-6">
                                                                     <div class="form-group row">
-                                                                        <label class="col-sm-2 col-form-label" for="attorneySelector">פרליקט מטפל</label>
+                                                                        <label class="col-sm-2 col-form-label" for="lawyers">פרליקט מטפל</label>
                                                                         <div class="col-sm-9">
-                                                                            <select id="attorneySelector" class="form-control" name="attorneySelector" required>
+                                                                            <select id="lawyers" class="form-control" name="lawyers" required>
+                                                                                <option>d</option>
                                                                             </select>
+
                                                                         </div>
                                                                         <div class="invalid-feedback">
                                                                             אנא הכנס מזהה עבור התיק
@@ -309,9 +308,9 @@
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <div class="form-group row">
-                                                                        <label class="col-sm-2 col-form-label" for="dateCase">תאריך פתיחה</label>
+                                                                        <label class="col-sm-2 col-form-label" for="openingDate">תאריך פתיחה</label>
                                                                         <div class="input-group form-group col-sm-9">
-                                                                            <input type="date" class="form-control" name="openingDate" placeholder="dd/mm/yyyy" id="dateCase" required/>
+                                                                            <input type="date" class="form-control" name="openingDate" placeholder="dd/mm/yyyy" id="openingDate" required/>
                                                                             <div class="invalid-feedback">
                                                                                 אנא הכנס מזהה עבור התיק
                                                                             </div>
@@ -322,9 +321,9 @@
                                                             <div class="row">
                                                                 <div class="col-md-6">
                                                                     <div class="form-group row">
-                                                                        <label class="col-sm-2 col-form-label" for="innerID">מספר פמ"ד</label>
+                                                                        <label class="col-sm-2 col-form-label" for="PMD">מספר פמ"ד</label>
                                                                         <div class="col-sm-9">
-                                                                            <input type="number" class="form-control" name="PMD" id="innerID">
+                                                                            <input type="number" class="form-control" name="PMD" id="PMD">
                                                                         </div>
                                                                         <div class="invalid-feedback">
                                                                             אנא הכנס מזהה עבור התיק
@@ -346,22 +345,26 @@
                                                             <div CLASS="row">
                                                                 <div class="col-md-6">
                                                                     <div class="form-group row">
-                                                                        <label class="col-sm-2 col-form-label" for="textArea">הערות</label>
+                                                                        <label class="col-sm-2 col-form-label" for="notes">הערות</label>
                                                                         <div class="col-sm-9">
-                                                                            <textarea class="form-control" name= "notes" id="textArea" rows="4"></textarea>
+                                                                            <textarea class="form-control" name="notes" id="notes" rows="4"></textarea>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <div class="row" style="float: left">
+                                                                <div class="input-group-btn" align="left">
+                                                                    <a class="nav-link" href="exist-case.html">
+                                                                        <button type="submit" class="btn btn-outline-primary mb-2" onclick="saveCase()">שמור</button>
+                                                                    </a>
+                                                                </div>
+                                                                <div class="input-group-btn" align="left">
+                                                                    <a class="nav-link">
+                                                                        <button type="button" class="btn btn-outline-primary mb-2" onclick="saveAndNext()">הבא</button>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
                                                         </form>
-                                                        <div class="template-demo" style="float: left">
-                                                            <button type="button" class="btn btn-outline-primary btn-fw"
-                                                                    onclick="saveCase()">שמור
-                                                            </button>
-                                                            <button type="button"
-                                                                    class="btn btn-outline-primary btn-fw" onclick="saveAndNext()">הבא
-                                                            </button>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

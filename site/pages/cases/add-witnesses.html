@@ -258,7 +258,6 @@
                                 </p>
                                 <div class="row">
                                     <div class="template-demo collapse" id="currentWitnesses">
-
                                     </div>
                                 </div>
                             </div>
@@ -272,43 +271,45 @@
                                 </h4>
                                 <p class="card-description">
                                 </p>
-                                <form class="form-inline" action=" " method=" " id="witnessesForm" name="witnessesForm">
+                                <form class="form-inline custom-form" id="witnessesForm" name="witnessesForm">
                                     <div class="form-row row" id="fromRow1">
                                         <select name="witnessType" class="form-control" id="1" style="display: block"
-                                                onchange="changeForm(id)">
-                                            <option value="אזרח">אזרח</option>
-                                            <option value="שוטר">שוטר</option>
-                                            <option value="טקסט חופשי">טקסט חופשי</option>
+                                                onchange="changeForm(id)" required>
+                                            <option value="1">אזרח</option>
+                                            <option value="2">שוטר</option>
+                                            <option value="3">טקסט חופשי</option>
                                         </select>
+
                                         <input type="text" name="FreeText" class="form-control mb-2 mr-sm-2"
                                                style="display: none" id="FreeText1" placeholder="טקסט חופשי">
 
                                         <input name="witnessID" style="display: block"
                                                id="UserID1" placeholder="ת.ז" class="form-control mb-2 mr-sm-2 basicAutoComplete" type="text"
                                                data-url="myurl"
-                                               autocomplete="off">
-
+                                               autocmplete="off">
                                         <input type="text" name="witnessID" class="form-control mb-2 mr-sm-2"
                                                style="display: none"
                                                id="OfficerID1" placeholder="מ.א">
-                                        <input type="text" name="rank" class="form-control mb-2 mr-sm-2"
+
+                                        <input type="text" name="OfficerRank" class="form-control mb-2 mr-sm-2"
                                                style="display: none"
                                                id="OfficerRank1" placeholder="דרגה">
                                         <input type="text" class="form-control mb-1 mr-sm-1" style="display: block"
                                                id="Name1" name="firstname" placeholder="שם פרטי">
+
                                         <input type="text" class="form-control mb-2 mr-sm-2" style="display: block"
                                                id="LastName1" name="lastname" placeholder="שם משפחה">
                                         <input type="text" class="form-control mb-2 mr-sm-2" style="display: block"
-                                               id="UserMail1" name="Adress" placeholder="כתובת">
+                                               id="UserMail1" name="address" placeholder="כתובת">
                                         <input type="text" class="form-control mb-2 mr-sm-2" style="display: none"
-                                               id="OfficerStation1" name="station" placeholder="תחנה">
+                                               id="OfficerStation1" name="address" placeholder="תחנה">
                                         <input type="text" class="form-control mb-2 mr-sm-2" style="display: block"
-                                               id="Phone1" name="Phone" placeholder="טלפון">
+                                               id="Phone1" name="phone" placeholder="טלפון">
                                         <select class="form-control mb-2 mr-sm-2" style="display: block" id="Lang1"
-                                                name="Lang">
-                                            <option value="עברית">עברית</option>
-                                            <option value="רוסית">רוסית</option>
-                                            <option value="ערבית">ערבית</option>
+                                                name="language">
+                                            <option value="1">עברית</option>
+                                            <option value="2">רוסית</option>
+                                            <option value="3">ערבית</option>
                                         </select>
                                         <input type="text" class="form-control mb-2 mr-sm-2" name="notes" id="Notes1"
                                                placeholder="הערות">
@@ -331,10 +332,10 @@
                                                accept=".csv,application/vnd.ms-excel,.xlt,application/vnd.ms-excel,.xla,application/vnd.ms-excel,.xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,.xltx,application/vnd.openxmlformats-officedocument.spreadsheetml.template,.xlsm,application/vnd.ms-excel.sheet.macroEnabled.12,.xltm,application/vnd.ms-excel.template.macroEnabled.12,.xlam,application/vnd.ms-excel.addin.macroEnabled.12,.xlsb,application/vnd.ms-excel.sheet.binary.macroEnabled.12">
                                     </a>
                                     <a class="nav-link">
-                                        <button type="submit" class="btn btn-outline-primary mb-2">שמור</button>
+                                        <button type="submit" class="btn btn-outline-primary mb-2" onclick="save()">שמור</button>
                                     </a>
                                     <a class="nav-link">
-                                        <button type="submit" onclick="next()" class="btn btn-outline-primary mb-2">
+                                        <button type="submit" onclick="saveAndNext()" class="btn btn-outline-primary mb-2">
                                             הבא
                                         </button>
                                     </a>
@@ -347,6 +348,9 @@
         </div>
     </div>
 </div>
+
+
+
 
 </body>
 

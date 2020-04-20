@@ -276,13 +276,24 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="template-demo" style="align-self: center;">
+                                    <button type="button" align="left" class="btn btn-secondary btn-rounded btn-fw mb-2"
+                                            onclick="generateWord()">
+                                       צור כתב אישום
+                                    </button>
+                                    <button class='gen_btn btn btn-secondary btn-rounded btn-fw mb-2' align="left"
+                                            onclick="generateCSV()">
+                                        יצא ל-CSV
+                                    </button>
+                                </div>
                             </div>
                         </div>
                         <div class="col-12 grid-margin">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">
-                                        <a class="collapsed accordion-toggle" data-toggle="collapse" href="#collapse1"
+                                        <a class="collapsed accordion-toggle" data-toggle="collapse"
+                                           href="#collapse1"
                                            style="font-size: x-large; font-weight: bold">עדים בתיק</a>
                                     </h4>
                                     <p class="card-description" id="cardWitnesses">
@@ -300,7 +311,8 @@
                                                 </button>
                                             </div>
                                             <div class="col-md-2">
-                                                <button type="button" class="btn btn-outline-success btn-lg mr-2">אליסה
+                                                <button type="button" class="btn btn-outline-success btn-lg mr-2">
+                                                    אליסה
                                                     פיינגולד
                                                 </button>
                                             </div>
@@ -332,7 +344,8 @@
                                                 </button>
                                             </div>
                                             <div class="col-md-2">
-                                                <button type="button" class="btn btn-outline-danger btn-lg mr-2">אליסה
+                                                <button type="button" class="btn btn-outline-danger btn-lg mr-2">
+                                                    אליסה
                                                     פיינגולד
                                                 </button>
                                             </div>
@@ -372,7 +385,7 @@
                                     <p class="card-description">
                                     </p>
                                     <div class="template-demo collapse show" id="collapse2">
-                                        <button type="button" class="btn btn-inverse-info btn-lg btn-block">Block
+                                        <button type="button" class="btn btn-dark btn-lg btn-block" onclick="goToHearingUrl()">צור דיון חדש לתיק זה
                                             buttons
                                         </button>
                                         <button type="button" class="btn btn-inverse-info btn-lg btn-block">Block
@@ -397,10 +410,12 @@
                                     </p>
                                     <div class="template-demo collapse show" id="collapse4">
                                         <p>
-                                            <button type="button" class="btn btn-inverse-warning btn-lg btn-block">Block
+                                            <button type="button" class="btn btn-inverse-warning btn-lg btn-block">
+                                                Block
                                                 buttons
                                             </button>
-                                            <button type="button" class="btn btn-outline-warning btn-lg btn-block">Block
+                                            <button type="button" class="btn btn-outline-warning btn-lg btn-block">
+                                                Block
                                                 buttons
                                             </button>
                                             <button type="button" class="btn btn-warning btn-lg btn-block">Block
@@ -413,11 +428,11 @@
                         </div>
 
                     </div>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </body>
 
 <script src="../../../template/vendors/base/vendor.bundle.base.js"></script>

@@ -1,37 +1,34 @@
-// // function init() {
-// //     let curUrl = new URL(window.location.href);
-// //     let caseID = curUrl.searchParams.get("caseID");
-// //
-// //     //
-// //     var url = 'Http://192.168.1.107:8000/getCaseDetails?caseID=' + '2020';
-// //     var request = new XMLHttpRequest()
-// //     request.open('GET', url, true);
-// //     request.onload = function () {
-// //         if (request.status === 200) {
-// //             let witnessesTable = document.getElementById("witnessesTable");
-// //             const data = JSON.parse(request.responseText);
-// //             for (let i = 0; i < data["witnesses"].length; i++) {
-// //                 witnessesTable.row.add( ["<input type=\"checkbox\" class=\"checkthis\" />",data["witnesses"][i].firstname, data["witnesses"][i].firstname, 'Edinburgh' ] ).draw();
-// //
-// //
-// //             }
-// //         }
-// //     }
-// //
-// // }
-//
-// 'use strict';
-// $(function() {
-//     $('#recent-purchases-listing').DataTable().row.add([ "<input type=\"checkbox\" class=\"checkthis\" />", "1","2","3","4","5","6"]).draw();
-// });
-// $()
+function init() {
+    let url = ip+'/getCaseDetails?caseID=' + '5e9cc06bdbf40f0f81fd6c6b';
+    var request = new XMLHttpRequest()
+    request.open('GET', url, true);
+    request.onload = function () {
+        if (request.status === 200) {
+            let witnessesTable = document.getElementById("witnessesTable");
+            const data = JSON.parse(request.responseText);
+            let witnesses = data.witnesses;
+            for (let i = 0; i < witnesses.length; i++) {
+                $('#recent-purchases-listing').DataTable().row.add([ "<input type=\"checkbox\" class=\"checkthis\" />", "1","2","3","4","5","6"]).draw();
+                // witnessesTable.datarow.add( ["<input type=\"checkbox\" class=\"checkthis\" />",data["witnesses"][i].firstname, data["witnesses"][i].firstname, 'Edinburgh' ] ).draw();
+
+            }
+        }
+    }
+
+}
+
+'use strict';
+$(function() {
+    $('#recent-purchases-listing').DataTable().row.add([ "<input type=\"checkbox\" class=\"checkthis\" />", "1","2","3","4","5","6"]).draw();
+});
+$()
 
 
 function goNext(ids, names) {
     localStorage.setItem('ids', JSON.stringify(ids));
     localStorage.setItem('names', JSON.stringify(names));
-    localStorage.setItem("caseID", JSON.stringify(url.searchParams.get("caseID")));
-    const newUrl = new URL('../../pages/hearing/hearing-summary.html', url);
+    let newUrl = new URL('../../pages/hearing/hearing-summary.html', url);
+    newUrl.searchParams.append('caseID', curCaseId);
     window.location.href = newUrl.href;
 }
 
@@ -54,9 +51,12 @@ $(document).ready(
     })(jQuery)
 );
 
-var url = new URL(window.location.href);
+let ip = 'Http://192.168.1.8:8000';
+const request = new XMLHttpRequest();
+let curUrl = new URL(window.location.href);
+let curCaseId = curUrl.searchParams.get("caseID");
+let _id = localStorage.getItem(curCaseId);
 
-
-
+init();
 
 

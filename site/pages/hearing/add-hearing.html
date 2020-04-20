@@ -252,9 +252,9 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label" for="caseTitle">שם הדיון</label>
+                                                <label class="col-sm-2 col-form-label" for="subject">שם הדיון</label>
                                                 <div class="col-sm-9">
-                                                    <input id="caseTitle"name="caseTitle" type="text" class="form-control" required/>
+                                                    <input id="subject"name="subject" type="text" class="form-control" required/>
                                                 </div>
                                                 <div class="invalid-feedback">
                                                     אנא הכנס שם עבור הדיון
@@ -278,16 +278,16 @@
                                             <div class="form-group row rtl">
                                                 <label class="col-sm-2 col-form-label">בית משפט</label>
                                                 <div class="col-sm-9">
-                                                    <select class="form-control" id="courtSelector" name="courtSelector" required>
+                                                    <select class="form-control" id="courtID" name="courtID" required>
                                                         <optgroup label="Picnic">
-                                                            <option>Mustard</option>
-                                                            <option>Ketchup</option>
-                                                            <option>Relish</option>
+                                                            <option value="1">Mustard</option>
+                                                            <option value="2">Ketchup</option>
+                                                            <option value="3">Relish</option>
                                                         </optgroup>
                                                         <optgroup label="Camping">
-                                                            <option>Tent</option>
-                                                            <option>Flashlight</option>
-                                                            <option>Toilet Paper</option>
+                                                            <option value="4">Tent</option>
+                                                            <option value="5">Flashlight</option>
+                                                            <option value="6">Toilet Paper</option>
                                                         </optgroup>
                                                     </select>
                                                 </div>
@@ -295,9 +295,9 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">אולם</label>
+                                                <label class="col-sm-2 col-form-label" for="hallID">אולם</label>
                                                 <div class="input-group form-group col-sm-9">
-                                                    <input id="place" name="place" type="text" class="form-control"/>
+                                                    <input id="hallID" name="hallID" type="text" class="form-control"/>
                                                     <div class="invalid-feedback">
                                                         אנא הכנס מזהה עבור התיק
                                                     </div>
@@ -308,10 +308,10 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">תאריך</label>
+                                                <label class="col-sm-2 col-form-label" for="hearingDate">תאריך</label>
                                                 <div class="input-group form-group col-sm-9">
                                                     <input type="date" class="form-control"
-                                                           placeholder="dd/mm/yyyy" id="dateCourt" name="dateCourt"
+                                                           placeholder="dd/mm/yyyy" id="hearingDate" name="hearingDate"
                                                            required/>
                                                     <div class="invalid-feedback">
                                                         אנא הכנס תאריך
@@ -321,10 +321,10 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">שעה</label>
+                                                <label class="col-sm-2 col-form-label" for="hearingHour">שעה</label>
                                                 <div class="input-group form-group col-sm-9">
                                                     <input type="time" class="form-control"
-                                                           placeholder="dd/mm/yyyy" id="timeCourt" name="timeCourt"
+                                                           placeholder="dd/mm/yyyy" id="hearingHour" name="hearingHour"
                                                            required/>
                                                     <div class="invalid-feedback">
                                                         אנא הכנס שעה

@@ -1,6 +1,8 @@
+
+//Add selector the lawyers
 function getAttorney() {
-    let dropdown = document.getElementById("attorneySelector")
-    var url = 'Http://192.168.1.6:8000/getLawyers';
+    let dropdown = document.getElementById("lawyers")
+    var url = ip+'/getLawyers';
     var request = new XMLHttpRequest()
     request.open('GET', url, true);
     request.onload = function () {
@@ -9,74 +11,82 @@ function getAttorney() {
             let option;
             for (let i = 0; i < data["lawyers"].length; i++) {
                 option = document.createElement('option');
-                option.name = data["lawyers"][i].lawyerID;
+                option.value = data["lawyers"][i].lawyerID;
                 option.text = data["lawyers"][i]["firstname"].toUpperCase() + " " + data["lawyers"][i]["lastname"].toUpperCase();
                 dropdown.add(option);
             }
-        } else {
-            console.log("??????????")
         }
     }
     request.send();
 }
 
-function save(data) {
-    let localUrl = url + '/saveCase';
-    request.open('POST', localUrl, true);
-    request.send(JSON.stringify(data));
-}
 
+//Save and go to Add Witnesses
 function saveAndNext() {
     let form = document.getElementsByTagName('form')[0];
     if (form.checkValidity() === true) {
         var data = {};
         for (var i = 0, ii = form.length; i < ii; ++i) {
             var input = form[i];
-            if(input.name){
+            if (input.name)
                 data[input.name] = input.value;
-            }
+
 
         }
+
         data["openingUserID"] = "1";
-        save(data);
         let caseID = document.getElementById("caseID").value;
-        setGetParameter('caseID', caseID);
+        serviceSave(data);
+        goToWitnessesUrl('caseID', caseID);
     } else {
         form.classList.add('was-validated');
     }
 
 };
 
-function saveCase() {
-    let form = document.getElementsByTagName('form')[0];
-    if (form.checkValidity() === true) {
-        var data = {};
-        for (var i = 0, ii = form.length; i < ii; ++i) {
-            var input = form[i];
-            if (input.name === "attorneySelector") {
-                var lawyers = [];
-                lawyers.push(input.value);
-                data["lawyers"] = lawyers;
-            } else if (input.name)
-                data[input.name] = input.value;
-        }
-        data["openingUserID"] = "1";
-        save(data);
-    } else {
-        form.classList.add('was-validated');
-    }
-}
-
-
-function setGetParameter(paramName, paramValue) {
+function goToWitnessesUrl(paramName, paramValue) {
     var url = new URL(window.location.href);
     const newUrl = new URL('../../pages/cases/add-witnesses.html', url);
     newUrl.searchParams.append(paramName, paramValue);
     window.location.href = newUrl.href;
 }
 
+//Save case
+function saveCase() {
+    let form = document.getElementsByTagName('form')[0];
+    if (form.checkValidity() === true) {
+        var data = {};
+        for (var i = 0, ii = form.length; i < ii; ++i) {
+            var input = form[i];
+            if (input.name)
+                data[input.name] = input.value;
+        }
+        data["openingUserID"] = "1";
+        serviceSave(data);
+    } else {
+        form.classList.add('was-validated');
+    }
+}
 
-let url = 'Http://192.168.1.6:8000';
+//Ask from the service to save the data
+function serviceSave(data) {
+    let localUrl = ip + '/saveCase';
+    let caseID = document.getElementById("caseID").value;
+    request.open('POST', localUrl, true);
+    request.onreadystatechange = function() {
+        // If the request completed, close the extension popup
+        if (request.readyState == 4){
+            if (request.status == 200){
+                localStorage.setItem(caseID,request.responseText);
+            }
+        }
+    }
+    request.send(JSON.stringify(data));
+
+}
+
+//Init
+let ip = 'Http://192.168.1.8:8000';
 const request = new XMLHttpRequest();
 getAttorney();
 

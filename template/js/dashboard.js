@@ -231,6 +231,7 @@
     //   document.getElementById('total-sales-chart-legend').innerHTML = totalSalesChart.generateLegend();
     // }
 
+
     $('#recent-purchases-listing').DataTable({
       "aLengthMenu": [
         [5, 10, 15, -1],
@@ -248,3 +249,8 @@
     });
   });
 })(jQuery);
+
+
+let curUrl = new URL(window.location.href);
+let curCaseId = curUrl.searchParams.get("caseID");
+let _id = localStorage.getItem(curCaseId);

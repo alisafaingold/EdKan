@@ -4,13 +4,20 @@
     <list default="true" id="ce420a82-4dc1-4da1-86e9-1fa25d18d818" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/site/js/add-case.js" beforeDir="false" afterPath="$PROJECT_DIR$/site/js/add-case.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/add-hearing.js" beforeDir="false" afterPath="$PROJECT_DIR$/site/js/add-hearing.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/site/js/add-witnesses.js" beforeDir="false" afterPath="$PROJECT_DIR$/site/js/add-witnesses.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/site/js/case.js" beforeDir="false" afterPath="$PROJECT_DIR$/site/js/case.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/site/js/exist-case.js" beforeDir="false" afterPath="$PROJECT_DIR$/site/js/exist-case.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/hearing-summary.js" beforeDir="false" afterPath="$PROJECT_DIR$/site/js/hearing-summary.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/js/witnesses-to-hearing.js" beforeDir="false" afterPath="$PROJECT_DIR$/site/js/witnesses-to-hearing.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/site/pages/cases/add-case.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/pages/cases/add-case.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/site/pages/cases/add-witnesses.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/pages/cases/add-witnesses.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/site/pages/cases/case.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/pages/cases/case.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/site/pages/cases/exist-case.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/pages/cases/exist-case.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/pages/hearing/add-hearing.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/pages/hearing/add-hearing.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/pages/hearing/hearing-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/pages/hearing/hearing-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/template/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/js/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/template/js/dashboard.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -67,12 +74,12 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="SCSS" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/MDB-Free_4.16.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="liveEdit" />
+    <property name="settings.editor.selected.configurable" value="project.propDebugger" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -134,7 +141,7 @@
       <workItem from="1586864731895" duration="3641000" />
       <workItem from="1586870173551" duration="59833000" />
       <workItem from="1587068497010" duration="6924000" />
-      <workItem from="1587142718761" duration="57407000" />
+      <workItem from="1587142718761" duration="85960000" />
     </task>
     <task id="LOCAL-00001" summary="All relevant pages under &quot;site&quot;">
       <created>1585391315901</created>
@@ -178,7 +185,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587242512926</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Wotk 180429">
+      <created>1587333294969</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1587333294969</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,78 +242,5 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>EdKan</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.6" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>
