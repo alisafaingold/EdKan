@@ -1,5 +1,6 @@
 window.onload = function(){
     caseID = curUrl.searchParams.get("caseID");
+    _id = localStorage.getItem(caseID);
     if(caseID!=null){
         document.getElementById("caseID").value=caseID;
         _id = localStorage.getItem(caseID);
@@ -39,10 +40,14 @@ function saveCase() {
         for (var i = 0, ii = form.length; i < ii; ++i) {
             var input = form[i];
             if (input.name) {
-                if(input.name==='caseID' && caseID==null){
-                    caseID=input.value;
+                if(input.name==='caseID'){
+                    data[input.name] = _id;
+
                 }
-                data[input.name] = input.value;
+                else{
+                    data[input.name] = input.value;
+
+                }
             }
         }
         data["openingUserID"] = "1";
@@ -54,22 +59,40 @@ function saveCase() {
 };
 
 function saveToService(data) {
-    let localUrl =url+'/saveHearing';
-    if(_id!=null){
-        localUrl +='?caseID='+_id;
-    }
-    request.open('POST',localUrl,true);
-    request.send(JSON.stringify(data));
-    //TODO TALK WITH ITAI ABOUT THIS API ==> SHOULD RETURN _ID FOR CASE IF NOT EXIST
-    request.onreadystatechange = function() {
-        // If the request completed, close the extension popup
-        if (request.readyState == 4){
-            if (request.status == 200){
-                localStorage.setItem(caseID,request.responseText);
-            }
-        }
-    }
-    request.send(JSON.stringify(data));
+    let localUrl =ip+'/saveHearing';
+    let s = JSON.stringify(data);
+    $.ajax({
+        method: "POST",
+        url: localUrl,
+        data: s
+    })
+        .done(function( msg ) {
+            localStorage.setItem('hearingID',msg);
+            const newUrl = new URL('../../pages/hearing/witnesess-to-hearing.html', curUrl);
+            newUrl.searchParams.append('caseID',caseID);
+            window.location.href = newUrl.href;
+        });
+
+    //
+    // $.post(localUrl,
+    //     {
+    //         data
+    //     },
+    //     function(data1,status){
+    //         localStorage.setItem('hearingID',data1);
+    //     });
+
+    // request.open('POST',localUrl,false);
+    // //TODO TALK WITH ITAI ABOUT THIS API ==> SHOULD RETURN _ID FOR CASE IF NOT EXIST
+    // request.onreadystatechange = function() {
+    //     // If the request completed, close the extension popup
+    //     if (request.readyState == 4){
+    //         if (request.status == 200){
+    //             localStorage.setItem('hearingID',request.responseText);
+    //         }
+    //     }
+    // }
+    // request.send(JSON.stringify(data));
     localStorage.setItem("hearing", JSON.stringify(data));
 };
 
@@ -89,7 +112,7 @@ function saveAndNext() {
             }
         }
         saveToService(data);
-        goToWitnessesToHearingUrl('caseID',caseID);
+        // goToWitnessesToHearingUrl('caseID',caseID);
     }
     else{
         form.classList.add('was-validated');
@@ -98,12 +121,12 @@ function saveAndNext() {
 };
 
 function goToWitnessesToHearingUrl(paramName, paramValue){
-    const newUrl = new URL('../../pages/hearing/witnesess-to-hearing.html', url);
+    const newUrl = new URL('../../pages/hearing/witnesess-to-hearing.html', curUrl);
     newUrl.searchParams.append(paramName, paramValue);
     window.location.href = newUrl.href;
 };
 
-let ip = 'Http://192.168.1.6:8000';
+let ip = 'Http://192.168.1.107:8000';
 const request = new XMLHttpRequest();
 let curUrl = new URL(window.location.href);
 let caseID;

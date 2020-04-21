@@ -1,8 +1,7 @@
-
 //On load -> show cases, create method to move to the case
 async function loadCases() {
-    localStorage.setItem('lawyerID', '5e7b7e5d520b082b50dae85d');
-    let url =ip+'/getLawyerCase?lawyerID='+localStorage.getItem('lawyerID');
+    localStorage.setItem('lawyerID', '5e9ef8df1c9d44000066a164');
+    let url = ip + '/getLawyerCases?lawyerID=' + localStorage.getItem('lawyerID');
     let request = new XMLHttpRequest();
     let element = document.getElementById("insertButtons");
     let requestOptions = {
@@ -13,7 +12,8 @@ async function loadCases() {
     request.onload = function () {
         if (request.status === 200) {
             element.innerHTML = "";
-            var data = JSON.parse(this.response);
+            var d = JSON.parse(this.response);
+            let data = d["cases"];
             for (let i = 0; i < data.length; i++) {
                 let bigDiv = document.createElement("div");
                 bigDiv.className = "row mt-4";
@@ -23,9 +23,9 @@ async function loadCases() {
                     div.className = "col-md-2";
                     var button = document.createElement("button");
                     button.className = "btn btn-outline-primary btn-lg";
-                    button.innerHTML = "תיק מס' " + data[i];
-                    button.id = data[i];
-                    localStorage.setItem(button.id,data[i]._id)
+                    button.innerHTML = "תיק מס' " + data[i].caseID;
+                    button.id = data[i]._id.$oid;
+                    localStorage.setItem(data[i].caseID,data[i]._id);
                     button.setAttribute("onClick", "goToCaseUrl(" + "this" + ")");
                     div.appendChild(button);
                     bigDiv.appendChild(div);
@@ -61,7 +61,7 @@ function showForm() {
     y.style.display = "none";
     let dropdown = document.getElementById("lawyers")
 
-    var url = ip+'/getLawyers';
+    var url = ip + '/getLawyers';
     var request = new XMLHttpRequest()
     request.open('GET', url, true);
     request.onload = function () {
@@ -119,9 +119,18 @@ function saveAndNext() {
         for (var i = 0, ii = form.length; i < ii; ++i) {
             var input = form[i];
             if (input.name) {
-                data[input.name] = input.value;
+                if (input.name === 'lawyers') {
+                    let l = [];
+                    let item = localStorage.getItem(input.value);
+                    l[0]=item;
+                    data[input.name] = l;
+                }
+                else {
+                    data[input.name] = input.value;
+                }
             }
         }
+
         data["openingUserID"] = "1";
 
         serviceSave(data);
@@ -146,17 +155,17 @@ function goToWitnessesUrl(paramName, paramValue) {
 //Ask from the service to save the data
 function serviceSave(data) {
     let localUrl = ip + '/saveCase';
-    request.open('POST', localUrl, true);
-    request.send(JSON.stringify(data));
     let caseID = document.getElementById("caseID").value;
-    request.onreadystatechange = function() {
+    request.open('POST', localUrl, true);
+    request.onreadystatechange = function () {
         // If the request completed, close the extension popup
-        if (request.readyState == 4){
-            if (request.status == 200){
-                localStorage.setItem(caseID,request.responseText);
+        if (request.readyState == 4) {
+            if (request.status == 200) {
+                localStorage.setItem(caseID, request.responseText);
             }
         }
-    };
+    }
+    request.send(JSON.stringify(data));
 }
 
 function parse_query_string(query) {
@@ -183,7 +192,7 @@ function parse_query_string(query) {
 
 
 // Init
-const ip ="Http://192.168.1.8:8000";
+const ip = "Http://192.168.1.107:8000";
 
 var query = window.location.search.substring(1);
 var qs = parse_query_string(query);

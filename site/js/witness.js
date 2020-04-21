@@ -18,32 +18,37 @@ $(document).ready(
     }(jQuery)
 );
 
-function createRequest(r) {
-    request.open('GET', r, true);
+function createRequest() {
+    let urlToAsk = ip+'/getWitnessDetails?witnessID='+_id;
+    request.open('GET', urlToAsk, true);
     request.onload = function () {
         if (request.status === 200) {
             const data = JSON.parse(request.responseText);
-            let name = data["witness"].firstname+" "+data["witness"].lastname;
-            let Phone = data["witness"].Phone;
-            let Adress = data["witness"].Adress;
-            let email = data["witness"].email;
-            let language = data["witness"].language;
-            let notes = data["witness"].notes;
-            let id = data["witness"].witnessID;
+                let name = data.firstname+" "+data.lastname;
+                let Phone = data.Phone;
+                let Adress = data.Address;
+                let email = data.email;
+                let language = data.language;
+                let notes = data.notes;
+                let id = data.witnessID;
+                document.getElementById("wName").value=name;
+                document.getElementById("wTel").value=Phone;
+                document.getElementById("wAddress").value=Adress;
+                document.getElementById("wEmail").value=email;
+                document.getElementById("wLang").optio=language;
+                document.getElementById("wID").value=id;
+                document.getElementById("wID").value=notes;
 
-            document.getElementById("wName").value=name;
-            document.getElementById("wTel").value=Phone;
-            document.getElementById("wAddress").value=Adress;
-            document.getElementById("wEmail").value=email;
-            document.getElementById("wLang").optio=language;
-            document.getElementById("wID").value=id;
-            document.getElementById("wID").value=notes;
+                document.getElementById("title").innerText=name;
 
-            document.getElementById("title").innerText=name;
+
+
+
 
 
         }
     }
+    request.send();
 
 }
 
@@ -64,6 +69,9 @@ function saveThis(form) {
 }
 
 
-let url = 'Http://192.168.1.107:8000';
-let witnessesID = url.searchParams.get("witnessesID");
+let ip = 'Http://192.168.1.107:8000';
+let curUrl = new URL(window.location.href);
+let witnessID = curUrl.searchParams.get("witnessID");
+let _id = localStorage.getItem(witnessID);
 const request = new XMLHttpRequest();
+createRequest();

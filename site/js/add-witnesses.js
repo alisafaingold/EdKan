@@ -152,7 +152,6 @@ function saveAndNext() {
     witnesses['witnesses']=formData;
 
     serviceSave(witnesses);
-    goToCaseUrl();
 };
 
 function goToCaseUrl() {
@@ -165,6 +164,17 @@ function goToCaseUrl() {
 function serviceSave(data) {
     let urlToAsk = ip+'/saveWitnesses?caseID='+_id;
     request.open('POST', urlToAsk, true);
+    request.onreadystatechange = function () {
+        // If the request completed, close the extension popup
+        if (request.readyState == 4) {
+            if (request.status == 200) {
+                var url = new URL(window.location.href);
+                const newUrl = new URL('../../pages/cases/case.html', url);
+                newUrl.searchParams.append('caseID', curCaseId);
+                window.location.href = newUrl.href;
+            }
+        }
+    }
     request.send(JSON.stringify(data));
 }
 
@@ -220,7 +230,7 @@ function show(jsonObj) {
 
 
 //Init
-let ip = 'Http://192.168.1.8:8000';
+let ip = 'Http://192.168.1.107:8000';
 let numID = 2;
 const request = new XMLHttpRequest();
 let curUrl = new URL(window.location.href);

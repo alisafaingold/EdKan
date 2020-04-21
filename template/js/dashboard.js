@@ -1,6 +1,6 @@
 (function($) {
   'use strict';
-  $(function() {
+  $(function () {
 
     // if ($('#cash-deposits-chart').length) {
     //   var cashDepositsCanvas = $("#cash-deposits-chart").get(0).getContext("2d");
@@ -231,26 +231,74 @@
     //   document.getElementById('total-sales-chart-legend').innerHTML = totalSalesChart.generateLegend();
     // }
 
+      // let editor = new $.fn.dataTable.Editor({
+      //   "table": "#recent-purchases-listing",
+      //   "fields": [{
+      //     label: "Active:",
+      //     name: "active",
+      //     type: "checkbox",
+      //     separator: "|",
+      //     options: [
+      //       {label: '', value: 1}
+      //     ]
+      //   }, {
+      //     label: "First name:",
+      //     name: "first_name"
+      //   }, {
+      //     label: "Last name:",
+      //     name: "last_name"
+      //   }, {
+      //     label: "Phone:",
+      //     name: "phone"
+      //   }, {
+      //     label: "City:",
+      //     name: "city"
+      //   }, {
+      //     label: "Zip:",
+      //     name: "zip"
+      //   }
+      //   ]
+      // });
 
-    $('#recent-purchases-listing').DataTable({
-      "aLengthMenu": [
-        [5, 10, 15, -1],
-        [5, 10, 15, "All"]
-      ],
-      "iDisplayLength": 10,
-      "language": {
-        searchPlaceholder: "חפש עד לפי כל מזהה",
-        search: ""
-      },
-      "aoColumnDefs": [
-        { aTargets: [ 0 ], bSortable: false }
-      ],
+      $('#recent-purchases-listing').DataTable({
+        // ajax: url,
+        // columns: [{
+        //   "data": "witnessID"
+        // }, {
+        //   "data": "firstname"
+        // }, {
+        //   "data": "lastname"
+        // },{
+        //   "data": "phone"
+        // },{
+        //   "data":"email"
+        // }],
+        "aLengthMenu": [
+          [5, 10, 15, -1],
+          [5, 10, 15, "All"]
+        ],
+        rowId: function (a) {
+          return a._id;
+        },
+        "iDisplayLength": 10,
+        "language": {
+          searchPlaceholder: "חפש עד לפי כל מזהה",
+          search: ""
+        },
+        "aoColumnDefs": [
+          {aTargets: [0], bSortable: false}
+        ],
         searching: true, paging: true, info: false
+      });
     });
-  });
-})(jQuery);
+  })(jQuery);
 
 
-let curUrl = new URL(window.location.href);
-let curCaseId = curUrl.searchParams.get("caseID");
-let _id = localStorage.getItem(curCaseId);
+
+// let curUrl = new URL(window.location.href);
+// let ip='Http://192.168.1.107:8000';
+// let url = ip+'/getCaseWitnesses?caseID=';
+//
+// let curCaseId = curUrl.searchParams.get("caseID");
+// let _id = localStorage.getItem(curCaseId);
+// url +=_id

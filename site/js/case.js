@@ -10,6 +10,7 @@ function addDetails() {
             const data = JSON.parse(request.responseText);
             // const fakedata = JSON.parse(fakeData);
             //======== Case Details =================
+
             let courtID = data["caseDetails"].courtID;
             let lawyer = data["caseDetails"].lawyers[0];
             let od = data["caseDetails"].openingDate;
@@ -49,7 +50,7 @@ function addDetails() {
             case2.appendChild(br.cloneNode(true));
             case2.appendChild(second2);
             case2.appendChild(br.cloneNode(true));
-            case1.appendChild(third2);
+            case2.appendChild(third2);
 
 
             //=========== Witnesses =================
@@ -67,7 +68,7 @@ function addDetails() {
                         button.className = "btn btn-outline-danger btn-lg";
                         button.innerHTML = witnesses[i].firstname+" "+witnesses[i].lastname;
                         button.id =witnesses[i].witnessID;
-                        localStorage.setItem(button.id,witnesses[i]._id)
+                        localStorage.setItem(button.id,witnesses[i]._id.$oid)
                         button.setAttribute("onClick", "goToWitnessUrl(" + "this" + ")");
                         div.appendChild(button);
                         i++;
@@ -83,7 +84,7 @@ function addDetails() {
             for (let i = 0; i < hearings.length; i++) {
                 let button = document.createElement("button");
                 button.className = "btn btn-inverse-info btn-lg btn-block";
-                button.innerHTML = hearings[i].hearingDate +" "+hearings[i].hearingHour;
+                button.innerHTML = hearings[i].subject;
                 button.id=hearings[i].id;
                 localStorage.setItem(button.id,hearings[i]._id)
                 button.setAttribute("onClick", "goToHearingUrl(" + "this" + ")");
@@ -109,8 +110,8 @@ function goToWitnessUrl(button){
 
 function goToHearingUrl(button){
     let url = new URL(window.location.href);
-    const newUrl = new URL('../../pages/cases/witness.html', url);
-    newUrl.searchParams.append("witnessID", button.id);
+    const newUrl = new URL('../../pages/hearing/add-hearing.html', url);
+    newUrl.searchParams.append("caseID", caseID);
     window.location.href = newUrl.href;
 };
 
@@ -230,7 +231,7 @@ function generateCSV() {
 }
 
 //Init
-let ip = 'Http://192.168.1.6:8000';
+let ip = 'Http://192.168.1.107:8000';
 const request = new XMLHttpRequest();
 let curUrl = new URL(window.location.href);
 let caseID = curUrl.searchParams.get("caseID");
