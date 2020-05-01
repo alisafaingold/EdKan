@@ -1,3 +1,5 @@
+
+
 function addDetails() {
     // let fakeData = '{"witnesses":[{"witnessID":"123","Phone":"0541234567","witnessType":1,"Adress":"tel aviv 12","firstname":"ed1","lastname":"last1","_id":{"$oid":"5e7b7f0a520b082b50dae866"},"email":"ed1@gmail.com","cases":[{"caseID":"2020","notes":"bbbbbbb"},{"caseID":"2021","notes":"qqqqqqq"}],"language":"heb"},{"witnessID":"456","Phone":"0541234567","witnessType":2,"Adress":"tel aviv 12","firstname":"cup1","lastname":"lastcup1","_id":{"$oid":"5e8712a21c9d4400002387d3"},"rank":"רסל","station":"ירקון","email":"cup1@gmail.com","cases":[{"caseID":"2020","notes":"bbbbbbb"},{"caseID":"2021","notes":"qqqqqqq"}],"language":"heb"}],"caseDetails":{"_id":{"$oid":"5e7b7e9c520b082b50dae85f"},"caseID":"2020","courtID":"1","lawyers":["1234","5678"],"openingUserID":"123456789","openingDate":{"$date":1577829600000},"PMD":"11111","notes":"בלה בלה בלה","buffers":["b1","b2","b3"],"type":"criminal"},"hearings":[{"_id":{"$oid":"5e9754d91c9d44000027066d"},"hearingID":"456","caseID":"2020","courtID":"1","hallID":"3","hearingDate":"2020-04-15","hearingHour":"22:00"}]}';
     document.getElementById("title").innerText="תיק מספר "+caseID;
@@ -14,7 +16,7 @@ function addDetails() {
             let courtID = data["caseDetails"].courtID;
             let lawyer = data["caseDetails"].lawyers[0];
             let od = data["caseDetails"].openingDate;
-            let odd= new Date(Object.values(od)[0]);
+            let odd= new Date(od);
             let openingDate = odd.toLocaleDateString ();
             let PMD = data["caseDetails"].PMD;
             let notes = data["caseDetails"].notes;
@@ -231,10 +233,11 @@ function generateCSV() {
 }
 
 //Init
-let ip = 'Http://192.168.1.107:8000';
+let ip = 'Http://192.168.1.8:8000';
 const request = new XMLHttpRequest();
 let curUrl = new URL(window.location.href);
 let caseID = curUrl.searchParams.get("caseID");
 let _id= localStorage.getItem(caseID);
+
 
 addDetails();

@@ -95,7 +95,7 @@ function saveWitness() {
 
 
 //Init
-let ip = 'Http://192.168.1.6:8000';
+let ip = 'Http://192.168.1.8:8000';
 const request = new XMLHttpRequest();
 let curUrl = new URL(window.location.href);
 let caseID = curUrl.searchParams.get("caseID");

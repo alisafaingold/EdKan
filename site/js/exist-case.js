@@ -24,8 +24,8 @@ async function loadCases() {
                     var button = document.createElement("button");
                     button.className = "btn btn-outline-primary btn-lg";
                     button.innerHTML = "תיק מס' " + data[i].caseID;
-                    button.id = data[i]._id.$oid;
-                    localStorage.setItem(data[i].caseID,data[i]._id);
+                    button.id = data[i].caseID;
+                    localStorage.setItem(data[i].caseID,data[i]._id.$oid);
                     button.setAttribute("onClick", "goToCaseUrl(" + "this" + ")");
                     div.appendChild(button);
                     bigDiv.appendChild(div);
@@ -44,7 +44,7 @@ function goToCaseUrl(element) {
     let _id = localStorage.getItem(id);
     var url = new URL(window.location.href);
     const newUrl = new URL('../../pages/cases/case.html', url);
-    newUrl.searchParams.append('caseID', _id);
+    newUrl.searchParams.append('caseID', id);
     window.location.href = newUrl.href;
 }
 
@@ -192,7 +192,7 @@ function parse_query_string(query) {
 
 
 // Init
-const ip = "Http://192.168.1.107:8000";
+const ip = "Http://192.168.1.8:8000";
 
 var query = window.location.search.substring(1);
 var qs = parse_query_string(query);

@@ -230,7 +230,7 @@ function show(jsonObj) {
 
 
 //Init
-let ip = 'Http://192.168.1.107:8000';
+let ip = 'Http://192.168.1.8:8000';
 let numID = 2;
 const request = new XMLHttpRequest();
 let curUrl = new URL(window.location.href);

@@ -105,7 +105,7 @@ function serviceSave(data) {
 }
 
 //Init
-let ip = 'Http://192.168.1.107:8000';
+let ip = 'Http://192.168.1.8:8000';
 const request = new XMLHttpRequest();
 let caseID;
 getAttorney();

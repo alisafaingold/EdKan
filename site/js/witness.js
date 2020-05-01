@@ -40,17 +40,17 @@ function createRequest() {
                 document.getElementById("wID").value=notes;
 
                 document.getElementById("title").innerText=name;
-
-
-
-
-
-
         }
     }
     request.send();
 
 }
+
+
+function connect(){
+
+}
+
 
 
 function saveThis(form) {
@@ -69,7 +69,7 @@ function saveThis(form) {
 }
 
 
-let ip = 'Http://192.168.1.107:8000';
+let ip = 'Http://192.168.1.8:8000';
 let curUrl = new URL(window.location.href);
 let witnessID = curUrl.searchParams.get("witnessID");
 let _id = localStorage.getItem(witnessID);
