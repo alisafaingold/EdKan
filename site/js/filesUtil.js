@@ -31,7 +31,7 @@ function generateWord() {
 }
 
 function generateCSV() {
-    var url = 'https://api.myjson.com/bins/13g2d4';
+    var url = 'https://jsonplaceholder.typicode.com/posts';
     var request = new XMLHttpRequest()
     var requestOptions = {
         method: 'GET',
