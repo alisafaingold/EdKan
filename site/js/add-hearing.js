@@ -70,6 +70,7 @@ function saveToService(data) {
             localStorage.setItem('hearingID',msg);
             const newUrl = new URL('../../pages/hearing/witnesess-to-hearing.html', curUrl);
             newUrl.searchParams.append('caseID',caseID);
+            newUrl.searchParams.append('h','f');
             window.location.href = newUrl.href;
         });
 
@@ -104,11 +105,16 @@ function saveAndNext() {
         for (var i = 0, ii = form.length; i < ii; ++i) {
             var input = form[i];
             if (input.name) {
-                if(input.name==='caseID' && caseID==null){
+                if(input.name==='caseID'){
                     caseID=input.value;
+                    let item = localStorage.getItem(caseID);
+                    data[input.name] = item;
+
                 }
-                data[input.name] = input.value;
-                localStorage.setItem(input.name, input.value);
+                else{
+                    data[input.name] = input.value;
+                    localStorage.setItem(input.name, input.value);
+                }
             }
         }
         saveToService(data);

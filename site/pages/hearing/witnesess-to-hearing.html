@@ -339,7 +339,9 @@
         $("#recent-purchases-listing #checkall").click(function () {
             if ($("#recent-purchases-listing #checkall").is(':checked')) {
                 $("#recent-purchases-listing input[type=checkbox]").each(function () {
-                    $(this).prop("checked", true);
+                    if(!($(this).is(':disabled'))){
+                        $(this).prop("checked", true);
+                    }
                 });
 
             } else {

@@ -4,7 +4,9 @@ async function loadWitnesses() {
         method: 'GET',
         redirect: 'follow'
     };
-    request.open('GET', url, true);
+
+    let curUrl = ip +"/getWitnesses";
+    request.open('GET',curUrl , true);
     request.onload = function () {
         if (request.status === 200) {
             element.innerHTML = "";
@@ -19,11 +21,15 @@ async function loadWitnesses() {
                     let div = document.createElement("div");
                     div.className = "col-md-2";
                     let button = document.createElement("button");
-                    button.className = "btn btn-outline-danger btn-lg";
+
+                    if(witnesses[i].witnessType ==='1')
+                        button.className = "btn btn-secondary btn-lg";
+                    else if(witnesses[i].witnessType==='2')
+                        button.className = "btn btn-linkedin btn-lg";
+
                     button.innerHTML = witnesses[i].firstname + " " + witnesses[i].lastname;
-                    button.id = witnesses[i].witnessID;
-                    //TODO CHECK if police or noraml
-                    localStorage.setItem(button.id, witnesses[i]._id)
+                    button.id =witnesses[i].witnessID;
+                    localStorage.setItem(button.id,witnesses[i]._id.$oid)
                     button.setAttribute("onClick", "goToWitnessUrl(" + "this" + ")");
                     div.appendChild(button);
                     i++;
@@ -37,6 +43,14 @@ async function loadWitnesses() {
     }
     request.send();
 }
+
+
+function goToWitnessUrl(button){
+    let url = new URL(window.location.href);
+    const newUrl = new URL('../../pages/cases/witness.html', url);
+    newUrl.searchParams.append("witnessID", button.id);
+    window.location.href = newUrl.href;
+};
 
 
 

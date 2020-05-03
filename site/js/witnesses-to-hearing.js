@@ -14,7 +14,9 @@ $(document).ready(function () {
                 input.setAttribute("type", "checkbox");
                 input.setAttribute("name", witnesses[i]._id.$oid);
                 input.setAttribute("value", witnesses[i].firstname + " " + witnesses[i].lastname);
-
+                if(sessionStorage.getItem(witnesses[i].witnessID)){
+                    input.setAttribute("disabled", "disabled");
+                }
                 let td1 = document.createElement('td');
                 let td2 = document.createElement('td');
                 let td3 = document.createElement('td');
@@ -26,7 +28,12 @@ $(document).ready(function () {
                 td3.appendChild(document.createTextNode(witnesses[i].firstname));
                 td4.appendChild(document.createTextNode(witnesses[i].lastname));
                 td5.appendChild(document.createTextNode(witnesses[i].phone));
-                td6.appendChild(document.createTextNode(witnesses[i].email));
+                if(witnesses[i].mail){
+                    td6.appendChild(document.createTextNode(witnesses[i].mail));
+                }
+                else{
+                    td6.appendChild(document.createTextNode('-'));
+                }
                 row.appendChild(td1);
                 row.appendChild(td2);
                 row.appendChild(td3);
@@ -68,8 +75,10 @@ function createTable() {
 function goNext(ids, names) {
     localStorage.setItem('ids', JSON.stringify(ids));
     localStorage.setItem('names', JSON.stringify(names));
+    let goTo = curUrl.searchParams.get("h");
     let newUrl = new URL('../../pages/hearing/hearing-summary.html', curUrl);
     newUrl.searchParams.append('caseID', curCaseId);
+    newUrl.searchParams.append('h', goTo);
     window.location.href = newUrl.href;
 }
 
@@ -83,7 +92,7 @@ $(document).ready(
             let names = [];
             let j = 0;
             for (var i = 0; i < inputs.length; i++) {
-                if (inputs[i].type == "checkbox" && inputs[i].checked) {
+                if (inputs[i].type == "checkbox" && inputs[i].checked && inputs[i].id!=="checkall") {
                     ids.push(inputs[i].name);
                     names.push(inputs[i].value);
                     // ids[j] = inputs[i].name;
@@ -101,6 +110,7 @@ let ip = 'Http://192.168.1.8:8000';
 const request = new XMLHttpRequest();
 let curUrl = new URL(window.location.href);
 let curCaseId = curUrl.searchParams.get("caseID");
+
 let _id = localStorage.getItem(curCaseId);
 
 

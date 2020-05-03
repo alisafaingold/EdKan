@@ -22,7 +22,10 @@ async function loadWitnesses() {
                     let div = document.createElement("div");
                     div.className="col-md-2";
                     let button = document.createElement("button");
-                    button.className = "btn btn-outline-danger btn-lg";
+                    if(witnesses[i].witnessType ==='1')
+                        button.className = "btn btn-secondary btn-lg";
+                    else if(witnesses[i].witnessType==='2')
+                        button.className = "btn btn-linkedin btn-lg";
                     button.innerHTML = witnesses[i].firstname+" "+witnesses[i].lastname;
                     button.id =witnesses[i].witnessID;
                     //TODO CHECK if police or noraml
@@ -116,9 +119,9 @@ function changeToNormal(id) {
 
 function changeForm(id) {
     let type = document.getElementById(id).value;
-    if (type.localeCompare("שוטר") === 0) {
+    if (type.localeCompare("2") === 0) {
         changeToOfficer(id);
-    } else if (type.localeCompare("טקסט חופשי") === 0) {
+    } else if (type.localeCompare("3") === 0) {
         changeToFreeText(id);
     } else {
         changeToNormal(id);
@@ -211,21 +214,34 @@ function importFile(evt) {
 function show(jsonObj) {
     var text = "";
     let divNum = Object.keys(jsonObj).length;
-    let data = jsonObj.data;
     let currID = numID;
-    for (var key of jsonObj) {
-        currID = numID;
-        let div = createNewRow();
-        div.style.removeProperty("display");
-        document.getElementById('FreeText' + currID).value = Object.values(key)[0];
-        document.getElementById('UserID' + currID).value = Object.values(key)[1];
-        document.getElementById('LastName' + currID).value = Object.values(key)[2];
-        document.getElementById('Name' + currID).value = Object.values(key)[3];
-        document.getElementById('UserMail' + currID).value = Object.values(key)[4];
-        document.getElementById('Phone' + currID).value = Object.values(key)[5];
-        document.getElementById('Notes' + currID).value = Object.values(key)[7];
-        console.log(key);
+
+    for(let i=0; i<jsonObj.length; i++){
+        let curr =jsonObj[i];
+
+        if(i===jsonObj.length-1){
+            currID=1;
+            document.getElementById(currID).value = curr.TYPE;
+        }
+        else{
+            let div = createNewRow();
+            div.style.removeProperty("display");
+            document.getElementById('div'+currID).value = curr.TYPE;
+
+        }
+        document.getElementById('UserID' + currID).value = curr.ID;
+        document.getElementById('LastName' + currID).value =curr.LAST;
+        document.getElementById('Name' + currID).value = curr.NAME;
+        document.getElementById('UserMail' + currID).value = curr.ADDRESS;
+        document.getElementById('Phone' + currID).value = curr.PHOME;
+        if(curr.NOTES)
+            document.getElementById('Notes' + currID).value = curr.NOTES+"";
+        if(curr.LANG){
+            document.getElementById('Lang' + currID).value = curr.LANG;
+        }
+        currID++;
     }
+
 }
 
 

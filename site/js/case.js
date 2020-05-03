@@ -1,4 +1,7 @@
-
+// import {Packer, Paragraph} from "docx";
+window.onload = function () {
+    addDetails();
+}
 
 function addDetails() {
     // let fakeData = '{"witnesses":[{"witnessID":"123","Phone":"0541234567","witnessType":1,"Adress":"tel aviv 12","firstname":"ed1","lastname":"last1","_id":{"$oid":"5e7b7f0a520b082b50dae866"},"email":"ed1@gmail.com","cases":[{"caseID":"2020","notes":"bbbbbbb"},{"caseID":"2021","notes":"qqqqqqq"}],"language":"heb"},{"witnessID":"456","Phone":"0541234567","witnessType":2,"Adress":"tel aviv 12","firstname":"cup1","lastname":"lastcup1","_id":{"$oid":"5e8712a21c9d4400002387d3"},"rank":"רסל","station":"ירקון","email":"cup1@gmail.com","cases":[{"caseID":"2020","notes":"bbbbbbb"},{"caseID":"2021","notes":"qqqqqqq"}],"language":"heb"}],"caseDetails":{"_id":{"$oid":"5e7b7e9c520b082b50dae85f"},"caseID":"2020","courtID":"1","lawyers":["1234","5678"],"openingUserID":"123456789","openingDate":{"$date":1577829600000},"PMD":"11111","notes":"בלה בלה בלה","buffers":["b1","b2","b3"],"type":"criminal"},"hearings":[{"_id":{"$oid":"5e9754d91c9d44000027066d"},"hearingID":"456","caseID":"2020","courtID":"1","hallID":"3","hearingDate":"2020-04-15","hearingHour":"22:00"}]}';
@@ -14,10 +17,12 @@ function addDetails() {
             //======== Case Details =================
 
             let courtID = data["caseDetails"].courtID;
-            let lawyer = data["caseDetails"].lawyers[0];
+            let lawyer = localStorage.getItem(data["caseDetails"].lawyers[0]);
             let od = data["caseDetails"].openingDate;
-            let odd= new Date(od);
-            let openingDate = odd.toLocaleDateString ();
+            let d = new Date(0); // The 0 there is the key, which sets the date to the epoch
+            d.setMilliseconds(od);
+            let openingDate = d.toLocaleString('heb-IL', { timeZone: 'UTC' });
+            openingDate=openingDate.slice(0,8);
             let PMD = data["caseDetails"].PMD;
             let notes = data["caseDetails"].notes;
             let caseType = data["caseDetails"].caseType;
@@ -46,7 +51,6 @@ function addDetails() {
             let second2  = document.createTextNode("סוג התיק: "+caseType);
             let third2 = document.createTextNode("הערות: "+notes);
 
-
             let case2 = document.getElementById("caseDetails2");
             case2.appendChild(first1);
             case2.appendChild(br.cloneNode(true));
@@ -64,10 +68,23 @@ function addDetails() {
                     bigDiv.className="row mt-4";
                     bigDiv.id="row"+i;
                     for(let j=0; j<6 && i<witnesses.length; j++){
+                        let status = witnesses[i].status;
                         let div = document.createElement("div");
+
                         div.className="col-md-2";
                         let button = document.createElement("button");
-                        button.className = "btn btn-outline-danger btn-lg";
+                        if(status==='sent'){
+                            button.className = "btn btn-outline-info btn-lg";
+                        } else if(status==='approved'){
+                            button.className = "btn btn-outline-success btn-lg";
+
+                        } else if(status==='declined')
+                        {
+                            button.className = "btn btn-outline-danger btn-lg";
+                        } else if(status==='none'){
+                            button.className = "btn btn-outline-secondary btn-lg";
+
+                        }
                         button.innerHTML = witnesses[i].firstname+" "+witnesses[i].lastname;
                         button.id =witnesses[i].witnessID;
                         localStorage.setItem(button.id,witnesses[i]._id.$oid)
@@ -85,10 +102,10 @@ function addDetails() {
             let hearings = data.hearings;
             for (let i = 0; i < hearings.length; i++) {
                 let button = document.createElement("button");
-                button.className = "btn btn-inverse-info btn-lg btn-block";
+                button.className = "btn btn-inverse-warning  btn-lg btn-block";
                 button.innerHTML = hearings[i].subject;
-                button.id=hearings[i].id;
-                localStorage.setItem(button.id,hearings[i]._id)
+                // button.id=hearings[i].id.$oid;
+                localStorage.setItem(button.innerHTML,hearings[i]._id.$oid);
                 button.setAttribute("onClick", "goToHearingUrl(" + "this" + ")");
                 cardH.appendChild(button);
             }
@@ -110,14 +127,27 @@ function goToWitnessUrl(button){
     window.location.href = newUrl.href;
 };
 
-function goToHearingUrl(button){
+function goToAddHearingUrl(button){
     let url = new URL(window.location.href);
     const newUrl = new URL('../../pages/hearing/add-hearing.html', url);
     newUrl.searchParams.append("caseID", caseID);
     window.location.href = newUrl.href;
 };
 
+function goToHearingUrl(button){
+    let url = new URL(window.location.href);
+    const newUrl = new URL('../../pages/hearing/hearing.html', url);
+    newUrl.searchParams.append("caseID", caseID);
+    newUrl.searchParams.append("hearingName", button.innerHTML);
+    window.location.href = newUrl.href;
+};
 
+function goToAddWitnessesUrl(){
+    var url = new URL(window.location.href);
+    const newUrl = new URL('../../pages/cases/add-witnesses.html', url);
+    newUrl.searchParams.append('caseID', caseID);
+    window.location.href = newUrl.href;
+}
 
 //Extract
 function generateWord() {
@@ -134,7 +164,7 @@ function generateWord() {
         var paragraph;
         const doc = new Document();
         for (let i = 0; i < witnesses.length; i++) {
-            paragraph = new Paragraph(witnesses[i].firstname + " " + witnesses[i].lastname+" "+ witnesses[i].phone+ "\n");
+            paragraph = new Paragraph(witnesses[i].firstname + " " + witnesses[i].lastname+" "+"ת'ז"+" "+ witnesses[i].witnessID+ "\n");
             doc.addParagraph(paragraph);
         }
         doc.addParagraph(paragraph);
@@ -238,6 +268,3 @@ const request = new XMLHttpRequest();
 let curUrl = new URL(window.location.href);
 let caseID = curUrl.searchParams.get("caseID");
 let _id= localStorage.getItem(caseID);
-
-
-addDetails();

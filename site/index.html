@@ -21,12 +21,23 @@
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="../template/css/style.css">
+
+    <!--    calender-->
+    <link href='../calender/packages/core/main.css' rel='stylesheet'/>
+    <link href='../calender/packages/daygrid/main.css' rel='stylesheet'/>
+    <script src='../calender/packages/core/main.js'></script>
+    <script src='../calender/packages/interaction/main.js'></script>
+    <script src='../calender/packages/daygrid/main.js'></script>
     <!-- endinject -->
+
     <link rel="shortcut icon" href="../template/images/favicon.png"/>
+    <link href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
-<div class="container-scroller">
-    <div id="header">
+<div id="header" style="font-family:'Alef', sans-serif;">
+
+    <div class="container-scroller">
         <nav class="navbar navbar-nav-right col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="navbar-brand-wrapper d-flex justify-content-center">
                 <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
@@ -34,8 +45,11 @@
                             data-toggle="minimize">
                         <span class="mdi mdi mdi-menu"></span>
                     </button>
-                    <a class="navbar-brand brand-logo" href="index.html"><img src="../template/images/logo.svg" alt="logo"/></a>
-                    <a class="navbar-brand brand-logo-mini" href="index.html"><img src="../template/images/logo-mini.svg" alt="logo"/></a>
+                    <a class="navbar-brand brand-logo" style="height: 55px" href="index.html"><img src="../template/images/plogo.PNG"
+                                                                              alt="logo"/></a>
+                    <a class="navbar-brand brand-logo-mini" href="index.html"><img
+                            src="../template/images/logo-mini.svg"
+                            alt="logo"/></a>
                 </div>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
@@ -53,7 +67,7 @@
                         </div>
                     </li>
                 </ul>
-                <ul class="navbar-nav navbar-nav-left">
+                <ul class="navbar-nav">
                     <!--message-->
                     <li class="nav-item dropdown mr-1">
                         <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center"
@@ -217,7 +231,8 @@
                             <ul class="nav flex-column sub-menu" dir="rtl">
                                 <li class="nav-item"><a class="nav-link" href="pages/hearing/my-hearing.html">כל
                                     הדיונים</a></li>
-                                <li class="nav-item"><a class="nav-link" href="pages/hearing/add-hearing.html">הוסף דיון</a>
+                                <li class="nav-item"><a class="nav-link" href="pages/hearing/add-hearing.html">הוסף
+                                    דיון</a>
                                 </li>
                             </ul>
                         </div>
@@ -240,20 +255,94 @@
                     </li>
                 </ul>
             </nav>
+            <div class="main-panel" style="font-family:'Alef', sans-serif;">
+                <div class="content-wrapper">
+                    <div class="row">
+                        <div class="col-md-12 grid-margin">
+                            <div class="d-flex justify-content-between flex-wrap">
+                                <div class="d-flex align-items-end flex-wrap">
+                                    <div class="mr-md-3 mr-xl-5">
+                                        <h2 style="font-size: x-large; font-weight: bold" id="title">שלום עו"ד </h2>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-end flex-wrap">
+                                    <button class="btn btn-primary mt-2 mr-2 mt-xl-0"
+                                            onclick="generateCSVForWiteness()">הורד טמפלייט להוספת עדים - אזרחים
+                                    </button>
+                                    <button class="btn btn-primary mt-2  mr-2  mt-xl-0"
+                                            onclick="generateCSVForPolice()">הורד טמלייט להוספת עדים - שוטרים
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-7 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <p class="card-title">כל האירועים</p>
+                                    <div class="table-responsive">
+                                        <table id="recent-purchases-listing" class="table">
+                                            <thead>
+                                            <tr>
+                                                <th>שם דיון</th>
+                                                <th>מס' תיק</th>
+                                                <th>מיקום</th>
+                                                <th>תאריך</th>
+                                                <th>שעה</th>
+                                                <th>עדים שאישרו הגעה</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody id="hearingTable">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <p class="card-title">הלוח שלך</p>
+                                    <div id="calendar"></div>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
 </body>
 <!-- plugins:js -->
-<!--navigation bar plugin-->
+<!-- plugins:js -->
 <script src="../template/vendors/base/vendor.bundle.base.js"></script>
 <!-- endinject -->
 <!-- Plugin js for this page-->
+<script src="../template/vendors/datatables.net/jquery.dataTables.js"></script>
+<script src="../template/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
 <!-- End plugin js for this page-->
 <!-- inject:js -->
-<!--Collapse Hamburger Button-->
-<script src="../site/js/template.js"></script>
+<script src="../template/js/off-canvas.js"></script>
+<script src="../template/js/hoverable-collapse.js"></script>
+<script src="../template/js/template.js"></script>
+<!-- endinject -->
+<!-- Custom js for this page-->
+<!--<script src="../../../template/js/jquery.dataTables.js"></script>-->
+<script src="../template/js/dataTables.bootstrap4.js"></script>
 
+<script src="../site/js/template.js"></script>
+<script src="js/index.js"></script>
 
 </html>
 

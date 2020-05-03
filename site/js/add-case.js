@@ -12,6 +12,7 @@ function getAttorney() {
                 option = document.createElement('option');
                 option.value = data["lawyers"][i].lawyerID;
                 localStorage.setItem(option.value, data.lawyers[0]._id.$oid);
+                localStorage.setItem(data.lawyers[0]._id.$oid, data["lawyers"][i]["firstname"].toUpperCase() + " " + data["lawyers"][i]["lastname"].toUpperCase());
                 option.text = data["lawyers"][i]["firstname"].toUpperCase() + " " + data["lawyers"][i]["lastname"].toUpperCase();
                 dropdown.add(option);
             }

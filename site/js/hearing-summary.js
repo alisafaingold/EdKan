@@ -5,10 +5,10 @@ window.onload = function () {
     let zero = document.createTextNode("דיון בנושא: " + data.subject);
     let first = document.createTextNode(" יתקיים בתאריך ה-" + data.hearingDate);
     let second = document.createTextNode(" בשעה " + data.hearingHour);
-    let third = document.createTextNode(' בבית המשפט ה' + data.courtID);
+    let third = document.createTextNode(' ב' + data.courtID);
     let fourth = document.createTextNode(' באולם ' + data.hallID + ".");
     let five = document.createTextNode('העדים אשר מזומנים לדיון זה יקבלו הודעת אימייל וסמס ובו פרטי המידע של הזימון.');
-
+    hearingName=data.subject;
     let br = document.createElement('br');
     hearingDetails.appendChild(zero);
     hearingDetails.appendChild(first);
@@ -44,10 +44,18 @@ function saveAndNext() {
     data["contactName"] = contactNumber;
     request.open('POST', urlToAsk, true);
     request.send(JSON.stringify(data));
-
+    let goTo = curUrl.searchParams.get("h");
     var url = new URL(window.location.href);
-    const newUrl = new URL('../../pages/cases/case.html', url);
-    newUrl.searchParams.append("caseID", curCaseId);
+    let newUrl;
+    if(goTo==='t'){
+        newUrl = new URL('../../pages/hearing/hearing.html', url);
+        newUrl.searchParams.append("caseID", curCaseId);
+        newUrl.searchParams.append("hearingName",hearingName);
+    }
+    else{
+        newUrl = new URL('../../pages/cases/case.html', url);
+        newUrl.searchParams.append("caseID", curCaseId);
+    }
     window.location.href = newUrl.href;
 
 }
@@ -58,3 +66,4 @@ const request = new XMLHttpRequest();
 let curUrl = new URL(window.location.href);
 let curCaseId = curUrl.searchParams.get("caseID");
 let _id = localStorage.getItem("hearingID");
+let hearingName;

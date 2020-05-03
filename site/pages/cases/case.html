@@ -30,6 +30,10 @@
             src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/js/mdb.min.js"></script>
     <scrip src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></scrip>
 
+    <!--    Word-->
+    <script src="https://unpkg.com/docx@4.0.0/build/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.js"></script>
+
 
 </head>
 <body>
@@ -281,7 +285,7 @@
                                 <div class="template-demo" style="align-self: center;">
                                     <button type="button" align="left" class="btn btn-secondary btn-rounded btn-fw mb-2"
                                             onclick="generateWord()">
-                                       צור כתב אישום
+                                        צור רשימת עדי תביעה
                                     </button>
                                     <button class='gen_btn btn btn-secondary btn-rounded btn-fw mb-2' align="left"
                                             onclick="generateCSV()">
@@ -290,93 +294,53 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 grid-margin">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8 grid-margin">
                             <div class="card">
                                 <div class="card-body">
+                                    <div class="row justify-content-between">
+                                        <div class="col-4">
                                     <h4 class="card-title">
                                         <a class="collapsed accordion-toggle" data-toggle="collapse"
                                            href="#collapse1"
                                            style="font-size: x-large; font-weight: bold">עדים בתיק</a>
                                     </h4>
+                                        </div>
+                                        <div class="col-auto">
+                                            <button class="btn btn-primary btn-sm"
+                                                    onclick="goToAddWitnessesUrl()">הוסף עדים נוספים
+                                            </button>
+                                        </div>
+                                    </div>
                                     <p class="card-description" id="cardWitnesses">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            עדים אשר
+                                            <font color="#71c016"><strong>אישרו </strong></font>הגעה לדיון<br>
+                                        </div>
+                                        <div class="col-md-3">
+                                            עדים אשר
+                                            <font color="#ff4747"><strong>לא אישרו </strong></font>הגעה לדיון<br>
+                                        </div>
+                                    <div class="col-md-3">
                                         עדים אשר
-                                        <font color="#71c016"><strong>יצרו קשר</strong></font><br>
+                                        <font color="#7859df"><strong>שטרם הגיבו </strong></font>לזימון<br>
+                                    </div>
+                                    <div class="col-md-3">
                                         עדים אשר
-                                        <font color="#ff4747"><strong>לא יצרו קשר</strong></font><br>
+                                        <font color="#4a4a4a"><strong>לא זומנו </strong></font>לדיון<br>
+                                    </div>
+                                    </div>
                                     </p>
 
                                     <div class="template-demo collapse show" id="collapse1">
-                                        <div class="row mt-4">
-                                            <div class="col-md-2">
-                                                <button type="button" class="btn btn-outline-danger btn-lg">אליסה
-                                                    פיינגולד
-                                                </button>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <button type="button" class="btn btn-outline-success btn-lg mr-2">
-                                                    אליסה
-                                                    פיינגולד
-                                                </button>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <button type="button" class="btn btn-outline-danger btn-lg">אליסה
-                                                    פיינגולד
-                                                </button>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <button type="button" class="btn btn-outline-danger btn-lg">אליסה
-                                                    פיינגולד
-                                                </button>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <button type="button" class="btn btn-outline-success btn-lg">אליסה
-                                                    פיינגולד
-                                                </button>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <button type="button" class="btn btn-outline-danger btn-lg">אליסה
-                                                    פיינגולד
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-4">
-                                            <div class="col-md-2">
-                                                <button type="button" class="btn btn-outline-danger btn-lg">אליסה
-                                                    פיינגולד
-                                                </button>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <button type="button" class="btn btn-outline-danger btn-lg mr-2">
-                                                    אליסה
-                                                    פיינגולד
-                                                </button>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <button type="button" class="btn btn-outline-success btn-lg">אליסה
-                                                    פיינגולד
-                                                </button>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <button type="button" class="btn btn-outline-danger btn-lg">אליסה
-                                                    פיינגולד
-                                                </button>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <button type="button" class="btn btn-outline-success btn-lg">אליסה
-                                                    פיינגולד
-                                                </button>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <button type="button" class="btn btn-outline-success btn-lg">אליסה
-                                                    פיינגולד
-                                                </button>
-                                            </div>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-6 grid-margin">
+                        <div class="col-md-4 grid-margin">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">
@@ -387,36 +351,9 @@
                                     <p class="card-description">
                                     </p>
                                     <div class="template-demo collapse show" id="collapse2">
-                                        <button type="button" class="btn btn-dark btn-lg btn-block" onclick="goToHearingUrl()">צור דיון חדש לתיק זה
+                                        <button type="button" class="btn btn-secondary btn-lg btn-block"
+                                                onclick="goToAddHearingUrl()">צור דיון חדש לתיק זה
                                         </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-6 grid-margin">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">
-                                        <a data-toggle="collapse" href="#collapse1"
-                                           style="font-size: x-large; font-weight: bold">תזכורות</a>
-                                    </h4>
-                                    <p class="card-description">
-                                    </p>
-                                    <div class="template-demo collapse show" id="collapse4">
-                                        <p>
-                                            <button type="button" class="btn btn-inverse-warning btn-lg btn-block">
-                                                Block
-                                                buttons
-                                            </button>
-                                            <button type="button" class="btn btn-outline-warning btn-lg btn-block">
-                                                Block
-                                                buttons
-                                            </button>
-                                            <button type="button" class="btn btn-warning btn-lg btn-block">Block
-                                                buttons
-                                            </button>
-                                        </p>
                                     </div>
                                 </div>
                             </div>
