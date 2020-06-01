@@ -1,7 +1,7 @@
 //On load -> show cases, create method to move to the case
 async function loadCases() {
     localStorage.setItem('lawyerID', '5e9ef8df1c9d44000066a164');
-    let url = ip + '/getLawyerCases?lawyerID=' + localStorage.getItem('lawyerID');
+    let url = ip + '/getLawyerCase?lawyerID=' + localStorage.getItem('lawyerID');
     let request = new XMLHttpRequest();
     let element = document.getElementById("insertButtons");
     let requestOptions = {
@@ -192,7 +192,7 @@ function parse_query_string(query) {
 
 
 // Init
-const ip = "Http://192.168.1.8:8000";
+let ip = 'http://192.168.1.4:8000';
 
 var query = window.location.search.substring(1);
 var qs = parse_query_string(query);

@@ -221,32 +221,47 @@ function show(jsonObj) {
 
         if(i===jsonObj.length-1){
             currID=1;
-            document.getElementById(currID).value = curr.TYPE;
+            document.getElementById(currID).value = curr.Type;
         }
         else{
             let div = createNewRow();
             div.style.removeProperty("display");
-            document.getElementById('div'+currID).value = curr.TYPE;
+            let element =  document.getElementById('div'+currID);
+            element.value=curr.Type;
 
         }
-        document.getElementById('UserID' + currID).value = curr.ID;
-        document.getElementById('LastName' + currID).value =curr.LAST;
-        document.getElementById('Name' + currID).value = curr.NAME;
-        document.getElementById('UserMail' + currID).value = curr.ADDRESS;
-        document.getElementById('Phone' + currID).value = curr.PHOME;
-        if(curr.NOTES)
-            document.getElementById('Notes' + currID).value = curr.NOTES+"";
-        if(curr.LANG){
-            document.getElementById('Lang' + currID).value = curr.LANG;
+        if(curr.Type === 1){
+            document.getElementById('UserID' + currID).value = curr.ID;
+            document.getElementById('LastName' + currID).value =curr.Last_Name;
+            document.getElementById('Name' + currID).value = curr.First_Name;
+            document.getElementById('UserMail' + currID).value = curr.Address;
+            document.getElementById('Phone' + currID).value = curr.Phone;
+
+        } else if(curr.Type===2){
+            document.getElementById('UserID' + currID).value = curr.Officer_ID;
+            document.getElementById('LastName' + currID).value =curr.First_Name;
+            document.getElementById('Name' + currID).value = curr.Officer_Rank;
+            document.getElementById('UserMail' + currID).value = curr.Last_Name;
+            document.getElementById('Phone' + currID).value = curr.Officer_Station;
+        }
+
+        if(curr.Notes){
+            let element =  document.getElementById('Notes' + currID);
+            element.value=curr.Notes+"";
+        }
+        if(curr.Language){
+            let element =  document.getElementById('Lang' + currID);
+            element.value=curr.Language;
         }
         currID++;
+
     }
 
 }
 
 
 //Init
-let ip = 'Http://192.168.1.8:8000';
+let ip = 'http://192.168.1.4:8000';
 let numID = 2;
 const request = new XMLHttpRequest();
 let curUrl = new URL(window.location.href);

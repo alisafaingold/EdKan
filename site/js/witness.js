@@ -291,7 +291,7 @@ function goToHearingUrl(button) {
     window.location.href = newUrl.href;
 };
 
-let ip = 'Http://192.168.1.8:8000';
+let ip = 'http://192.168.1.4:8000';
 let curUrl = new URL(window.location.href);
 let witnessID = curUrl.searchParams.get("witnessID");
 let _id = localStorage.getItem(witnessID);

@@ -28,6 +28,9 @@
     <script src='../calender/packages/core/main.js'></script>
     <script src='../calender/packages/interaction/main.js'></script>
     <script src='../calender/packages/daygrid/main.js'></script>
+    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="../template/node_modules/file-saver/dist/FileSaver.min.js"></script>
+
     <!-- endinject -->
 
     <link rel="shortcut icon" href="../template/images/favicon.png"/>
@@ -171,7 +174,7 @@
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
                             <img src="../template/images/faces/face5.jpg" alt="profile"/>
-                            <span class="nav-profile-name">Alisa Faingold</span>
+                            <span class="nav-profile-name">תומר גודלי</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
                              aria-labelledby="profileDropdown">
@@ -272,6 +275,7 @@
                                     <button class="btn btn-primary mt-2  mr-2  mt-xl-0"
                                             onclick="generateCSVForPolice()">הורד טמלייט להוספת עדים - שוטרים
                                     </button>
+                                    <button id="button-a" style="display: none"> a</button>
                                 </div>
                             </div>
                         </div>

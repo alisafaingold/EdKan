@@ -15,7 +15,8 @@
     "perfect-scrollbar": "^1.4.0",
     "popper.js": "^1.15.0",
     "docx": "latest",
-    "file-saver": "latest"
+    "file-saver": "latest",
+    "xlsx": "latest"
   },
   "devDependencies": {
     "browser-sync": "^2.16.0",

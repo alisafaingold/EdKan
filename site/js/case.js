@@ -162,10 +162,39 @@ function generateWord() {
         let witnesses = data.witnesses;
         var text = "";
         var paragraph;
-        const doc = new Document();
+            const doc = new Document();
+        wordTitle = new Paragraph("רשימת עדי התביעה"+"\n\n");
+        doc.addParagraph(wordTitle);
+
         for (let i = 0; i < witnesses.length; i++) {
-            paragraph = new Paragraph(witnesses[i].firstname + " " + witnesses[i].lastname+" "+"ת'ז"+" "+ witnesses[i].witnessID+ "\n");
-            doc.addParagraph(paragraph);
+            if(witnesses[i].witnessType==='1'){
+                paragraph = new Paragraph(
+                    witnesses[i].firstname +
+                    " " +
+                    witnesses[i].lastname +
+                    " " +
+                    "ת.ז." +
+                    " " +
+                    witnesses[i].witnessID +
+                    ", " +
+                    witnesses[i].address +
+                    "\n");
+                doc.addParagraph(paragraph);
+            } else if(witnesses[i].witnessType==='2')  {
+                paragraph = new Paragraph(
+                    witnesses[i].firstname +
+                    " " +
+                    witnesses[i].lastname +
+                    " " +
+                    "מ.א." +
+                    " " +
+                    witnesses[i].witnessID +
+                    ", " +
+                    "משטרת ישראל, תחנת "+
+                    witnesses[i].address +
+                    "\n");
+                doc.addParagraph(paragraph);
+            }
         }
         doc.addParagraph(paragraph);
 
@@ -213,12 +242,12 @@ function generateCSV() {
         }
 
         //1st loop is to extract each row
-        for (var i = 0; i < arrData.length; i++) {
+        for (var i = 0; i < arrData.witnesses.length; i++) {
             var row = "";
 
             //2nd loop will extract each column and convert it in string comma-seprated
-            for (var index in arrData[i]) {
-                row += '"' + arrData[i][index] + '",';
+            for (var index in arrData.witnesses[i]) {
+                row += '"' + arrData.witnesses[i][index] + '",';
             }
 
             row.slice(0, row.length - 1);
@@ -233,9 +262,8 @@ function generateCSV() {
         }
 
         //Generate a file name
-        var fileName = "MyReport_";
+        var fileName = "witnessesReport_Case_"+arrData.caseDetails.caseID;
         //this will remove the blank-spaces from the title and replace it with an underscore
-        fileName += "witnesses".replace(/ /g, "_");
 
         //Initialize file format you want csv or xls
         var uri = 'data:text/csv;charset=utf-8,' + encodeURI(CSV);
@@ -263,7 +291,7 @@ function generateCSV() {
 }
 
 //Init
-let ip = 'Http://192.168.1.8:8000';
+let ip = 'http://192.168.14.164:8000';
 const request = new XMLHttpRequest();
 let curUrl = new URL(window.location.href);
 let caseID = curUrl.searchParams.get("caseID");

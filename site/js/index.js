@@ -159,106 +159,55 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // ================ Extract Templates ================
 function generateCSVForPolice() {
-    var CSV = 'sep=,' + '\r\n\n';
-    let arrData=["type","Officer ID","Officer Rank","First Name","Last Name","Officer Station", "Language", "Notes"];
+    var wb = XLSX.utils.book_new();
+    wb.Props = {
+        Title: "Officers_Template"
+    };
+    wb.SheetNames.push("Test Sheet");
 
-    //This condition will generate the Label/Header
-    if (true) {
-        var row = "";
-        //This loop will extract the label from 1st index of on array
-        for (var index in arrData) {
+    var ws_data = [["Type","Officer_ID","Officer_Rank","First_Name","Last_Name","Officer_Station", "Language", "Notes"]];  //a row with 2 columns
 
-            //Now convert each value to string and comma-seprated
-            row += arrData[index] + ',';
-        }
+    var ws = XLSX.utils.aoa_to_sheet(ws_data);
+    wb.Sheets["Test Sheet"] = ws;
+    var wbout = XLSX.write(wb, {bookType:'xlsx',  type: 'binary'});
 
-        row = row.slice(0, -1);
+    $("#button-a").click(function(){
+        saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), 'Officers_Template.xlsx');
+    });
 
-        //append Label row with line break
-        CSV += row + '\r\n';
-    }
-    CSV +='1' + '\r\n';
+    $("#button-a").click();
 
-    //Generate a file name
-    var fileName = "template_";
-    //this will remove the blank-spaces from the title and replace it with an underscore
-    fileName += "witnesses".replace(/ /g, "_");
-
-    //Initialize file format you want csv or xls
-    var uri = 'data:text/csv;charset=utf-8,' + encodeURI(CSV);
-
-    // Now the little tricky part.
-    // you can use either>> window.open(uri);
-    // but this will not work in some browsers
-    // or you will not get the correct file extension
-
-    //this trick will generate a temp <a /> tag
-    var link = document.createElement("a");
-    link.href = uri;
-
-    //set the visibility hidden so it will not effect on your web-layout
-    link.style = "visibility:hidden";
-    link.download = fileName + ".csv";
-
-    //this part will append the anchor tag and remove it after automatic click
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
 
 }
 
 function generateCSVForWiteness() {
-    var CSV = 'sep=,' + '\r\n\n';
-    let arrData=["type","ID","First Name","Last Name","Address","Phone", "Language", "Notes"];
+    var wb = XLSX.utils.book_new();
+    wb.Props = {
+        Title: "Witnesses_Template"
+    };
+    wb.SheetNames.push("Test Sheet");
 
+    var ws_data = [["Type","ID","First_Name","Last_Name","Address","Phone", "Language", "Notes"]];
+    var ws = XLSX.utils.aoa_to_sheet(ws_data);
+    wb.Sheets["Test Sheet"] = ws;
+    var wbout = XLSX.write(wb, {bookType:'xlsx',  type: 'binary'});
 
-    //This condition will generate the Label/Header
-    if (true) {
-        var row = "";
-        //This loop will extract the label from 1st index of on array
-        for (var index in arrData) {
+    $("#button-a").click(function(){
+        saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), 'Witnesses_Template.xlsx');
+    });
 
-            //Now convert each value to string and comma-seprated
-            row += arrData[index] + ',';
-        }
+    $("#button-a").click();
 
-        row = row.slice(0, -1);
-
-        //append Label row with line break
-        CSV += row + '\r\n';
-    }
-    CSV +='0' + '\r\n';
-
-    //Generate a file name
-    var fileName = "template_";
-    //this will remove the blank-spaces from the title and replace it with an underscore
-    fileName += "witnesses".replace(/ /g, "_");
-
-    //Initialize file format you want csv or xls
-    var uri = 'data:text/csv;charset=utf-8,' + encodeURI(CSV);
-
-    // Now the little tricky part.
-    // you can use either>> window.open(uri);
-    // but this will not work in some browsers
-    // or you will not get the correct file extension
-
-    //this trick will generate a temp <a /> tag
-    var link = document.createElement("a");
-    link.href = uri;
-
-    //set the visibility hidden so it will not effect on your web-layout
-    link.style = "visibility:hidden";
-    link.download = fileName + ".csv";
-
-    //this part will append the anchor tag and remove it after automatic click
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
 }
 
+function s2ab(s) {
+    var buf = new ArrayBuffer(s.length); //convert s to arrayBuffer
+    var view = new Uint8Array(buf);  //create uint8array as viewer
+    for (var i=0; i<s.length; i++) view[i] = s.charCodeAt(i) & 0xFF; //convert to octet
+    return buf;
+}
 
-
-let ip = 'Http://192.168.1.8:8000';
+let ip = 'http://192.168.1.4:8000';
 const request = new XMLHttpRequest();
 let calendar;
 

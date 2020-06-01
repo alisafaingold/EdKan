@@ -60,19 +60,21 @@ function saveCase() {
 
 function saveToService(data) {
     let localUrl =ip+'/saveHearing';
-    let s = JSON.stringify(data);
-    $.ajax({
-        method: "POST",
-        url: localUrl,
-        data: s
-    })
-        .done(function( msg ) {
-            localStorage.setItem('hearingID',msg);
-            const newUrl = new URL('../../pages/hearing/witnesess-to-hearing.html', curUrl);
-            newUrl.searchParams.append('caseID',caseID);
-            newUrl.searchParams.append('h','f');
-            window.location.href = newUrl.href;
-        });
+    request.open('POST', localUrl, true);
+    request.onreadystatechange = function () {
+        // If the request completed, close the extension popup
+        if (request.readyState == 4) {
+            if (request.status == 200) {
+                localStorage.setItem('hearingID',request.responseText);
+                const newUrl = new URL('../../pages/hearing/witnesess-to-hearing.html', curUrl);
+                newUrl.searchParams.append('caseID',caseID);
+                newUrl.searchParams.append('h','f');
+                window.location.href = newUrl.href;
+            }
+        }
+    }
+    request.send(JSON.stringify(data));
+    localStorage.setItem("hearing", JSON.stringify(data));
 
     //
     // $.post(localUrl,
@@ -94,7 +96,6 @@ function saveToService(data) {
     //     }
     // }
     // request.send(JSON.stringify(data));
-    localStorage.setItem("hearing", JSON.stringify(data));
 };
 
 
@@ -132,7 +133,7 @@ function goToWitnessesToHearingUrl(paramName, paramValue){
     window.location.href = newUrl.href;
 };
 
-let ip = 'Http://192.168.1.8:8000';
+let ip = 'http://192.168.1.4:8000';
 const request = new XMLHttpRequest();
 let curUrl = new URL(window.location.href);
 let caseID;
