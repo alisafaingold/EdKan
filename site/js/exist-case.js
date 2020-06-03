@@ -192,7 +192,7 @@ function parse_query_string(query) {
 
 
 // Init
-let ip = 'http://192.168.1.4:8000';
+let ip = 'http://icc.ise.bgu.ac.il/njsw07/ProjectPrepreation';
 
 var query = window.location.search.substring(1);
 var qs = parse_query_string(query);

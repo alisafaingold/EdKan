@@ -106,7 +106,7 @@ $(document).ready(
     })(jQuery)
 );
 
-let ip = 'http://192.168.1.4:8000';
+let ip = 'http://icc.ise.bgu.ac.il/njsw07/ProjectPrepreation';
 const request = new XMLHttpRequest();
 let curUrl = new URL(window.location.href);
 let curCaseId = curUrl.searchParams.get("caseID");
