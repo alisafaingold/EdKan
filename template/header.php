@@ -5,7 +5,7 @@
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                     <span class="mdi mdi mdi-menu"></span>
                 </button>
-                <a class="navbar-brand brand-logo" href="../site/index.html"><img src="images/logo.svg" alt="logo"/></a>
+                <a class="navbar-brand brand-logo" href="../site/index.html"><img src="images/logo.jpeg" alt="logo"/></a>
                 <a class="navbar-brand brand-logo-mini" href="../site/index.html"><img src="images/logo-mini.svg" alt="logo"/></a>
             </div>
         </div>
