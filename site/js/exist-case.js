@@ -1,6 +1,6 @@
 //On load -> show cases, create method to move to the case
 async function loadCases() {
-    localStorage.setItem('lawyerID', '5e9ef8df1c9d44000066a164');
+    localStorage.setItem('lawyerID', '5eb1725e64e8f921ee78ac6e');
     let url = ip + '/getLawyerCase?lawyerID=' + localStorage.getItem('lawyerID');
     let request = new XMLHttpRequest();
     let element = document.getElementById("insertButtons");
