@@ -106,7 +106,7 @@ function serviceSave(data) {
 }
 
 //Init
-let ip = 'http://icc.ise.bgu.ac.il/njsw07/Edkan';
+let ip = 'http://icc.ise.bgu.ac.il/njsw07/edkan';
 const request = new XMLHttpRequest();
 let caseID;
 getAttorney();

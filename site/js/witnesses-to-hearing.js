@@ -106,7 +106,7 @@ $(document).ready(
     })(jQuery)
 );
 
-let ip = 'http://icc.ise.bgu.ac.il/njsw07/Edkan';
+let ip = 'http://icc.ise.bgu.ac.il/njsw07/edkan';
 const request = new XMLHttpRequest();
 let curUrl = new URL(window.location.href);
 let curCaseId = curUrl.searchParams.get("caseID");

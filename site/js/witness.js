@@ -291,7 +291,7 @@ function goToHearingUrl(button) {
     window.location.href = newUrl.href;
 };
 
-let ip = 'http://icc.ise.bgu.ac.il/njsw07/Edkan';
+let ip = 'http://icc.ise.bgu.ac.il/njsw07/edkan';
 let curUrl = new URL(window.location.href);
 let witnessID = curUrl.searchParams.get("witnessID");
 let _id = localStorage.getItem(witnessID);

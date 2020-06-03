@@ -261,7 +261,7 @@ function show(jsonObj) {
 
 
 //Init
-let ip = 'http://icc.ise.bgu.ac.il/njsw07/Edkan';
+let ip = 'http://icc.ise.bgu.ac.il/njsw07/edkan';
 let numID = 2;
 const request = new XMLHttpRequest();
 let curUrl = new URL(window.location.href);
