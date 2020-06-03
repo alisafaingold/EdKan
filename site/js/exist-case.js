@@ -192,7 +192,7 @@ function parse_query_string(query) {
 
 
 // Init
-let ip = 'http://icc.ise.bgu.ac.il/njsw07/ProjectPrepreation';
+let ip = 'http://icc.ise.bgu.ac.il/njsw07/Edkan';
 
 var query = window.location.search.substring(1);
 var qs = parse_query_string(query);

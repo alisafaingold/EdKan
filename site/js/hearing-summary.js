@@ -61,7 +61,7 @@ function saveAndNext() {
 }
 
 //Init
-let ip = 'http://icc.ise.bgu.ac.il/njsw07/ProjectPrepreation';
+let ip = 'http://icc.ise.bgu.ac.il/njsw07/Edkan';
 const request = new XMLHttpRequest();
 let curUrl = new URL(window.location.href);
 let curCaseId = curUrl.searchParams.get("caseID");

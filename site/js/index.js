@@ -207,7 +207,7 @@ function s2ab(s) {
     return buf;
 }
 
-let ip = 'http://icc.ise.bgu.ac.il/njsw07/ProjectPrepreation';
+let ip = 'http://icc.ise.bgu.ac.il/njsw07/Edkan';
 const request = new XMLHttpRequest();
 let calendar;
 
