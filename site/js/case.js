@@ -291,7 +291,7 @@ function generateCSV() {
 }
 
 //Init
-let ip = 'http://192.168.14.164:8000';
+let ip = 'http://icc.ise.bgu.ac.il/njsw07/edkan';
 const request = new XMLHttpRequest();
 let curUrl = new URL(window.location.href);
 let caseID = curUrl.searchParams.get("caseID");
