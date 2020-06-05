@@ -10,7 +10,6 @@ window.onload = function(){
     let url = ip + '/getLawyerHearingsDashboard?lawyerID=' + lawyerID;
     request.open('GET', url, true);
     request.onload = function () {
-        if (request.status === 200) {
             let hearingTable = document.getElementById("hearingTable");
             let data = JSON.parse(request.responseText);
             let hearings = data['hearings'];
@@ -51,7 +50,6 @@ window.onload = function(){
                 //add to calendar
                 let event={id:calendarID , title:hearings[i].subject , start:  d, color: '#4d83ff' };
                 calendar.addEvent(event);
-
 
             }
             for (let i=0; i<meetings.length; i++){
@@ -102,7 +100,6 @@ window.onload = function(){
 
             }
             createTable();
-        }
     }
     request.send();
 
